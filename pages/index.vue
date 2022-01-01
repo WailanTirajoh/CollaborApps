@@ -1,9 +1,15 @@
 <template>
-  <Tutorial/>
+  <Layout>
+    Home Page
+  </Layout>
 </template>
 
 <script>
+import Layout from "../components/Shared/TheLayout.vue";
 export default {
-  name: 'IndexPage'
-}
+  name: "IndexPage",
+  components: {
+    Layout,
+  }
+};
 </script>
