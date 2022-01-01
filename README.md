@@ -1,4 +1,12 @@
 # MyFirstNuxt
+
 ## Learning Path
 - Folder Structure
-- How Route Work in NUXT
+- How route work in NUXT
+- Fetch API
+
+## Integration with backend
+- Login
+- Auth
+- Guest & Auth middleware
+- Shared / Global variable
