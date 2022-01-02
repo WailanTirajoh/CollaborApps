@@ -48,17 +48,13 @@
               <a class="nav-link disabled">Disabled</a>
             </li> -->
           </ul>
-          <!-- <form class="d-flex">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form> -->
+          <div class="d-flex">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <NuxtLink class="nav-link" to="/auth/login">Login</NuxtLink>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>

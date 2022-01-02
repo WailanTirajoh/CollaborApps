@@ -4,15 +4,14 @@
 
 <script>
 export default {
-  name: "IndexPage",
   head() {
     return {
-      title: "About My Learning",
+      title: "About Page",
       meta: [
         {
           hid: "description",
           name: "description",
-          content: "About My Learnign",
+          content: "About Me",
         },
       ],
     };

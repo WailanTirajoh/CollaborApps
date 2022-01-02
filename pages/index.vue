@@ -6,6 +6,17 @@
 
 <script>
 export default {
-  name: "IndexPage",
+  head() {
+    return {
+      title: "Home Page",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: "Homepage",
+        },
+      ],
+    };
+  },
 };
 </script>
