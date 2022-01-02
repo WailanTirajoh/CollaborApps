@@ -75,13 +75,18 @@ export default {
     },
 
     redirect: {
-      login: '/login',
-      logout: '/',
+      login: '/auth/login',
+      logout: '/auth/login',
       home: '/',
     }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  loading: {
+    color: '#385898',
+    height: '5px'
   }
 }

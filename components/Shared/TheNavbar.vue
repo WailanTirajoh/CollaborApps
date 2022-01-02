@@ -1,7 +1,7 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+      <div class="container">
         <NuxtLink class="navbar-brand" to="/">MyFirstNuxt</NuxtLink>
         <button
           class="navbar-toggler"
@@ -15,7 +15,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-2">
             <li class="nav-item">
               <NuxtLink class="nav-link active" aria-current="page" to="/"
                 >Home</NuxtLink
@@ -24,34 +24,21 @@
             <li class="nav-item">
               <NuxtLink class="nav-link" to="/about">About</NuxtLink>
             </li>
-            <!-- <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li> -->
           </ul>
           <div class="d-flex">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <NuxtLink class="nav-link" to="/auth/login">Login</NuxtLink>
+              <li class="nav-item" v-if="!$auth.loggedIn">
+                <NuxtLink to="/auth/login" class="nav-link text-decoration-none"
+                  >Login</NuxtLink
+                >
+              </li>
+              <li class="nav-item" v-else>
+                <a
+                  class="cursor-pointer text-decoration-none nav-link"
+                  to="#"
+                  @click.prevent="logout()"
+                  >Logout</a
+                >
               </li>
             </ul>
           </div>
@@ -62,15 +49,50 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    async logout() {
+      try {
+        await this.$auth.logout();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+$primary-color: #f2f2f2;
 .text-white {
   color: white !important;
 }
-
 .text-decoration-none {
   text-decoration: none;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.bg-tan {
+  background-color: #dfbe99;
+}
+.nav-item {
+  .nav-link {
+    border-bottom: 0rem solid $primary-color;
+    transition: all 0.35s ease;
+    border-radius: 0rem;
+    color: rgba(229, 231, 235, var(--tw-text-opacity)) !important;
+    font-weight: 100;
+    &:hover {
+      border-radius: 0.5rem;
+      background-color: $primary-color;
+      font-weight: 600;
+    }
+  }
+  .nuxt-link-exact-active {
+    font-weight: 600;
+    border-radius: 0.5rem;
+    background-color: $primary-color;
+  }
 }
 </style>
