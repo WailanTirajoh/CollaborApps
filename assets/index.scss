@@ -1,0 +1,73 @@
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+}
+.bg-gray {
+  &-400 {
+    background-color: #f2f2f2;
+  }
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  // border-radius: 100vh;
+  // background: rgba(85, 71, 74, var(--tw-bg-opacity));
+  display: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(229, 231, 295);
+  border-radius: 100vh;
+  border: 3px solid white;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* End Scrollbar */
+body {
+  overflow: overlay;
+}
+
+// -- Navbar
+$primary-color: #f2f2f2;
+.text-white {
+  color: white !important;
+}
+.text-decoration-none {
+  text-decoration: none;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.bg-tan {
+  background-color: #dfbe99;
+}
+.nav-item {
+  .nav-link {
+    border-bottom: 0rem solid $primary-color;
+    transition: all 0.35s ease;
+    border-radius: 0rem;
+    color: rgba(229, 231, 235, var(--tw-text-opacity)) !important;
+    font-weight: 100;
+    &:hover {
+      border-radius: 0.5rem;
+      background-color: $primary-color;
+      font-weight: 600;
+    }
+  }
+  .nuxt-link-exact-active {
+    font-weight: 600;
+    border-radius: 0.5rem;
+    background-color: $primary-color;
+  }
+}

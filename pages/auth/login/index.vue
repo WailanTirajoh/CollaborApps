@@ -1,7 +1,7 @@
 <template>
   <div class="mt-5">
     <div class="title">
-      <h5>Please login to start the session</h5>
+      <h5>Please login to start the session {{ form.isLoading }}</h5>
     </div>
     <form
       @submit.prevent="login"
@@ -38,9 +38,12 @@
         />
         <label class="form-check-label" for="remember">Remember me</label>
       </div>
-      <button type="submit" class="btn btn-light border px-4 shadow-sm">
-        Submit
-      </button>
+      <div class="d-flex align-items-center gap-3">
+        <button type="submit" class="btn btn-light border px-4 shadow-sm">
+          Login
+        </button>
+        <div class="">or <NuxtLink to="/auth/register">Register</NuxtLink></div>
+      </div>
     </form>
   </div>
 </template>
@@ -65,14 +68,35 @@ export default {
         email: null,
         password: null,
         remember: false,
+        isLoading: false,
       },
     };
   },
   methods: {
-    login() {
-      this.$auth.loginWith("laravelSanctum", {
-        data: this.form,
-      });
+    async login() {
+      // this.$auth
+      //   .loginWith("laravelSanctum", {
+      //     data: this.form,
+      //   })
+      //   .then((e) => {
+      //     // Kasih pop up login berhasil
+      //   })
+      //   .error((error) => {
+      //     console.log(error);
+      //   })
+      //   .finally((e) => {
+      //     this.form.isLoading = false;
+      //   });
+
+      try {
+        this.form.isLoading = true;
+        await this.$auth.loginWith("laravelSanctum", {
+          data: this.form,
+        });
+      } catch (e) {
+        // log error or do some thing
+      }
+      this.form.isLoading = false;
     },
   },
 };

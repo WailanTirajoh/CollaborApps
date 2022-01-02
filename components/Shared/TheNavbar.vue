@@ -27,6 +27,25 @@
           </ul>
           <div class="d-flex">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="incrementTotalInvoice()"
+              >
+                +
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="decrementTotalInvoice()"
+              >
+                -
+              </button>
+
+              {{
+                totalInvoice
+              }}
+
               <li class="nav-item" v-if="!$auth.loggedIn">
                 <NuxtLink to="/auth/login" class="nav-link text-decoration-none"
                   >Login</NuxtLink
@@ -50,6 +69,17 @@
 
 <script>
 export default {
+
+  // VUE
+
+  computed: {
+    totalInvoice() {
+      // return this.$store.state.invoice.totalInvoice
+
+      return this.$store.getters["invoice/getTotalInvoice"]();
+    },
+  },
+
   methods: {
     async logout() {
       try {
@@ -58,41 +88,25 @@ export default {
         console.log(error);
       }
     },
+    incrementTotalInvoice() {
+      this.$store.dispatch(
+        "invoice/setNewTotalMutation",
+        this.totalInvoice + 1
+      );
+    },
+    decrementTotalInvoice() {
+      this.$store.dispatch(
+        "invoice/setNewTotalMutation",
+        this.totalInvoice - 1
+      );
+    },
+
+    async test(){
+
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
-$primary-color: #f2f2f2;
-.text-white {
-  color: white !important;
-}
-.text-decoration-none {
-  text-decoration: none;
-}
-.cursor-pointer {
-  cursor: pointer;
-}
-.bg-tan {
-  background-color: #dfbe99;
-}
-.nav-item {
-  .nav-link {
-    border-bottom: 0rem solid $primary-color;
-    transition: all 0.35s ease;
-    border-radius: 0rem;
-    color: rgba(229, 231, 235, var(--tw-text-opacity)) !important;
-    font-weight: 100;
-    &:hover {
-      border-radius: 0.5rem;
-      background-color: $primary-color;
-      font-weight: 600;
-    }
-  }
-  .nuxt-link-exact-active {
-    font-weight: 600;
-    border-radius: 0.5rem;
-    background-color: $primary-color;
-  }
-}
 </style>

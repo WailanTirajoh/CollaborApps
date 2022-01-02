@@ -18,15 +18,15 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/bootstrap/main.scss'
+    '@/assets/bootstrap/main.scss',
+    '@/assets/index.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/bootstrap.js', mode: 'client' }
+    { src: '@/plugins/bootstrap.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
