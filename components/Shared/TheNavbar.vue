@@ -27,7 +27,7 @@
           </ul>
           <div class="d-flex">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <button
+              <!-- <button
                 type="button"
                 class="btn btn-primary"
                 @click="incrementTotalInvoice()"
@@ -44,7 +44,7 @@
 
               {{
                 totalInvoice
-              }}
+              }} -->
 
               <li class="nav-item" v-if="!$auth.loggedIn">
                 <NuxtLink to="/auth/login" class="nav-link text-decoration-none"

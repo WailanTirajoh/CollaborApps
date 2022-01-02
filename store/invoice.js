@@ -3,12 +3,6 @@ export const state = () => ({
 })
 
 export const mutations = {
-    // MUTATE(state, payloads) {
-    //     payloads.forEach(({ attribute, value }) => {
-    //         state[attribute] = value
-    //     })
-    // },
-
     SET_TOTAL_INVOICE(state, newTotalInvoice) {
         state.totalInvoice = newTotalInvoice
     }

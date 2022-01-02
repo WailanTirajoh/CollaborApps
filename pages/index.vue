@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  middleware: "auth",
   head() {
     return {
       title: "Home Page",

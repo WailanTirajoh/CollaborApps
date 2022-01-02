@@ -87,6 +87,8 @@ export default {
 
   loading: {
     color: '#385898',
-    height: '5px'
+    height: '5px',
+    duration: 1000,
+    continuous: true
   }
 }
