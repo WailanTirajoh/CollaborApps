@@ -1,23 +1,28 @@
 <template>
   <div class="mt-5">
     <div class="title">
-      <h1>Login Page</h1>
+      <h1>
+        Login Page
+        <div v-if="$auth.loggedIn">{{ $auth.user.name }}</div>
+      </h1>
     </div>
     <form
       @submit.prevent="login"
       class="bg-white rounded shadow border p-4 mt-3"
     >
       <div class="mb-3">
-        <label for="exampleInputphone_number1" class="form-label">Phone Number</label>
+        <label for="exampleInputemail1" class="form-label"
+          >Email</label
+        >
         <input
-          v-model="form.phone_number"
-          type="text"
+          v-model="form.email"
+          type="email"
           class="form-control"
-          id="exampleInputphone_number1"
-          aria-describedby="phone_numberHelp"
+          id="exampleInputemail1"
+          aria-describedby="emailHelp"
         />
-        <div id="phone_numberHelp" class="form-text">
-          We'll never share your phone_number with anyone else.
+        <div id="emailHelp" class="form-text">
+          We'll never share your email with anyone else.
         </div>
       </div>
       <div class="mb-3">
@@ -55,7 +60,7 @@ export default {
   data() {
     return {
       form: {
-        phone_number: null,
+        email: null,
         password: null,
       },
     };

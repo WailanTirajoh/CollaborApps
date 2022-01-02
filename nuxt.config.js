@@ -41,19 +41,43 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
   ],
-
+  axios: {
+    // proxy: true,
+    // credentials: true,
+    baseUrl: "http://localhost:8000/api"
+  },
+  proxy: {
+    '/laravel': {
+      target: 'http://localhost:3000',
+      pathRewrite: { '^/laravel': '/' }
+    }
+  },
   auth: {
     strategies: {
       laravelSanctum: {
         provider: 'laravel/sanctum',
-        url: 'http://lentera.test',
+        url: 'http://localhost:8000',
         endpoints: {
           login: {
-            url: '/api/id/login',
-            method: 'POST'
+            url: '/api/login',
           },
-        }
-      }
+          logout: {
+            url: '/api/logout',
+          },
+          user: {
+            url: '/api/user',
+          },
+        },
+        user: {
+          property: false,
+        },
+      },
+    },
+
+    redirect: {
+      login: '/login',
+      logout: '/',
+      home: '/',
     }
   },
 
