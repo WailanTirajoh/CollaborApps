@@ -1,20 +1,27 @@
 <template>
-  <div> About Page </div>
+  <div >
+    Store
+  </div>
 </template>
 
 <script>
 export default {
+  middleware: "auth",
   head() {
     return {
-      title: "About Page",
+      title: "Stores Page",
       meta: [
         {
           hid: "description",
           name: "description",
-          content: "About Me",
+          content: "Stores Page",
         },
       ],
     };
   },
 };
 </script>
+
+<style>
+
+</style>

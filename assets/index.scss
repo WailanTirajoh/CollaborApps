@@ -5,13 +5,16 @@
   &-400 {
     background-color: #f2f2f2;
   }
+  &-200 {
+    background-color: #f5f7fa;
+  }
 }
 
 /* Scrollbar */
 
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 0.55rem;
+  height: 0.55rem;
 }
 
 /* Track */
@@ -52,6 +55,57 @@ $primary-color: #f2f2f2;
 .bg-tan {
   background-color: #dfbe99;
 }
+
+.object-fit {
+  &-cover {
+    object-fit: cover;
+  }
+  &-contain {
+    object-fit: contain;
+  }
+}
+
+.w {
+  &-3r {
+    width: 3rem;
+  }
+  &-2r {
+    width: 2rem;
+  }
+  &-1r {
+    width: 1rem;
+  }
+}
+
+.h {
+  &-3r {
+    height: 3rem;
+  }
+  &-2r {
+    height: 2rem;
+  }
+  &-1r {
+    height: 1rem;
+  }
+}
+
+.text {
+  &-x {
+    &s {
+      font-size: x-small;
+    }
+  }
+  &-sm {
+    font-size: small;
+  }
+  &-transform {
+    &-capitalize {
+      text-transform: capitalize;
+    }
+  }
+}
+
+// Nav
 .nav-item {
   .nav-link {
     border-bottom: 0rem solid $primary-color;
@@ -63,11 +117,78 @@ $primary-color: #f2f2f2;
       border-radius: 0.5rem;
       background-color: $primary-color;
       font-weight: 600;
+      color: black !important;
     }
   }
   .nuxt-link-exact-active {
     font-weight: 600;
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
     background-color: $primary-color;
+    color: black !important;
+  }
+}
+// End of nav
+
+// Dropdown
+.dropdown-toggle::after {
+  display: inline-block;
+  margin-left: 0.7rem;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+// End of dropdown
+
+// Default
+$blizzardBlue: #c4f5fc;
+
+.bg {
+  &-blizard-blue {
+    background-color: $blizzardBlue;
+  }
+}
+
+.bg-waves {
+  background-image: url(/svg/wave.svg);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.bot-waves {
+  background-image: url(/svg/bot-wave.svg);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.waves-color {
+  background-color: #012a35;
+}
+
+// ---
+
+@media (min-width: 1400px) {
+  .container-xxl,
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 1530px;
+  }
+}
+
+.show-desktop {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .hide-desktop {
+    display: none;
+  }
+  .show-desktop {
+    display: block;
   }
 }

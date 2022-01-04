@@ -1,14 +1,18 @@
 <template>
-  <div class="bg-gray-400 font-mono">
+  <div class="font-mono bg-waves">
     <SharedTheNavbar />
-    <Nuxt class="container py-4" style="min-height: 90vh" />
+    <section class="container py-2">
+      <Nuxt />
+    </section>
+    <section class="bot-waves" style="min-height: 290px"></section>
+    <SharedTheFooter />
   </div>
 </template>
 
 <script>
-export default {
-};
+export default {};
 </script>
 
-<style lang="scss">
+
+<style lang="scss" scoped>
 </style>

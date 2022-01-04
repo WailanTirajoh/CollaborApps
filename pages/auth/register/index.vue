@@ -60,7 +60,7 @@
             >
               Register
             </FormSubmitButton>
-            <div class="">or <NuxtLink to="/auth/login">Login</NuxtLink></div>
+            <div >or <NuxtLink to="/auth/login">Login</NuxtLink></div>
           </div>
         </form>
       </div>

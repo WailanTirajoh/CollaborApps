@@ -7,7 +7,7 @@
         </div>
         <form
           @submit.prevent="login"
-          class="bg-white rounded shadow border p-4 mt-3"
+          class="bg-white rounded shadow border p-3 mt-3"
         >
           <div class="mb-3">
             <FormInput
@@ -43,13 +43,20 @@
             <label class="form-check-label" for="remember">Remember me</label>
           </div>
           <div class="d-flex align-items-center justify-content-center gap-3">
-            <div class="text-center">
+            <div class="text-center w-100">
               <div class="d-flex justify-content-center">
-                <FormSubmitButton type="submit" :loading="form.isProcessing">
+                <FormSubmitButton class="w-100" type="submit" :loading="form.isProcessing">
                   Login
                 </FormSubmitButton>
               </div>
-              <div>or <NuxtLink to="/auth/register">Register</NuxtLink></div>
+              <div>or</div>
+              <hr>
+              <div>
+                <div class="text-sm">
+                  Doesnt have account?
+                </div>
+                <NuxtLink class="text-sm" to="/auth/register">Register</NuxtLink>
+              </div>
             </div>
           </div>
         </form>
