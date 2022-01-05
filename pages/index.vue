@@ -1,16 +1,73 @@
 <template>
   <div>
-    <div class="row" style="min-height: 60vh">
+    <div class="row sidebar" style="min-height: 60vh">
       <div class="px-1 col-lg-2 show-desktop">
         <div class="bg-blizard-blue rounded shadow px-2 py-2 bg-white mb-2">
           Recent Projects
         </div>
         <div class="bg-blizard-blue rounded shadow px-2 py-2 bg-white mb-2">
-          <div class="">My Work</div>
-          <div class="">My Project</div>
-          <div class="">Activity</div>
-          <div class="">Unread Comment</div>
-          <div class="">Events</div>
+          <ul class="side-parent">
+            <li>
+              <NuxtLink to="/my-work">
+                <div class="side-link">My Work</div>
+              </NuxtLink>
+              <ul class="parent-2">
+                <NuxtLink to="/my-work">
+                  <li>
+                    <div class="side-link">My Work</div>
+                  </li>
+                </NuxtLink>
+                <li>
+                  <ul>
+                    <NuxtLink to="/my-work">
+                      <li>
+                        <div class="side-link">My Work</div>
+                      </li>
+                    </NuxtLink>
+                    <NuxtLink to="/my-work">
+                      <li>
+                        <div class="side-link">My Work</div>
+                      </li>
+                    </NuxtLink>
+                    <li>
+                      <ul>
+                        <NuxtLink to="/my-work">
+                          <li>
+                            <div class="side-link">My Work</div>
+                          </li>
+                        </NuxtLink>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <NuxtLink to="/my-work">
+                <div class="side-link">My Work</div>
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/my-project">
+                <div class="side-link">My Project</div>
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/activity">
+                <div class="side-link">Activity</div>
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/unread-comment">
+                <div class="side-link">Unread Comment</div>
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/events">
+                <div class="side-link">Events</div>
+              </NuxtLink>
+            </li>
+          </ul>
         </div>
       </div>
       <div

@@ -1,0 +1,61 @@
+.side-parent {
+  .parent-2 {
+    a {
+      &::before {
+        content: "";
+        width: 1px;
+        background-color: black;
+        height: 2.3rem;
+        position: absolute;
+        top: -0.15rem;
+        left: -1rem;
+        z-index: 1;
+      }
+      &:last-of-type {
+        &::before {
+          content: "";
+          width: 1px;
+          background-color: black;
+          height: 1.15rem;
+          position: absolute;
+          top: -0.15rem;
+          left: -1rem;
+          z-index: 1;
+        }
+      }
+    }
+  }
+  padding-inline-start: 2px !important;
+  &,
+  ul {
+    list-style: none;
+    position: relative;
+  }
+  padding-left: 0px;
+  position: relative;
+  a {
+    color: black;
+    text-decoration: none;
+    position: relative;
+
+    li {
+      &::before {
+        content: "";
+        width: 1rem;
+        height: 1px;
+        background-color: black;
+        position: absolute;
+        top: 15px;
+        left: -1rem;
+        // z-index: ;
+      }
+    }
+    .side-link {
+      background-color: $gray-400 !important;
+      padding: 0.25rem;
+      padding-left: 0.5rem;
+      margin-bottom: 0.25rem;
+      border-radius: 0.2rem;
+    }
+  }
+}

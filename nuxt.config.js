@@ -21,7 +21,7 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/bootstrap/main.scss',
-    '@/assets/index.scss'
+    '@/assets/index.scss',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
