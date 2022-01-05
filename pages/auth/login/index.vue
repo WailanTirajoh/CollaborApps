@@ -3,6 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-8 col-12">
         <div class="text-center">
+          
           <h5>Please login to start the session {{ error.email }}</h5>
         </div>
         <form
@@ -45,17 +46,21 @@
           <div class="d-flex align-items-center justify-content-center gap-3">
             <div class="text-center w-100">
               <div class="d-flex justify-content-center">
-                <FormSubmitButton class="w-100" type="submit" :loading="form.isProcessing">
+                <FormSubmitButton
+                  class="w-100"
+                  type="submit"
+                  :loading="form.isProcessing"
+                >
                   Login
                 </FormSubmitButton>
               </div>
               <div>or</div>
-              <hr>
+              <hr />
               <div>
-                <div class="text-sm">
-                  Doesnt have account?
-                </div>
-                <NuxtLink class="text-sm" to="/auth/register">Register</NuxtLink>
+                <div class="text-sm">Doesnt have account?</div>
+                <NuxtLink class="text-sm" to="/auth/register"
+                  >Register</NuxtLink
+                >
               </div>
             </div>
           </div>
@@ -96,8 +101,8 @@ export default {
   },
   methods: {
     async login() {
+      this.form.isProcessing = true;
       try {
-        this.form.isProcessing = true;
         await this.$auth.loginWith("laravelSanctum", {
           data: this.form,
         });

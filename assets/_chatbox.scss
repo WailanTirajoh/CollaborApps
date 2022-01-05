@@ -1,0 +1,16 @@
+
+.chat-box {
+  transition: all 0.35s ease-in-out;
+  width: 25%;
+  height: 90vh;
+  right: 0;
+  border-radius: 0px 200px 200px 0px;
+  transform: translateX(275px);
+  border-radius: 1rem;
+  &:hover {
+    transform: translateX(0px);
+  }
+  &.pinned {
+    transform: translateX(0px);
+  }
+}

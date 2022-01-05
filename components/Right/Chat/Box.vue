@@ -15,9 +15,21 @@
     style=""
   >
     <div class="h-100">
-      <div class="d-flex justify-content-between">
-        <div class="">Chat</div>
-        <button @click="togglePin">{{ isPinned ? "Unpin" : "Pin" }}</button>
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h3 class="my-auto">Chat</h3>
+        </div>
+        <button class="btn me-2" @click="togglePin">
+          <div v-if="isPinned">
+            <font-awesome-icon :icon="['fas', 'ghost']" />
+          </div>
+          <div v-else>
+            <font-awesome-icon :icon="['fas', 'thumbtack']" />
+          </div>
+        </button>
+      </div>
+      <div class="">
+        <hr />
       </div>
     </div>
   </div>
@@ -40,19 +52,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.chat-box {
-  transition: all 0.35s ease-in-out;
-  width: 400px;
-  height: 80vh;
-  right: 0;
-  border-radius: 0px 200px 200px 0px;
-  transform: translateX(275px);
-  border-radius: 1rem;
-  &:hover {
-    transform: translateX(0px);
-  }
-  &.pinned {
-    transform: translateX(0px);
-  }
-}
 </style>
