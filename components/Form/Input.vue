@@ -12,7 +12,7 @@
       @input="$emit('input', $event.target.value)"
     />
     <div :id="`${id}Feedback`" class="invalid-feedback" v-if="error">
-      {{ error }}
+      {{ error[0] }}
     </div>
   </div>
 </template>

@@ -101,7 +101,7 @@
               >
                 <img
                   class="img-fluid rounded-circle object-fit-cover w-2r h-2r"
-                  src="/default/user.png"
+                  :src="$auth.user.avatar"
                 />
               </a>
               <ul
@@ -135,7 +135,6 @@
 
 <script>
 export default {
-  // VUE
 
   computed: {
     totalInvoice() {
@@ -149,6 +148,7 @@ export default {
     async logout() {
       try {
         await this.$auth.logout();
+        this.$auth.strategy.token.reset()
       } catch (error) {
         console.log(error);
       }

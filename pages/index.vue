@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row sidebar" style="min-height: 60vh">
-      <div class="px-1 col-lg-3 show-desktop">
+      <div class="px-1 col-lg-2 show-desktop">
         <div class="bg-blizard-blue rounded shadow px-2 py-2 bg-white mb-2 text-center">
           <font-awesome-icon :icon="['fas', 'project-diagram']" /> Recent
           Projects
@@ -216,19 +216,19 @@
       </div>
       <div
         class="px-1 col-12"
-        :class="{ 'col-lg-8': !chat.pinned, 'col-lg-6 pe-4': chat.pinned }"
+        :class="{ 'col-lg-8': !chat.pinned, 'col-lg-7 pe-4': chat.pinned }"
       >
         <div class="bg-blizard-blue rounded shadow px-2 py-2 bg-white">
           <div class="d-flex align-items-center gap-2">
             <img
               class="img-fluid rounded-circle object-fit-cover w-3r h-3r"
-              src="/default/user.png"
+              :src="$auth.user.avatar"
             />
             <FormInput
               type="text"
               id="disabledTextInput"
               class="w-100"
-              :placeholder="`Hello ${$auth.user.name}, apa yang anda pikirkan?`"
+              :placeholder="`Hai ${$auth.user.name}, apa yang anda pikirkan?`"
             />
           </div>
         </div>
@@ -287,6 +287,7 @@ export default {
       this.chat.pinned = event;
     },
   },
-  mounted() {},
+  mounted() {
+  },
 };
 </script>

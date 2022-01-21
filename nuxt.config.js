@@ -18,6 +18,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/bootstrap/main.scss',
@@ -26,7 +27,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '@/plugins/bootstrap.js', mode: 'client' }
+    {src: '~/plugins/bootstrap.js', mode: 'client'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -43,15 +44,8 @@ export default {
     '@nuxtjs/auth-next',
   ],
   axios: {
-    // proxy: true,
-    // credentials: true,
+    credentials: true,
     baseUrl: "http://localhost:8000/api"
-  },
-  proxy: {
-    '/laravel': {
-      target: 'http://localhost:3000',
-      pathRewrite: { '^/laravel': '/' }
-    }
   },
   auth: {
     strategies: {
@@ -67,6 +61,10 @@ export default {
           },
           user: {
             url: '/api/user',
+          },
+          updateProfile: {
+            url: '/api/user/update',
+            method: 'POST'
           },
         },
         user: {

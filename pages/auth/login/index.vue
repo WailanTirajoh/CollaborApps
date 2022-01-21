@@ -3,7 +3,6 @@
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-8 col-12">
         <div class="text-center">
-          
           <h5>Please login to start the session {{ error.email }}</h5>
         </div>
         <form
@@ -107,7 +106,6 @@ export default {
           data: this.form,
         });
       } catch (e) {
-        console.log(e);
         this.error.email = e.response.data.errors.email[0];
       }
       this.form.isProcessing = false;
