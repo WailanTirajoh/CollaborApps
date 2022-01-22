@@ -17,7 +17,7 @@
             <HomeCreatePost @push-post="addPost" />
           </div>
           <div class="col-lg-12">
-            <HomePost :posts="posts" />
+            <HomePost />
           </div>
         </div>
       </div>
@@ -48,8 +48,8 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
-  ssr: false,
   middleware: "auth",
   head() {
     return {
@@ -65,30 +65,23 @@ export default {
   },
   data() {
     return {
-      posts: null,
       chat: {
         pinned: true,
       },
     };
   },
   methods: {
+    ...mapActions(["posts/addNewPost"]),
     updatePin(event) {
       this.chat.pinned = event;
     },
-    async getPosts() {
-      try {
-        var result = await this.$axios.$get("/posts");
-        this.posts = result.posts;
-      } catch (e) {
-        console.log(e);
-      }
-    },
     addPost(post) {
-      this.posts.unshift(post);
+      this.$store.dispatch("posts/addNewPost", post);
     },
   },
-  mounted() {
-    this.getPosts();
+  beforeRouteLeave(to, from, next) {
+    this.$store.dispatch("posts/resetPosts");
+    next();
   },
 };
 </script>

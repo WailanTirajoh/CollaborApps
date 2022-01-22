@@ -1,4 +1,3 @@
-
 .font-mono {
   font-family: $font-family;
 }
@@ -12,10 +11,6 @@
   }
 }
 
-/* Scrollbar */
-
-
-/* End Scrollbar */
 body {
   overflow: overlay;
 }
@@ -83,29 +78,6 @@ body {
   }
 }
 
-// Nav
-.nav-item {
-  .nav-link {
-    border-bottom: 0rem solid $primary-color;
-    transition: all 0.35s ease;
-    border-radius: 0rem;
-    color: rgba(229, 231, 235, var(--tw-text-opacity)) !important;
-    font-weight: 100;
-    &:hover {
-      border-radius: 0.5rem;
-      background-color: $primary-color;
-      font-weight: 600;
-      color: black !important;
-    }
-  }
-  .nuxt-link-exact-active {
-    font-weight: 600;
-    border-radius: 0.75rem;
-    background-color: $primary-color;
-    color: black !important;
-  }
-}
-// End of nav
 
 // Dropdown
 .dropdown-toggle::after {
@@ -143,19 +115,6 @@ body {
 .waves-color {
   background-color: $waves-color;
 }
-
-// ---
-
-// @media (min-width: 1400px) {
-//   .container-xxl,
-//   .container-xl,
-//   .container-lg,
-//   .container-md,
-//   .container-sm,
-//   .container {
-//     max-width: 1530px;
-//   }
-// }
 
 .show-desktop {
   display: none;

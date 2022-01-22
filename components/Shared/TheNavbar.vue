@@ -6,6 +6,7 @@
       d-header-home
       fixed-top
       text-center
+      p-0
     "
   >
     <div class="container-fluid">
@@ -108,11 +109,11 @@
                 class="dropdown-menu dropdown-menu-end"
                 aria-labelledby="navbarDropdown"
               >
-                <li>
+                <!-- <li>
                   <NuxtLink class="dropdown-item" to="/auth/profile"
                     >Profile</NuxtLink
                   >
-                </li>
+                </li> -->
                 <li>
                   <NuxtLink class="dropdown-item" to="/auth/setting"
                     >Setting</NuxtLink

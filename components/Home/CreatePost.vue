@@ -5,13 +5,14 @@
         class="img-fluid rounded-circle object-fit-cover w-3r h-3r"
         :src="$auth.user.avatar"
       />
-      <form @submit.prevent="createPost" class="w-100">
-        <FormInput
+      <form @submit.prevent="createPost" class="w-100" autocomplete="off">
+        <FormTextArea
           v-model="form.text"
           type="text"
           id="disabledTextInput"
           :error="error.text"
           :placeholder="`Hai ${$auth.user.name}, apa yang anda pikirkan?`"
+          autocomplete="off"
         />
         <div class="d-flex justify-content-end mt-2">
           <FormSubmitButton
