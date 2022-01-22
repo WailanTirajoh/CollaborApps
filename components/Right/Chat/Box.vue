@@ -21,10 +21,10 @@
         </div>
         <button class="btn me-2" @click="togglePin">
           <div v-if="isPinned">
-            <font-awesome-icon :icon="['fas', 'ghost']" />
+            <font-awesome-icon :icon="['fas', 'unlock']" />
           </div>
           <div v-else>
-            <font-awesome-icon :icon="['fas', 'thumbtack']" />
+            <font-awesome-icon :icon="['fas', 'lock']" />
           </div>
         </button>
       </div>

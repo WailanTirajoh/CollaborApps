@@ -1,7 +1,7 @@
 <template>
   <div class="font-mono bg-waves">
     <SharedTheNavbar />
-    <section class="container py-2">
+    <section class="container-fluid py-2">
       <Nuxt />
     </section>
     <section class="bot-waves" style="min-height: 290px"></section>

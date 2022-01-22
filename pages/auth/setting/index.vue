@@ -7,12 +7,17 @@
       <div class="col-lg-4 col-12">
         <form
           @submit.prevent="editProfile"
-          class="bg-white rounded shadow border p-3 mt-3"
+          class="bg-white rounded shadow p-3 py-4 mt-3"
         >
           <div class="row mb-3">
             <div class="col-lg-12">
-              <div class="d-flex justify-content-center">
-                <img :src="url" class="img-fluid w-50 mb-2 rounded" />
+              <div class="d-flex justify-content-center position-relative">
+                <div class="position-absolute bottom-0 mb-2">
+                  <button class="btn btn-sm btn-light" @click.prevent="deleteProfilePhoto">
+                    Delete Photo
+                  </button>
+                </div>
+                <img :src="url" class="img-fluid w-50 mb-2 rounded"/>
               </div>
               <input
                 type="file"
@@ -102,8 +107,8 @@ export default {
         if (this.form.avatar) {
           formData.append("avatar", this.form.avatar);
         }
-        let result = await this.$axios.$post(
-          "http://localhost:8000/api/user/update",
+        var result = await this.$axios.$post(
+          "/user/update",
           formData,
           {
             headers: {
@@ -117,6 +122,20 @@ export default {
         console.log(e);
         this.error = e.response.data.errors;
         // this.error.avatar = e.response.data.errors;
+      }
+      this.form.isProcessing = false;
+    },
+    async deleteProfilePhoto() {
+      this.form.isProcessing = true;
+      try {
+        var result = await this.$axios.$delete(
+          "/user/profile-photo"
+        );
+        await this.$auth.fetchUser();
+        this.url = this.$auth.user.avatar;
+        alert(result.message);
+      } catch (e) {
+        console.log(e);
       }
       this.form.isProcessing = false;
     },

@@ -2,234 +2,22 @@
   <div>
     <div class="row sidebar" style="min-height: 60vh">
       <div class="px-1 col-lg-2 show-desktop">
-        <div class="bg-blizard-blue rounded shadow px-2 py-2 bg-white mb-2 text-center">
+        <div class="rounded shadow px-2 py-2 bg-white mb-2 text-center">
           <font-awesome-icon :icon="['fas', 'project-diagram']" /> Recent
           Projects
         </div>
-        <div class="bg-blizard-blue rounded shadow px-2 py-2 bg-white mb-2 side-list">
-          <ul class="side-parent position-relative">
-            <li>
-              <NuxtLink to="/my-work">
-                <div class="side-link">
-                  <font-awesome-icon :icon="['fas', 'briefcase']" /> OK Bank
-                </div>
-              </NuxtLink>
-              <ul class="parent-2">
-                <NuxtLink to="/my-work">
-                  <li>
-                    <div class="side-link">
-                      <font-awesome-icon :icon="['fas', 'tasks']" /> FE
-                      Development
-                    </div>
-                  </li>
-                </NuxtLink>
-                <li>
-                  <ul>
-                    <NuxtLink to="/my-work">
-                      <li>
-                        <div class="side-link">
-                          <font-awesome-icon :icon="['fas', 'retweet']" />
-                          Request
-                        </div>
-                      </li>
-                    </NuxtLink>
-                    <NuxtLink to="/my-work">
-                      <li>
-                        <div class="side-link">
-                          <font-awesome-icon :icon="['fas', 'running']" /> On
-                          Going
-                        </div>
-                      </li>
-                    </NuxtLink>
-                    <NuxtLink to="/my-work">
-                      <li>
-                        <div class="side-link">
-                          <font-awesome-icon :icon="['fas', 'globe-asia']" />
-                          Staging
-                        </div>
-                      </li>
-                    </NuxtLink>
-                    <li>
-                      <ul>
-                        <NuxtLink to="/my-work">
-                          <li>
-                            <div class="side-link">
-                              <font-awesome-icon
-                                :icon="['fas', 'code-branch']"
-                              />
-                              Check
-                            </div>
-                          </li>
-                        </NuxtLink>
-                        <NuxtLink to="/my-work">
-                          <li>
-                            <div class="side-link">
-                              <font-awesome-icon
-                                :icon="['fas', 'code-branch']"
-                              />
-                              Check
-                            </div>
-                          </li>
-                        </NuxtLink>
-                        <NuxtLink to="/my-work">
-                          <li>
-                            <div class="side-link">
-                              <font-awesome-icon
-                                :icon="['fas', 'code-branch']"
-                              />
-                              Check
-                            </div>
-                          </li>
-                        </NuxtLink>
-                      </ul>
-                    </li>
-                    <NuxtLink to="/my-work">
-                      <li>
-                        <div class="side-link">
-                          <font-awesome-icon :icon="['fas', 'check']" />
-                          Confirmed
-                        </div>
-                      </li>
-                    </NuxtLink>
-                    <NuxtLink to="/my-work">
-                      <li>
-                        <div class="side-link">
-                          <font-awesome-icon
-                            :icon="['fas', 'flag-checkered']"
-                          />
-                          Finish
-                        </div>
-                      </li>
-                    </NuxtLink>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <NuxtLink to="/my-work">
-                <div class="side-link">
-                  <font-awesome-icon :icon="['fas', 'briefcase']" /> Unilever
-                  International
-                </div>
-              </NuxtLink>
-              <ul class="parent-2">
-                <NuxtLink to="/my-work">
-                  <li>
-                    <div class="side-link">
-                      <font-awesome-icon :icon="['fas', 'tasks']" /> FE
-                      Development
-                    </div>
-                  </li>
-                </NuxtLink>
-                <li>
-                  <ul>
-                    <NuxtLink to="/my-work">
-                      <li>
-                        <div class="side-link">
-                          <font-awesome-icon :icon="['fas', 'retweet']" />
-                          Request
-                        </div>
-                      </li>
-                    </NuxtLink>
-                    <NuxtLink to="/my-work">
-                      <li>
-                        <div class="side-link">
-                          <font-awesome-icon :icon="['fas', 'running']" /> On
-                          Going
-                        </div>
-                      </li>
-                    </NuxtLink>
-                    <NuxtLink to="/my-work">
-                      <li>
-                        <div class="side-link">
-                          <font-awesome-icon :icon="['fas', 'globe-asia']" />
-                          Staging
-                        </div>
-                      </li>
-                    </NuxtLink>
-                    <li>
-                      <ul>
-                        <NuxtLink to="/my-work">
-                          <li>
-                            <div class="side-link">
-                              <font-awesome-icon
-                                :icon="['fas', 'code-branch']"
-                              />
-                              Check
-                            </div>
-                          </li>
-                        </NuxtLink>
-                        <NuxtLink to="/my-work">
-                          <li>
-                            <div class="side-link">
-                              <font-awesome-icon
-                                :icon="['fas', 'code-branch']"
-                              />
-                              Check
-                            </div>
-                          </li>
-                        </NuxtLink>
-                        <NuxtLink to="/my-work">
-                          <li>
-                            <div class="side-link">
-                              <font-awesome-icon
-                                :icon="['fas', 'code-branch']"
-                              />
-                              Check
-                            </div>
-                          </li>
-                        </NuxtLink>
-                      </ul>
-                    </li>
-                    <NuxtLink to="/my-work">
-                      <li>
-                        <div class="side-link">
-                          <font-awesome-icon :icon="['fas', 'check']" />
-                          Confirmed
-                        </div>
-                      </li>
-                    </NuxtLink>
-                    <NuxtLink to="/my-work">
-                      <li>
-                        <div class="side-link">
-                          <font-awesome-icon
-                            :icon="['fas', 'flag-checkered']"
-                          />
-                          Finish
-                        </div>
-                      </li>
-                    </NuxtLink>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li class=" position-sticky bottom-0">
-              <NuxtLink to="/my-work">
-                <div class="side-link mt-2 text-center bg-dark-gray text-white">
-                  <font-awesome-icon :icon="['fas', 'plus']" />
-                  Add More Project
-                </div>
-              </NuxtLink>
-            </li>
-          </ul>
-        </div>
+        <HomeSideProject />
       </div>
       <div
         class="px-1 col-12"
-        :class="{ 'col-lg-8': !chat.pinned, 'col-lg-7 pe-4': chat.pinned }"
+        :class="{ 'col-lg-9': !chat.pinned, 'col-lg-7 pe-4': chat.pinned }"
       >
-        <div class="bg-blizard-blue rounded shadow px-2 py-2 bg-white">
-          <div class="d-flex align-items-center gap-2">
-            <img
-              class="img-fluid rounded-circle object-fit-cover w-3r h-3r"
-              :src="$auth.user.avatar"
-            />
-            <FormInput
-              type="text"
-              id="disabledTextInput"
-              class="w-100"
-              :placeholder="`Hai ${$auth.user.name}, apa yang anda pikirkan?`"
-            />
+        <div class="row">
+          <div class="col-lg-12">
+            <HomeCreatePost @push-post="addPost" />
+          </div>
+          <div class="col-lg-12">
+            <HomePost :posts="posts" />
           </div>
         </div>
       </div>
@@ -277,6 +65,7 @@ export default {
   },
   data() {
     return {
+      posts: null,
       chat: {
         pinned: true,
       },
@@ -286,8 +75,20 @@ export default {
     updatePin(event) {
       this.chat.pinned = event;
     },
+    async getPosts() {
+      try {
+        var result = await this.$axios.$get("/posts");
+        this.posts = result.posts;
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    addPost(post) {
+      this.posts.unshift(post);
+    },
   },
   mounted() {
+    this.getPosts();
   },
 };
 </script>

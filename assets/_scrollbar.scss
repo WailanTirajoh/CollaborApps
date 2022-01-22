@@ -1,0 +1,15 @@
+::-webkit-scrollbar {
+  width: 0.55rem;
+  height: 0.55rem;
+  &-track {
+    display: none;
+  }
+  &-thumb {
+    background: $line-color;
+    border-radius: 100vh;
+    border: 0.125rem solid white;
+    &:hover {
+      background: #a0aec0;
+    }
+  }
+}

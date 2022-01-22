@@ -14,29 +14,6 @@
 
 /* Scrollbar */
 
-::-webkit-scrollbar {
-  width: 0.55rem;
-  height: 0.55rem;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  // border-radius: 100vh;
-  // background: rgba(85, 71, 74, var(--tw-bg-opacity));
-  display: none;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgba(229, 231, 295);
-  border-radius: 100vh;
-  border: 3px solid white;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #a0aec0;
-}
 
 /* End Scrollbar */
 body {
@@ -169,16 +146,16 @@ body {
 
 // ---
 
-@media (min-width: 1400px) {
-  .container-xxl,
-  .container-xl,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container {
-    max-width: 1530px;
-  }
-}
+// @media (min-width: 1400px) {
+//   .container-xxl,
+//   .container-xl,
+//   .container-lg,
+//   .container-md,
+//   .container-sm,
+//   .container {
+//     max-width: 1530px;
+//   }
+// }
 
 .show-desktop {
   display: none;

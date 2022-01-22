@@ -8,8 +8,8 @@
       text-center
     "
   >
-    <div class="container">
-      <NuxtLink class="navbar-brand text-white" to="/">MyFirstNuxt</NuxtLink>
+    <div class="container-fluid">
+      <NuxtLink class="navbar-brand text-white" to="/">CollaborApps</NuxtLink>
       <div class="ms-auto hide-desktop me-4">
         <div class="nav-item dropdown" v-if="$auth.loggedIn">
           <a
