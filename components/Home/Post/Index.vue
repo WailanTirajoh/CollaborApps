@@ -9,6 +9,9 @@
     </div>
     <div v-else>
       <div class="col-lg-12" v-for="(post, index) in posts" :key="index">
+        <DefaultModal :id="index">
+          <HomePostEdit :post="post" />
+        </DefaultModal>
         <div class="bg-white rounded shadow p-3 py-2 my-2">
           <div class="header d-flex mb-2 position-relative">
             <div class="avatar">
@@ -51,7 +54,7 @@
                       type="button"
                       class="dropdown-item text-sm"
                       data-bs-toggle="modal"
-                      data-bs-target="#theModal"
+                      :data-bs-target="`#theModal-${index}`"
                     >
                       Edit
                     </button>
@@ -74,22 +77,17 @@
         </div>
       </div>
     </div>
-    <DefaultModal>
-      
-    </DefaultModal>
-    <!-- <div class="col-lg-12">{{ scrolledToBottom }} | {{ pageHeight }}</div> -->
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
-
 export default {
   data() {
     return {
       scrolledToBottom: false,
       pageHeight: null,
       fetching: false,
+      thePost: null,
     };
   },
   computed: {
@@ -98,7 +96,6 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["posts/getPosts"]),
     async fetch() {
       this.fetching = true;
       await this.$store.dispatch("posts/getPosts");

@@ -1,23 +1,14 @@
 <template>
   <div
     class="modal fade"
-    id="theModal"
+    :id="`theModal-${id}`"
     tabindex="-1"
     aria-labelledby="defaultModal"
     aria-hidden="true"
   >
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable p-0">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="defaultModal">{{ title }}</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
+        <div>
           <slot />
         </div>
       </div>
@@ -28,6 +19,7 @@
 <script>
 export default {
   props: {
+    id: Number,
     title: String,
     buttonText: String,
   },

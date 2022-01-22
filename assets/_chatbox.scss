@@ -5,12 +5,12 @@
   height: 90vh;
   right: 0;
   border-radius: 0px 200px 200px 0px;
-  transform: translateX(70%);
+  transform: translateX(67.5%);
   border-radius: 1rem;
   &:hover {
-    transform: translateX(0px);
+    transform: translateX(-15px);
   }
   &.pinned {
-    transform: translateX(0px);
+    transform: translateX(-15px);
   }
 }

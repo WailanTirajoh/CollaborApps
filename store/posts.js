@@ -9,6 +9,9 @@ export const mutations = {
   removePost(state, post) {
     state.posts.splice(state.posts.indexOf(post), 1);
   },
+  editPost(state, post) {
+    state.posts[state.posts.findIndex(x => x.id === post.id)] = post;
+  },
   resetPosts(state) {
     state.posts = [];
   }
@@ -29,6 +32,9 @@ export const actions = {
   },
   removePost({ commit }, post) {
     commit('removePost', post);
+  },
+  editPost({ commit }, post) {
+    commit('editPost', post);
   },
   resetPosts({ commit }) {
     commit('resetPosts');
