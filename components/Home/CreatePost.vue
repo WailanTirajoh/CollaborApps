@@ -11,7 +11,7 @@
           type="text"
           id="disabledTextInput"
           :error="error.text"
-          :placeholder="`Hai ${$auth.user.name}, apa yang anda pikirkan?`"
+          :placeholder="`Hai ${$auth.user.name}, what are you thinking right now?`"
           autocomplete="off"
         />
         <div class="d-flex justify-content-end mt-2">
@@ -21,7 +21,7 @@
             :loading="form.isProcessing"
             :disabled="!form.text"
           >
-            Kirim
+            Send
           </FormSubmitButton>
         </div>
       </form>

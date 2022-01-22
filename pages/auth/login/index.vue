@@ -53,7 +53,7 @@
                   Login
                 </FormSubmitButton>
               </div>
-              <div>or</div>
+              <!-- <div>or</div> -->
               <hr />
               <div>
                 <div class="text-sm">Doesnt have account?</div>

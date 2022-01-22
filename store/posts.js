@@ -3,11 +3,11 @@ export const state = () => ({
 })
 
 export const mutations = {
-  addSinglePost(state, post) {
-    state.posts.unshift(post)
-  },
   addPosts(state, posts) {
     state.posts.unshift(...posts)
+  },
+  removePost(state, post) {
+    state.posts.splice(state.posts.indexOf(post), 1);
   },
   resetPosts(state) {
     state.posts = [];
@@ -18,7 +18,6 @@ export const actions = {
   async getPosts({ commit }) {
     try {
       var result = await this.$axios.$get("/posts");
-      console.log(result.posts);
       commit('addPosts', result.posts);
       return result;
     } catch (e) {
@@ -27,6 +26,9 @@ export const actions = {
   },
   addNewPost({ commit }, post) {
     commit('addPosts', [post])
+  },
+  removePost({ commit }, post) {
+    commit('removePost', post);
   },
   resetPosts({ commit }) {
     commit('resetPosts');
