@@ -46,7 +46,16 @@
                   aria-labelledby="dropdownMenuButton1"
                 >
                   <li><a class="dropdown-item text-sm" href="#">Share</a></li>
-                  <li><a class="dropdown-item text-sm" href="#">Edit</a></li>
+                  <li>
+                    <button
+                      type="button"
+                      class="dropdown-item text-sm"
+                      data-bs-toggle="modal"
+                      data-bs-target="#theModal"
+                    >
+                      Edit
+                    </button>
+                  </li>
                   <li>
                     <a
                       @click="deletePost(post)"
@@ -65,6 +74,9 @@
         </div>
       </div>
     </div>
+    <DefaultModal>
+      
+    </DefaultModal>
     <!-- <div class="col-lg-12">{{ scrolledToBottom }} | {{ pageHeight }}</div> -->
   </div>
 </template>

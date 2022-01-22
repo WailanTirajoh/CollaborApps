@@ -36,16 +36,17 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
-  data() {
-    return {
-      isPinned: true,
-    };
+  computed: {
+    isPinned() {
+      return this.$store.state.chat.isPinned;
+    },
   },
   methods: {
+    ...mapActions(["chat/updatePin"]),
     togglePin() {
-      this.isPinned = !this.isPinned;
-      this.$emit("chatClicked", this.isPinned);
+      this.$store.dispatch("chat/updatePin");
     },
   },
 };

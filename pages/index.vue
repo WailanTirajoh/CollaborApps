@@ -10,18 +10,21 @@
       </div>
       <div
         class="px-1 col-12"
-        :class="{ 'col-lg-9': !chat.pinned, 'col-lg-7 pe-4': chat.pinned }"
+        :class="{
+          'col-lg-9': !$store.state.chat.isPinned,
+          'col-lg-7 pe-4': $store.state.chat.isPinned,
+        }"
       >
         <div class="row">
           <div class="col-lg-12">
-            <HomeCreatePost @push-post="addPost" />
+            <HomePostCreate @push-post="addPost" />
           </div>
           <div class="col-lg-12">
             <HomePost />
           </div>
         </div>
       </div>
-      <RightChatBox @chatClicked="updatePin" />
+      <HomeSideChat/>
     </div>
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
       <div
@@ -63,18 +66,8 @@ export default {
       ],
     };
   },
-  data() {
-    return {
-      chat: {
-        pinned: true,
-      },
-    };
-  },
   methods: {
     ...mapActions(["posts/addNewPost"]),
-    updatePin(event) {
-      this.chat.pinned = event;
-    },
     addPost(post) {
       this.$store.dispatch("posts/addNewPost", post);
     },
