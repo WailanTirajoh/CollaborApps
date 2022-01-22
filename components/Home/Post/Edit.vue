@@ -50,7 +50,7 @@ export default {
       this.form.isProcessing = true;
       try {
         var result = await this.$axios.$put(
-          `/posts/${this.post.id}`,
+          `/post/${this.post.id}`,
           this.form
         );
         alert(result.message);

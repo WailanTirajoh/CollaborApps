@@ -6,7 +6,7 @@
       d-header-home
       fixed-top
       text-center
-      p-0
+      p-sm-0
     "
   >
     <div class="container-fluid">
@@ -23,7 +23,7 @@
           >
             <img
               class="img-fluid rounded-circle object-fit-cover w-2r h-2r"
-              src="/default/user.png"
+              :src="$auth.user.avatar"
             />
           </a>
           <ul

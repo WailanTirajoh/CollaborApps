@@ -9,10 +9,10 @@
         <HomeSideProject />
       </div>
       <div
-        class="px-1 col-12"
+        class="px-sm-1 col-12"
         :class="{
           'col-lg-9': !$store.state.chat.isPinned,
-          'col-lg-7 pe-4': $store.state.chat.isPinned,
+          'col-lg-7 pe-sm-4': $store.state.chat.isPinned,
         }"
       >
         <div class="row">

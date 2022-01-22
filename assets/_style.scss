@@ -11,6 +11,25 @@
   }
 }
 
+.text-sm {
+  .form-control {
+    font-size: small !important;
+    border-radius: 20px;
+    border: none;
+    background-color: $light-gray;
+  }
+}
+
+.rounded {
+  &-3xl {
+    border-radius: 15px;
+  }
+}
+
+.bg-light-gray {
+  background-color: $light-gray;
+}
+
 body {
   overflow: overlay;
 }
@@ -77,7 +96,6 @@ body {
     }
   }
 }
-
 
 // Dropdown
 .dropdown-toggle::after {

@@ -46,7 +46,7 @@ export default {
     async createPost() {
       this.form.isProcessing = true;
       try {
-        var result = await this.$axios.$post("/posts", this.form);
+        var result = await this.$axios.$post("/post", this.form);
         this.$emit("push-post", result.post);
       } catch (e) {
         console.log(e);

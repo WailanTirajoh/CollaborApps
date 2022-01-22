@@ -1,5 +1,5 @@
 <template>
-  <div >Friends</div>
+  <div>Projects</div>
 </template>
 
 <script>
@@ -7,7 +7,7 @@ export default {
   middleware: "auth",
   head() {
     return {
-      title: "Friends Page",
+      title: "Projects Page",
       meta: [
         {
           hid: "description",

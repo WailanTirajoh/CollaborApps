@@ -18,9 +18,10 @@ export const mutations = {
 }
 
 export const actions = {
-  async getPosts({ commit }) {
+  async fetchPost({ commit }) {
+    commit('resetPosts');
     try {
-      var result = await this.$axios.$get("/posts");
+      var result = await this.$axios.$get("/post");
       commit('addPosts', result.posts);
       return result;
     } catch (e) {

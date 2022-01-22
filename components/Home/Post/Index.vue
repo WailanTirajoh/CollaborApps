@@ -74,6 +74,8 @@
           <div class="body">
             {{ post.text }}
           </div>
+          <hr class="mb-0" />
+          <HomePostComment :post="post"/>
         </div>
       </div>
     </div>
@@ -98,12 +100,12 @@ export default {
   methods: {
     async fetch() {
       this.fetching = true;
-      await this.$store.dispatch("posts/getPosts");
+      await this.$store.dispatch("posts/fetchPost");
       this.fetching = false;
     },
     async deletePost(post) {
       if (confirm("Are you sure want to delete this post?")) {
-        var response = await this.$axios.$delete(`/posts/${post.id}`);
+        var response = await this.$axios.$delete(`/post/${post.id}`);
         this.$store.dispatch("posts/removePost", post);
         alert(response.message);
       }

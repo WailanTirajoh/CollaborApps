@@ -83,6 +83,7 @@ export default {
   fontawesome: {
     icons: {
       solid: true,
+      regular: true,
     }
   },
 
