@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="createComment">
-    <div class="d-flex align-items-center gap-2">
+    <div class="d-flex align-items-center gap-2 my-2">
       <img
         class="img-fluid rounded-circle object-fit-cover"
         style="width: 2rem; height: 2rem; z-index: 1"

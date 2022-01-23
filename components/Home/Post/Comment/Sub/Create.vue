@@ -1,6 +1,6 @@
 <template>
   <form
-    class="mt-2 position-relative h-left-border"
+    class="position-relative h-left-border"
     @submit.prevent="createComment"
   >
     <div class="d-flex align-items-center gap-2">

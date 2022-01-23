@@ -12,7 +12,7 @@
         <DefaultModal :id="index">
           <HomePostEdit :post="post" />
         </DefaultModal>
-        <div class="bg-white rounded shadow p-3 py-2 my-2">
+        <div class="bg-white rounded shadow-sm p-3 py-2 my-2">
           <div class="header d-flex mb-2 position-relative">
             <div class="avatar">
               <img
@@ -88,7 +88,7 @@
             <div class="">0 Likes</div>
             <div class="">{{ post.total_comments }} {{post.total_comments > 1 ? 'comments' : 'comment'}}</div>
           </div>
-          <hr class="mb-0 mt-1" />
+          <hr class="my-1" />
           <HomePostComment :post="post" />
         </div>
       </div>

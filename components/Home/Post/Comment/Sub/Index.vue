@@ -1,10 +1,16 @@
 <template>
-  <div class="">
+  <div class="w-100">
     <div class="p-2 bg-light-gray rounded-3xl">
-      {{ comment.text }}
+      <div class="fw-medium text-sm">
+        {{ comment.user.name }}
+      </div>
+      <div class="text-sm">
+        {{ comment.text }}
+      </div>
     </div>
-    <div class="text-xs text-secondary d-flex gap-2">
+    <div class="text-xs text-secondary d-flex gap-2 px-2 py-1">
       <div class="fw-bold">Like</div>
+      <span class="">·</span>
       <div
         class="fw-bold cursor-pointer noselect"
         :class="{ 'fw-bold text-black ': isOpen }"
@@ -15,12 +21,13 @@
           >({{ comment.total_comments }})</span
         >
       </div>
+      <span class="">·</span>
       <div>
         {{ comment.created_at }}
       </div>
     </div>
     <div class="position-relative" v-show="isOpen">
-      <div v-if="comments" class="pt-3 left-border">
+      <div v-if="comments" class="py-2 left-border">
         <ul class="p-0" v-if="comments.length > 0">
           <HomePostCommentShow
             :post="post"
@@ -30,15 +37,14 @@
             @delete-comment="deleteComment"
           ></HomePostCommentShow>
         </ul>
-        <div class="text-sm text-secondary mb-2" v-else>
+        <div class="text-sm text-center text-secondary mb-2" v-else>
           No comment, be the first to comment
         </div>
       </div>
-      <div v-else>
-        <DefaultLoading class="text-sm" message="Fetching comment" />
+      <div v-else class="left-border">
+        <DefaultLoading class="text-sm mb-2" message="Fetching comment" />
       </div>
       <HomePostCommentSubCreate
-        class="mb-3"
         :comment="comment"
         @add-comment="addComment"
       />

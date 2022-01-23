@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="row sidebar" style="min-height: 60vh">
-      <div class="px-1 col-lg-2 show-desktop">
-        <div class="rounded shadow px-2 py-2 bg-white mb-2 text-center">
+      <div class="px-1 col-lg-3 show-desktop">
+        <div class="rounded shadow-sm px-2 py-2 bg-white mb-2 text-center">
           <font-awesome-icon :icon="['fas', 'project-diagram']" /> Recent
           Projects
         </div>
@@ -11,8 +11,8 @@
       <div
         class="px-sm-1 col-12"
         :class="{
-          'col-lg-9': !$store.state.chat.isPinned,
-          'col-lg-7 pe-sm-4': $store.state.chat.isPinned,
+          'col-lg-7': !$store.state.chat.isPinned,
+          'col-lg-6 pe-sm-4': $store.state.chat.isPinned,
         }"
       >
         <div class="row">

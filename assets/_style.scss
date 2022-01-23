@@ -20,12 +20,21 @@
   }
 }
 
+.fw {
+  &-medium {
+    font-weight: 600;
+  }
+}
+
 .rounded {
   &-3xl {
     border-radius: 15px;
   }
 }
 
+.bg-gray {
+  background-color: #f0f2f5;
+}
 .bg-light-gray {
   background-color: $light-gray;
 }

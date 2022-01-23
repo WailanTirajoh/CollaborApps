@@ -6,7 +6,7 @@
       ref="input"
       v-bind="$attrs"
       :type="type"
-      class="form-control"
+      class="form-control px-3 py-2"
       :class="{ 'is-invalid': error }"
       :value="value"
       @input="$emit('input', $event.target.value)"

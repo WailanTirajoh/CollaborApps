@@ -1,5 +1,5 @@
 <template>
-  <li class="d-flex gap-2 mt-2 position-relative left-line">
+  <li class="d-flex gap-2 position-relative left-line my-1">
     <img
       class="img-fluid rounded-circle object-fit-cover"
       style="width: 2rem; height: 2rem; z-index: 1"
@@ -27,13 +27,16 @@
               @click="deleteComment(comment)"
               class="dropdown-item text-sm"
               href="#"
-              >Delete</a
+            >
+              <font-awesome-icon class="me-1" :icon="['far', 'trash-alt']" />Delete</a
             >
           </li>
         </ul>
         <ul v-else class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li>
-            <a class="dropdown-item text-sm" href="#">Report</a>
+            <a class="dropdown-item text-sm" href="#">
+              <font-awesome-icon class="me-1 color-red" :icon="['fas', 'bullhorn']" />Report</a
+            >
           </li>
         </ul>
       </div>

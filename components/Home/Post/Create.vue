@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded shadow px-2 py-2">
+  <div class="bg-white rounded shadow-sm px-2 py-2">
     <form @submit.prevent="createPost">
       <div class="d-flex align-items-center gap-3">
         <img
