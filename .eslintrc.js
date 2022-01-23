@@ -17,6 +17,6 @@ module.exports = {
   // add your custom rules here
   rules: {
     eqeqeq: 'off',
-    'linebreak-style': ['error', 'windows'],
+    'linebreak-style': ['error']
   }
 }
