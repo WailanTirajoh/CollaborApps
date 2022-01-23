@@ -84,12 +84,12 @@ export default {
     },
     addComment(comment) {
       this.comments.push(comment)
-      this.$emit('increment-comment', comment)
+      this.comment.total_comments++
       this.$store.dispatch('posts/addTotalComment', this.post)
     },
     deleteComment(comment) {
       this.comments.splice(this.comments.indexOf(comment), 1)
-      this.$emit('decrement-comment', comment)
+      this.comment.total_comments--
       this.$store.dispatch('posts/minTotalComment', this.post)
     }
   }

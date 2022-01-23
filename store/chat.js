@@ -1,5 +1,5 @@
 export const state = () => ({
-  isPinned: true,
+  isPinned: true
 })
 
 export const mutations = {
