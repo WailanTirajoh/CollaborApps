@@ -1,3 +1,20 @@
+/**
+ * state.posts [data structure]
+ * {
+ *  'id':int,
+ *  'text':string,
+ *  'total_comments':int,
+ *  'created_at':string,
+ *  'user':Object,
+ * };
+ *
+ * user [data structure]
+ * {
+ *  'id':int,
+ *  'name':string,
+ *  'avatar':string,
+ * };
+ */
 export const state = () => ({
   posts: [],
 })
@@ -18,7 +35,7 @@ export const mutations = {
   addTotalComment(state, post) {
     state.posts[state.posts.findIndex(x => x.id == post.id)].total_comments++;
   },
-  minTotalComment(state, post){
+  minTotalComment(state, post) {
     state.posts[state.posts.findIndex(x => x.id == post.id)].total_comments--;
   }
 }
