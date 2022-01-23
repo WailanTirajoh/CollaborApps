@@ -14,39 +14,26 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '@/assets/bootstrap/main.scss',
-    '@/assets/index.scss',
-  ],
+  css: ['@/assets/bootstrap/main.scss', '@/assets/index.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    {src: '~/plugins/bootstrap.js', mode: 'client'}
-  ],
+  plugins: [{ src: '~/plugins/bootstrap.js', mode: 'client' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    '@nuxtjs/fontawesome',
-    // '@nuxtjs/eslint-module'
-  ],
+  buildModules: ['@nuxtjs/fontawesome', '@nuxtjs/eslint-module'],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/auth-next',
-  ],
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next'],
   axios: {
     credentials: true,
-    baseUrl: "http://localhost:8000/api"
+    baseUrl: 'http://localhost:8000/api'
   },
   auth: {
     strategies: {
@@ -55,42 +42,41 @@ export default {
         url: 'http://localhost:8000',
         endpoints: {
           login: {
-            url: '/api/login',
+            url: '/api/login'
           },
           logout: {
-            url: '/api/logout',
+            url: '/api/logout'
           },
           user: {
-            url: '/api/user',
+            url: '/api/user'
           },
           updateProfile: {
             url: '/api/user/update',
             method: 'POST'
-          },
+          }
         },
         user: {
-          property: false,
-        },
-      },
+          property: false
+        }
+      }
     },
 
     redirect: {
       login: '/auth/login',
       logout: '/auth/login',
-      home: '/',
+      home: '/'
     }
   },
 
   fontawesome: {
     icons: {
       solid: true,
-      regular: true,
+      regular: true
     }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  },
+  build: {},
 
   loading: {
     color: '#385898',
