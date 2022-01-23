@@ -8,11 +8,11 @@
       />
       <div class="w-100">
         <FormInput
-          class="text-sm"
-          v-model="form.text"
-          type="text"
           id="disabledTextInput"
-          :error="error.text"
+          v-model="form.text"
+          class="text-sm"
+          type="text"
+          :errors="error.text"
           :placeholder="`Reply`"
           autocomplete="off"
         />
@@ -24,40 +24,40 @@
 <script>
 export default {
   props: {
-    post: Object,
-    url: String,
+    post: {
+      type: Object,
+      required: true
+    }
   },
   data() {
     return {
       form: {
         text: null,
-        isProcessing: false,
+        isProcessing: false
       },
-      error: {},
-    };
+      error: {}
+    }
   },
   methods: {
     async createComment() {
-      this.form.isProcessing = true;
+      this.form.isProcessing = true
       try {
-        var result = await this.$axios.$post(
+        const result = await this.$axios.$post(
           `/post/${this.post.id}/comment`,
           this.form
-        );
-        this.$emit("add-comment", result.comment);
+        )
+        this.$emit('add-comment', result.comment)
       } catch (e) {
-        console.log(e);
-        this.error = e.response.data.errors;
+        this.error = e.response.data.errors
       }
-      this.resetForm();
+      this.resetForm()
     },
     resetForm() {
-      this.form.text = null;
-      this.form.isProcessing = false;
-    },
-  },
-};
+      this.form.text = null
+      this.form.isProcessing = false
+    }
+  }
+}
 </script>
 
-<style>
-</style>
+<style></style>

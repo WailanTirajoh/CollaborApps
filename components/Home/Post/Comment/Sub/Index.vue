@@ -26,28 +26,25 @@
         {{ comment.created_at }}
       </div>
     </div>
-    <div class="position-relative" v-show="isOpen">
+    <div v-show="isOpen" class="position-relative">
       <div v-if="comments" class="py-2 left-border">
-        <ul class="p-0" v-if="comments.length > 0">
+        <ul v-if="comments.length > 0" class="p-0">
           <HomePostCommentShow
-            :post="post"
-            :comment="thecomment"
             v-for="thecomment in comments"
             :key="thecomment.id"
+            :post="post"
+            :comment="thecomment"
             @delete-comment="deleteComment"
           ></HomePostCommentShow>
         </ul>
-        <div class="text-sm text-center text-secondary mb-2" v-else>
+        <div v-else class="text-sm text-center text-secondary mb-2">
           No comment, be the first to comment
         </div>
       </div>
       <div v-else class="left-border">
         <DefaultLoading class="text-sm mb-2" message="Fetching comment" />
       </div>
-      <HomePostCommentSubCreate
-        :comment="comment"
-        @add-comment="addComment"
-      />
+      <HomePostCommentSubCreate :comment="comment" @add-comment="addComment" />
     </div>
   </div>
 </template>
@@ -55,45 +52,48 @@
 <script>
 export default {
   props: {
-    post: Object,
-    comment: Object,
+    post: {
+      type: Object,
+      required: true
+    },
+    comment: {
+      type: Object,
+      required: true
+    }
   },
   data() {
     return {
       isOpen: false,
-      comments: null,
-    };
+      comments: null
+    }
   },
   methods: {
     openComment() {
-      this.isOpen = !this.isOpen;
+      this.isOpen = !this.isOpen
       if (this.comments == null) {
-        this.fetchComments();
+        this.fetchComments()
       }
     },
     async fetchComments() {
       try {
-        var result = await this.$axios.$get(
+        const result = await this.$axios.$get(
           `/comment/${this.comment.id}/subComment`
-        );
-      } catch (e) {
-        console.log(e);
-      }
-      this.comments = result.comments;
+        )
+        this.comments = result.comments
+      } catch (e) {}
     },
     addComment(comment) {
-      this.comments.push(comment);
-      this.comment.total_comments++;
-      this.$store.dispatch("posts/addTotalComment", this.post);
+      this.comments.push(comment)
+      this.$emit('increment-comment', comment)
+      this.$store.dispatch('posts/addTotalComment', this.post)
     },
     deleteComment(comment) {
-      this.comments.splice(this.comments.indexOf(comment), 1);
-      this.comment.total_comments--;
-      this.$store.dispatch("posts/minTotalComment", this.post);
-    },
-  },
-};
+      this.comments.splice(this.comments.indexOf(comment), 1)
+      this.$emit('decrement-comment', comment)
+      this.$store.dispatch('posts/minTotalComment', this.post)
+    }
+  }
+}
 </script>
 
-<style>
-</style>
+<style></style>

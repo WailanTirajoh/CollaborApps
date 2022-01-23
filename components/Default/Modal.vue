@@ -1,7 +1,7 @@
 <template>
   <div
-    class="modal fade"
     :id="`theModal-${id}`"
+    class="modal fade"
     tabindex="-1"
     aria-labelledby="defaultModal"
     aria-hidden="true"
@@ -19,12 +19,20 @@
 <script>
 export default {
   props: {
-    id: Number,
-    title: String,
-    buttonText: String,
-  },
-};
+    id: {
+      type: Number,
+      required: true
+    },
+    title: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    buttonText: {
+      type: String,
+      required: false,
+      default: ''
+    }
+  }
+}
 </script>
-
-<style>
-</style>

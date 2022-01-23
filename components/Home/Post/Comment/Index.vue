@@ -5,7 +5,10 @@
         <font-awesome-icon :icon="['far', 'thumbs-up']" />
         <div class="text-sm">Like</div>
       </button>
-      <button class="btn btn-sm d-flex align-items-center gap-1" @click="openComment">
+      <button
+        class="btn btn-sm d-flex align-items-center gap-1"
+        @click="openComment"
+      >
         <font-awesome-icon :icon="[isOpen ? 'fas' : 'far', 'comments']" />
         <div class="text-sm">Comment</div>
       </button>
@@ -16,16 +19,18 @@
     </div>
     <div v-show="isOpen">
       <div v-if="comments">
-        <ul class="p-0 m-0" v-if="comments.length > 0">
-          <div class="" v-for="comment in comments" :key="comment.id">
+        <ul v-if="comments.length > 0" class="p-0 m-0">
+          <div v-for="comment in comments" :key="comment.id" class="">
             <HomePostCommentShow
               :post="post"
               :comment="comment"
               @delete-comment="deleteComment"
+              @decrement-comment="decrementComment"
+              @increment-comment="incrementComment"
             />
           </div>
         </ul>
-        <div class="my-2 text-center" v-else>
+        <div v-else class="my-2 text-center">
           "Seems quiet in here, lets make some noise {{ $auth.user.name }}"
         </div>
       </div>
@@ -40,40 +45,46 @@
 <script>
 export default {
   props: {
-    post: Object,
+    post: {
+      type: Object,
+      required: true
+    }
   },
   data() {
     return {
       isOpen: false,
-      comments: null,
-    };
+      comments: null
+    }
   },
   methods: {
     async fetch() {
       try {
-        var response = await this.$axios.$get(`/post/${this.post.id}/comment`);
-        this.comments = response.comments;
-      } catch (e) {
-        console.log(e);
-      }
+        const response = await this.$axios.$get(`/post/${this.post.id}/comment`)
+        this.comments = response.comments
+      } catch (e) {}
     },
     openComment() {
-      this.isOpen = !this.isOpen;
+      this.isOpen = !this.isOpen
       if (this.comments == null) {
-        this.fetch();
+        this.fetch()
       }
     },
     addComment(comment) {
-      this.comments.push(comment);
-      this.$store.dispatch("posts/addTotalComment", this.post);
+      this.comments.push(comment)
+      this.$store.dispatch('posts/addTotalComment', this.post)
     },
     deleteComment(comment) {
-      this.comments.splice(this.comments.indexOf(comment), 1);
-      this.$store.dispatch("posts/minTotalComment", this.post);
+      this.comments.splice(this.comments.indexOf(comment), 1)
+      this.$store.dispatch('posts/minTotalComment', this.post)
     },
-  },
-};
+    incrementComment(comment) {
+      this.comments[this.comments.findIndex((cmt) => cmt.id == comment.id)]
+        .total_comments++
+    },
+    decrementComment(comment) {
+      this.comments[this.comments.findIndex((cmt) => cmt.id == comment.id)]
+        .total_comments--
+    }
+  }
+}
 </script>
-
-<style>
-</style>

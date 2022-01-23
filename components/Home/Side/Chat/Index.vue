@@ -1,18 +1,7 @@
 <template>
   <div
-    class="
-      px-1
-      position-fixed
-      show-desktop
-      chat-box
-      bg-blizard-blue
-      shadow
-      px-2
-      py-2
-      bg-white
-    "
+    class="px-1 position-fixed show-desktop chat-box bg-blizard-blue shadow px-2 py-2 bg-white"
     :class="{ pinned: isPinned }"
-    style=""
   >
     <div class="h-100">
       <div class="d-flex justify-content-between align-items-center">
@@ -36,21 +25,20 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex'
 export default {
   computed: {
     isPinned() {
-      return this.$store.state.chat.isPinned;
-    },
+      return this.$store.state.chat.isPinned
+    }
   },
   methods: {
-    ...mapActions(["chat/updatePin"]),
+    ...mapActions(['chat/updatePin']),
     togglePin() {
-      this.$store.dispatch("chat/updatePin");
-    },
-  },
-};
+      this.$store.dispatch('chat/updatePin')
+    }
+  }
+}
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

@@ -4,21 +4,18 @@
 
 <script>
 export default {
-  middleware: "auth",
+  middleware: 'auth',
   head() {
     return {
-      title: "Profile Page",
+      title: 'Profile Page',
       meta: [
         {
-          hid: "description",
-          name: "description",
-          content: "Profile Page",
-        },
-      ],
-    };
-  },
-};
+          hid: 'description',
+          name: 'description',
+          content: 'Profile Page'
+        }
+      ]
+    }
+  }
+}
 </script>
-
-<style>
-</style>

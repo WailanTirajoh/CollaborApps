@@ -1,22 +1,15 @@
 <template>
   <nav
-    class="
-      navbar navbar-expand-lg navbar-dark
-      shadow
-      d-header-home
-      fixed-top
-      text-center
-      p-sm-0
-    "
+    class="navbar navbar-expand-lg navbar-dark shadow d-header-home fixed-top text-center p-sm-0"
   >
     <div class="container-fluid">
       <NuxtLink class="navbar-brand text-white" to="/">CollaborApps</NuxtLink>
       <div class="ms-auto hide-desktop me-4">
-        <div class="nav-item dropdown" v-if="$auth.loggedIn">
+        <div v-if="$auth.loggedIn" class="nav-item dropdown">
           <a
+            id="navbarDropdown"
             class="dropdown-toggle text-white"
             href="#"
-            id="navbarDropdown"
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
@@ -40,7 +33,7 @@
             </li>
           </ul>
         </div>
-        <div class="nav-item" v-else>
+        <div v-else class="nav-item">
           <NuxtLink to="/auth/login" class="nav-link text-decoration-none"
             >Login</NuxtLink
           >
@@ -57,9 +50,9 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div id="navbarSupportedContent" class="collapse navbar-collapse">
         <div>
-          <ul class="navbar-nav mb-2 mb-lg-0 gap-2" v-if="$auth.loggedIn">
+          <ul v-if="$auth.loggedIn" class="navbar-nav mb-2 mb-lg-0 gap-2">
             <li class="nav-item">
               <NuxtLink class="nav-link active" aria-current="page" to="/"
                 >Home</NuxtLink
@@ -86,16 +79,16 @@
         </div>
         <div class="d-flex ms-auto">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item show-desktop" v-if="!$auth.loggedIn">
+            <li v-if="!$auth.loggedIn" class="nav-item show-desktop">
               <NuxtLink to="/auth/login" class="nav-link text-decoration-none"
                 >Login</NuxtLink
               >
             </li>
-            <li class="nav-item dropdown show-desktop" v-else>
+            <li v-else class="nav-item dropdown show-desktop">
               <a
+                id="navbarDropdown"
                 class="dropdown-toggle text-white"
                 href="#"
-                id="navbarDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -109,11 +102,6 @@
                 class="dropdown-menu dropdown-menu-end"
                 aria-labelledby="navbarDropdown"
               >
-                <!-- <li>
-                  <NuxtLink class="dropdown-item" to="/auth/profile"
-                    >Profile</NuxtLink
-                  >
-                </li> -->
                 <li>
                   <NuxtLink class="dropdown-item" to="/auth/setting"
                     >Setting</NuxtLink
@@ -139,14 +127,12 @@ export default {
   methods: {
     async logout() {
       try {
-        await this.$auth.logout();
+        await this.$auth.logout()
         this.$auth.strategy.token.reset()
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  },
-};
+      } catch (error) {}
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

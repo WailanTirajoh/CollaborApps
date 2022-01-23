@@ -7,12 +7,12 @@
       v-bind="$attrs"
       :type="type"
       class="form-control"
-      :class="{ 'is-invalid': error }"
+      :class="{ 'is-invalid': errors }"
       :value="value"
       @input="$emit('input', $event.target.value)"
     />
-    <div :id="`${id}Feedback`" class="invalid-feedback" v-if="error">
-      {{ error[0] }}
+    <div v-if="errors" :id="`${id}Feedback`" class="invalid-feedback">
+      {{ errors[0] }}
     </div>
   </div>
 </template>
@@ -23,19 +23,30 @@ export default {
     id: {
       type: String,
       default() {
-        return `text-input-${this._uid}`;
-      },
+        return `text-input-${this._uid}`
+      }
     },
     type: {
       type: String,
-      default: "text",
+      required: true
     },
-    value: String,
-    label: String,
-    error: String,
-  },
-};
+    value: {
+      type: String,
+      required: false,
+      default: null
+    },
+    label: {
+      type: String,
+      required: false,
+      default: null
+    },
+    errors: {
+      type: Array,
+      required: false,
+      default: () => {}
+    }
+  }
+}
 </script>
 
-<style>
-</style>
+<style></style>

@@ -6,16 +6,16 @@
           <h5>Please login to start the session {{ error.email }}</h5>
         </div>
         <form
-          @submit.prevent="login"
           class="bg-white rounded shadow border p-3 mt-3"
+          @submit.prevent="login"
         >
           <div class="mb-3">
             <FormInput
-              v-model="form.email"
               id="email"
+              v-model="form.email"
               type="email"
               label="Email"
-              :error="error.email"
+              :errors="error.email"
               aria-describedby="email-help"
               placeholder="johndoe@example.example"
             />
@@ -25,20 +25,20 @@
           </div>
           <div class="mb-3">
             <FormInput
-              v-model="form.password"
               id="password"
+              v-model="form.password"
               type="password"
               label="Password"
-              :error="error.password"
+              :errors="error.password"
               placeholder="*********"
             />
           </div>
           <div class="mb-3 form-check">
             <input
+              id="remember"
               v-model="form.remember"
               type="checkbox"
               class="form-check-input"
-              id="remember"
             />
             <label class="form-check-label" for="remember">Remember me</label>
           </div>
@@ -71,48 +71,45 @@
 
 <script>
 export default {
-  middleware: "auth",
-  auth: "guest",
-  head() {
-    return {
-      title: "Login Page",
-      meta: [
-        {
-          hid: "description",
-          name: "description",
-          content: "Login Page",
-        },
-      ],
-    };
-  },
+  middleware: 'auth',
+  auth: 'guest',
   data() {
     return {
       form: {
         email: null,
         password: null,
         remember: false,
-        isProcessing: false,
+        isProcessing: false
       },
       error: {
-        email: null,
-      },
-    };
+        email: null
+      }
+    }
+  },
+  head() {
+    return {
+      title: 'Login Page',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Login Page'
+        }
+      ]
+    }
   },
   methods: {
     async login() {
-      this.form.isProcessing = true;
+      this.form.isProcessing = true
       try {
-        await this.$auth.loginWith("laravelSanctum", {
-          data: this.form,
-        });
+        await this.$auth.loginWith('laravelSanctum', {
+          data: this.form
+        })
       } catch (e) {
-        this.error.email = e.response.data.errors.email[0];
+        this.error.email = e.response.data.errors.email[0]
       }
-      this.form.isProcessing = false;
-    },
-  },
-};
+      this.form.isProcessing = false
+    }
+  }
+}
 </script>
-
-<style>
-</style>

@@ -16,7 +16,7 @@
  * };
  */
 export const state = () => ({
-  posts: [],
+  posts: []
 })
 
 export const mutations = {
@@ -24,56 +24,59 @@ export const mutations = {
     state.posts.unshift(...posts)
   },
   removePost(state, post) {
-    state.posts.splice(state.posts.indexOf(post), 1);
+    state.posts.splice(state.posts.indexOf(post), 1)
   },
   editPost(state, post) {
-    state.posts[state.posts.findIndex(x => x.id == post.id)] = post;
+    state.posts[state.posts.findIndex((x) => x.id == post.id)] = post
   },
   resetPosts(state) {
-    state.posts = [];
+    state.posts = []
   },
   addTotalComment(state, post) {
-    state.posts[state.posts.findIndex(x => x.id == post.id)].total_comments++;
+    const thepost = state.posts[state.posts.findIndex((x) => x.id == post.id)]
+    if (thepost) {
+      post.total_comments++
+    }
   },
   minTotalComment(state, post) {
-    state.posts[state.posts.findIndex(x => x.id == post.id)].total_comments--;
+    const thepost = state.posts[state.posts.findIndex((x) => x.id == post.id)]
+    if (thepost) {
+      post.total_comments--
+    }
   }
 }
 
 export const actions = {
   async fetchPost({ commit }) {
-    commit('resetPosts');
+    commit('resetPosts')
     try {
-      var result = await this.$axios.$get("/post");
-      commit('addPosts', result.posts);
-      return result;
-    } catch (e) {
-      console.log(e);
-    }
+      const result = await this.$axios.$get('/post')
+      commit('addPosts', result.posts)
+      return result
+    } catch (e) {}
   },
   addNewPost({ commit }, post) {
     commit('addPosts', [post])
   },
   removePost({ commit }, post) {
-    commit('removePost', post);
+    commit('removePost', post)
   },
   editPost({ commit }, post) {
-    commit('editPost', post);
+    commit('editPost', post)
   },
   resetPosts({ commit }) {
-    commit('resetPosts');
+    commit('resetPosts')
   },
   addTotalComment({ commit }, post) {
-    commit('addTotalComment', post);
+    commit('addTotalComment', post)
   },
   minTotalComment({ commit }, post) {
-    commit('minTotalComment', post);
-  },
-
+    commit('minTotalComment', post)
+  }
 }
 
 export const getters = {
   posts(state) {
-    return state.posts;
+    return state.posts
   }
 }

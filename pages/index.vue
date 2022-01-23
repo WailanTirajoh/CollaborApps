@@ -12,7 +12,7 @@
         class="px-sm-1 col-12"
         :class="{
           'col-lg-7': !$store.state.chat.isPinned,
-          'col-lg-6 pe-sm-4': $store.state.chat.isPinned,
+          'col-lg-6 pe-sm-4': $store.state.chat.isPinned
         }"
       >
         <div class="row">
@@ -24,7 +24,7 @@
           </div>
         </div>
       </div>
-      <HomeSideChat/>
+      <HomeSideChat />
     </div>
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
       <div
@@ -51,30 +51,30 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex'
 export default {
-  middleware: "auth",
+  beforeRouteLeave(to, from, next) {
+    this.$store.dispatch('posts/resetPosts')
+    next()
+  },
+  middleware: 'auth',
   head() {
     return {
-      title: "Home Page",
+      title: 'Home Page',
       meta: [
         {
-          hid: "description",
-          name: "description",
-          content: "Homepage",
-        },
-      ],
-    };
+          hid: 'description',
+          name: 'description',
+          content: 'Homepage'
+        }
+      ]
+    }
   },
   methods: {
-    ...mapActions(["posts/addNewPost"]),
+    ...mapActions(['posts/addNewPost']),
     addPost(post) {
-      this.$store.dispatch("posts/addNewPost", post);
-    },
-  },
-  beforeRouteLeave(to, from, next) {
-    this.$store.dispatch("posts/resetPosts");
-    next();
-  },
-};
+      this.$store.dispatch('posts/addNewPost', post)
+    }
+  }
+}
 </script>

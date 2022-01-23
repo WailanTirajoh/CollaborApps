@@ -9,9 +9,9 @@
     <div>
       <div class="dropdown">
         <button
+          id="dropdownMenuButton1"
           class="btn"
           type="button"
-          id="dropdownMenuButton1"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
@@ -24,18 +24,24 @@
         >
           <li>
             <a
-              @click="deleteComment(comment)"
               class="dropdown-item text-sm"
               href="#"
+              @click="deleteComment(comment)"
             >
-              <font-awesome-icon class="me-1" :icon="['far', 'trash-alt']" />Delete</a
+              <font-awesome-icon
+                class="me-1"
+                :icon="['far', 'trash-alt']"
+              />Delete</a
             >
           </li>
         </ul>
         <ul v-else class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li>
             <a class="dropdown-item text-sm" href="#">
-              <font-awesome-icon class="me-1 color-red" :icon="['fas', 'bullhorn']" />Report</a
+              <font-awesome-icon
+                :icon="['fas', 'bullhorn']"
+                class="me-1 color-red"
+              />Report</a
             >
           </li>
         </ul>
@@ -47,26 +53,28 @@
 <script>
 export default {
   props: {
-    comment: Object,
-    post: Object,
+    comment: {
+      type: Object,
+      required: true
+    },
+    post: {
+      type: Object,
+      required: true
+    }
   },
   methods: {
     async deleteComment(comment) {
       try {
-        if (confirm("Are you sure want to delete this comment?")) {
-          var response = await this.$axios.$delete(
+        if (confirm('Are you sure want to delete this comment?')) {
+          await this.$axios.$delete(
             `/post/${this.post.id}/comment/${comment.id}`
-          );
-          this.$emit("delete-comment", comment);
+          )
+          this.$emit('delete-comment', comment)
         }
       } catch (e) {
-        alert(e.response.data.message);
-        console.log(e);
+        alert(e.response.data.message)
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
-
-<style>
-</style>

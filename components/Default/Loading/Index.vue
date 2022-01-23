@@ -2,7 +2,7 @@
   <div class="">
     <DefaultLoadingSearch />
     <div class="text-center text-secondary" style="margin-top: -20px">
-      {{ message ? message : "Please wait" }}
+      {{ message }}
     </div>
   </div>
 </template>
@@ -10,10 +10,11 @@
 <script>
 export default {
   props: {
-    message: String,
-  },
-};
+    message: {
+      type: String,
+      required: false,
+      default: 'Please wait'
+    }
+  }
+}
 </script>
-
-<style>
-</style>

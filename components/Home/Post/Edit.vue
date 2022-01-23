@@ -8,10 +8,10 @@
         />
         <div class="w-100" autocomplete="off">
           <FormTextArea
+            id="disabledTextInput"
             v-model="form.text"
             type="text"
-            id="disabledTextInput"
-            :error="error.text"
+            :errors="error.text"
             :placeholder="`Hi ${$auth.user.name}, what are you thinking right now?`"
             autocomplete="off"
           />
@@ -34,40 +34,41 @@
 <script>
 export default {
   props: {
-    post: Object,
+    post: {
+      type: Object,
+      required: true
+    }
   },
   data() {
     return {
       form: {
         text: this.post.text,
-        isProcessing: false,
+        isProcessing: false
       },
-      error: {},
-    };
+      error: {}
+    }
   },
   methods: {
     async updatePost() {
-      this.form.isProcessing = true;
+      this.form.isProcessing = true
       try {
-        var result = await this.$axios.$put(
+        const result = await this.$axios.$put(
           `/post/${this.post.id}`,
           this.form
-        );
-        alert(result.message);
-        this.$store.dispatch("posts/editPost", result.post);
+        )
+        alert(result.message)
+        this.$store.dispatch('posts/editPost', result.post)
       } catch (e) {
-        console.log(e);
-        this.error = e.response.data.errors;
+        if (e.response.data) {
+          this.error = e.response.data.errors
+        }
       }
-      this.resetForm();
+      this.resetForm()
     },
     resetForm() {
-      this.form.text = null;
-      this.form.isProcessing = false;
-    },
-  },
-};
+      this.form.text = null
+      this.form.isProcessing = false
+    }
+  }
+}
 </script>
-
-<style>
-</style>

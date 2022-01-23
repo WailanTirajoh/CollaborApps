@@ -6,26 +6,26 @@
           <h5>Create your account</h5>
         </div>
         <form
-          @submit.prevent="register"
           class="bg-white rounded shadow border p-4 mt-3"
+          @submit.prevent="register"
         >
           <div class="mb-3">
             <label for="name" class="form-label">Full Name</label>
             <input
+              id="name"
               v-model="form.name"
               type="text"
               class="form-control"
-              id="name"
               placeholder="john doe"
             />
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input
+              id="email"
               v-model="form.email"
               type="email"
               class="form-control"
-              id="email"
               aria-describedby="email-help"
               placeholder="john.doe@example.example"
             />
@@ -33,10 +33,10 @@
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input
+              id="password"
               v-model="form.password"
               type="password"
               class="form-control"
-              id="password"
               placeholder="********"
             />
           </div>
@@ -45,10 +45,10 @@
               >Password Confirmation</label
             >
             <input
+              id="password_confirmation"
               v-model="form.password_confirmation"
               type="password"
               class="form-control"
-              id="password_confirmation"
               placeholder="********"
             />
           </div>
@@ -60,7 +60,7 @@
             >
               Register
             </FormSubmitButton>
-            <div >or <NuxtLink to="/auth/login">Login</NuxtLink></div>
+            <div>or <NuxtLink to="/auth/login">Login</NuxtLink></div>
           </div>
         </form>
       </div>
@@ -70,18 +70,6 @@
 
 <script>
 export default {
-  head() {
-    return {
-      title: "Register Page",
-      meta: [
-        {
-          hid: "description",
-          name: "description",
-          content: "Register Page",
-        },
-      ],
-    };
-  },
   data() {
     return {
       form: {
@@ -89,15 +77,26 @@ export default {
         email: null,
         password: null,
         password_confirmation: null,
-        isLoading: false,
-      },
-    };
+        isLoading: false
+      }
+    }
+  },
+  head() {
+    return {
+      title: 'Register Page',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Register Page'
+        }
+      ]
+    }
   },
   methods: {
-    register() {},
-  },
-};
+    register() {}
+  }
+}
 </script>
 
-<style>
-</style>
+<style></style>

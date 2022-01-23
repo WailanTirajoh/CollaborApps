@@ -1,14 +1,14 @@
 <template>
   <div class="row post">
     <div
-      class="d-flex align-items-center justify-content-center"
       v-if="fetching"
+      class="d-flex align-items-center justify-content-center"
       style="min-height: 300px"
     >
       <DefaultLoading />
     </div>
     <div v-else>
-      <div class="col-lg-12" v-for="(post, index) in posts" :key="index">
+      <div v-for="(post, index) in posts" :key="index" class="col-lg-12">
         <DefaultModal :id="index">
           <HomePostEdit :post="post" />
         </DefaultModal>
@@ -33,9 +33,9 @@
             <div class="position-absolute top-0 end-0">
               <div class="dropdown">
                 <button
+                  id="dropdownMenuButton1"
                   class="btn"
                   type="button"
-                  id="dropdownMenuButton1"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
@@ -45,6 +45,7 @@
                   />
                 </button>
                 <ul
+                  v-if="post.user.id == $auth.user.id"
                   class="dropdown-menu dropdown-menu-end text-sm text-secondary"
                   aria-labelledby="dropdownMenuButton1"
                 >
@@ -72,7 +73,7 @@
                     </button>
                   </li>
                   <li>
-                    <a @click="deletePost(post)" class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="#" @click="deletePost(post)">
                       <font-awesome-icon :icon="['far', 'trash-alt']" />
                       Delete</a
                     >
@@ -84,9 +85,14 @@
           <div class="body">
             {{ post.text }}
           </div>
-          <div class="d-flex justify-content-between text-sm text-secondary mt-2">
+          <div
+            class="d-flex justify-content-between text-sm text-secondary mt-2"
+          >
             <div class="">0 Likes</div>
-            <div class="">{{ post.total_comments }} {{post.total_comments > 1 ? 'comments' : 'comment'}}</div>
+            <div class="">
+              {{ post.total_comments }}
+              {{ post.total_comments > 1 ? 'comments' : 'comment' }}
+            </div>
           </div>
           <hr class="my-1" />
           <HomePostComment :post="post" />
@@ -103,53 +109,52 @@ export default {
       scrolledToBottom: false,
       pageHeight: null,
       fetching: false,
-      thePost: null,
-    };
+      thePost: null
+    }
   },
   computed: {
     posts() {
-      return this.$store.state.posts.posts;
-    },
+      return this.$store.state.posts.posts
+    }
+  },
+  mounted() {
+    this.scroll()
+    this.fetch()
   },
   methods: {
     async fetch() {
-      this.fetching = true;
-      await this.$store.dispatch("posts/fetchPost");
-      this.fetching = false;
+      this.fetching = true
+      await this.$store.dispatch('posts/fetchPost')
+      this.fetching = false
     },
     async deletePost(post) {
-      if (confirm("Are you sure want to delete this post?")) {
-        var response = await this.$axios.$delete(`/post/${post.id}`);
-        this.$store.dispatch("posts/removePost", post);
-        alert(response.message);
+      if (confirm('Are you sure want to delete this post?')) {
+        const response = await this.$axios.$delete(`/post/${post.id}`)
+        this.$store.dispatch('posts/removePost', post)
+        alert(response.message)
       }
     },
-    // infinity scroll todo
     scroll() {
       window.onscroll = () => {
-        let bottomOfWindow =
+        const bottomOfWindow =
           Math.max(
             window.pageYOffset,
             document.documentElement.scrollTop,
             document.body.scrollTop
           ) +
             window.innerHeight >
-          document.documentElement.offsetHeight - 50;
+          document.documentElement.offsetHeight - 50
 
         if (bottomOfWindow) {
           // alert('bottom')
-          this.scrolledToBottom = true; // replace it with your code
+          this.scrolledToBottom = true // replace it with your code
         } else {
-          this.scrolledToBottom = false; // replace it with your code
+          this.scrolledToBottom = false // replace it with your code
         }
-      };
-    },
-  },
-  mounted() {
-    this.scroll();
-    this.fetch();
-  },
-};
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
