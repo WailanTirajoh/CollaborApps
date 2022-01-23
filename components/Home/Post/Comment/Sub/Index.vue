@@ -65,11 +65,6 @@ export default {
         this.fetchComments();
       }
     },
-    addComment(comment) {
-      this.comments.push(comment);
-      this.comment.total_comments++;
-      this.$store.dispatch("posts/addTotalComment", this.post);
-    },
     async fetchComments() {
       try {
         var result = await this.$axios.$get(
@@ -80,10 +75,14 @@ export default {
       }
       this.comments = result.comments;
     },
-
+    addComment(comment) {
+      this.comments.push(comment);
+      this.comment.total_comments++;
+      this.$store.dispatch("posts/addTotalComment", this.post);
+    },
     deleteComment(comment) {
-      this.comment.total_comments--;
       this.comments.splice(this.comments.indexOf(comment), 1);
+      this.comment.total_comments--;
       this.$store.dispatch("posts/minTotalComment", this.post);
     },
   },
