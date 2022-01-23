@@ -68,6 +68,7 @@ export default {
     addComment(comment) {
       this.comments.push(comment);
       this.comment.total_comments++;
+      this.$store.dispatch("posts/addTotalComment", this.post);
     },
     async fetchComments() {
       try {
@@ -83,6 +84,7 @@ export default {
     deleteComment(comment) {
       this.comment.total_comments--;
       this.comments.splice(this.comments.indexOf(comment), 1);
+      this.$store.dispatch("posts/minTotalComment", this.post);
     },
   },
 };
