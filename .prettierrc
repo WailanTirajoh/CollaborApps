@@ -1,0 +1,7 @@
+{
+  "semi": false,
+  "arrowParens": "always",
+  "singleQuote": true,
+  "endOfLine": "crlf",
+  "trailingComma": "none"
+}
