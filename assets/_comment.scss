@@ -1,0 +1,37 @@
+.left-border {
+  &:before {
+    content: "";
+    width: 0.05rem;
+    background-color: gray;
+    height: 100%;
+    position: absolute;
+    top: -25px;
+    left: -1.5rem;
+    z-index: 0;
+  }
+  li.left-line {
+    &:before {
+      content: "";
+      width: 3.5rem;
+      height: 1rem;
+      position: absolute;
+      top: 0px;
+      left: -1.5rem;
+      border-bottom-left-radius: 0.75rem;
+      border-bottom: 0.05rem solid gray;
+    }
+  }
+}
+.h-left-border {
+  &:before {
+    content: "";
+    width: 1.5rem;
+    height: 1rem;
+    position: absolute;
+    top: 0px;
+    left: -1.5rem;
+    border-bottom-left-radius: 0.75rem;
+    border-bottom: 0.05rem solid gray;
+    border-left: 0.05rem solid gray;
+  }
+}

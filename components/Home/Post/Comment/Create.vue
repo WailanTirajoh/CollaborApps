@@ -3,7 +3,7 @@
     <div class="d-flex align-items-center gap-2">
       <img
         class="img-fluid rounded-circle object-fit-cover"
-        style="width: 2rem; height: 2rem"
+        style="width: 2rem; height: 2rem; z-index: 1"
         :src="$auth.user.avatar"
       />
       <div class="w-100">

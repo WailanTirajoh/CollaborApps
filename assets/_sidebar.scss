@@ -10,7 +10,7 @@
       position: relative;
       &::before {
         content: "";
-        width: 1px;
+        width: 0.5px;
         background-color: $line-color;
         height: 100%;
         position: absolute;
@@ -30,7 +30,7 @@
         &::before {
           content: "";
           width: 1rem;
-          height: 1px;
+          height: 0.5px;
           background-color: $line-color;
           position: absolute;
           top: 15px;

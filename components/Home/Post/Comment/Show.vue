@@ -1,11 +1,11 @@
 <template>
-  <li class="d-flex gap-2 mt-2">
+  <li class="d-flex gap-2 mt-2 position-relative left-line">
     <img
       class="img-fluid rounded-circle object-fit-cover"
-      style="width: 2rem; height: 2rem"
+      style="width: 2rem; height: 2rem; z-index: 1"
       :src="comment.user.avatar"
     />
-    <HomePostCommentSub :comment="comment" />
+    <HomePostCommentSub :post="post" :comment="comment" />
     <div>
       <div class="dropdown">
         <button
@@ -54,10 +54,10 @@ export default {
           var response = await this.$axios.$delete(
             `/post/${this.post.id}/comment/${comment.id}`
           );
-          alert(response.message);
           this.$emit("delete-comment", comment);
         }
       } catch (e) {
+        alert(e.response.data.message);
         console.log(e);
       }
     },

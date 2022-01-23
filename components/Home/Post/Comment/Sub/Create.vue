@@ -1,9 +1,12 @@
 <template>
-  <form class="mt-2" @submit.prevent="createComment">
+  <form
+    class="mt-2 position-relative h-left-border"
+    @submit.prevent="createComment"
+  >
     <div class="d-flex align-items-center gap-2">
       <img
         class="img-fluid rounded-circle object-fit-cover"
-        style="width: 2rem; height: 2rem"
+        style="width: 2rem; height: 2rem; z-index: 1"
         :src="$auth.user.avatar"
       />
       <div class="w-100">
@@ -44,8 +47,7 @@ export default {
           `/comment/${this.comment.id}/subComment`,
           this.form
         );
-        alert(result.message);
-        // this.$emit("add-sub-comment", result.comment);
+        this.$emit("add-comment", result.comment);
       } catch (e) {
         console.log(e);
         this.error = e.response.data.errors;
