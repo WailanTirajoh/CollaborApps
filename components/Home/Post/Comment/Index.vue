@@ -6,7 +6,7 @@
         <div class="text-sm">Like</div>
       </button>
       <button class="btn d-flex align-items-center gap-1" @click="openComment">
-        <font-awesome-icon :icon="['far', 'comments']" />
+        <font-awesome-icon :icon="[isOpen ? 'fas' : 'far', 'comments']" />
         <div class="text-sm">Comment</div>
       </button>
       <button class="btn d-flex align-items-center gap-1">
@@ -16,20 +16,15 @@
     </div>
     <div v-show="isOpen">
       <div v-if="comments">
-        <div v-if="comments.length > 0">
+        <ul class="p-0" v-if="comments.length > 0">
           <div class="my-2" v-for="comment in comments" :key="comment.id">
-            <div class="d-flex gap-2">
-              <img
-                class="img-fluid rounded-circle object-fit-cover"
-                style="width: 2rem; height: 2rem"
-                :src="comment.user.avatar"
-              />
-              <div class="p-2 bg-light-gray rounded-3xl">
-                {{ comment.text }}
-              </div>
-            </div>
+            <HomePostCommentShow
+              :post="post"
+              :comment="comment"
+              @delete-comment="deleteComment"
+            />
           </div>
-        </div>
+        </ul>
         <div class="my-2 text-center" v-else>
           "Seems quiet in here, lets make some noise {{ $auth.user.name }}"
         </div>
@@ -70,6 +65,11 @@ export default {
     },
     addComment(comment) {
       this.comments.push(comment);
+      this.$store.dispatch("posts/addTotalComment", this.post);
+    },
+    deleteComment(comment) {
+      this.comments.splice(this.comments.indexOf(comment), 1);
+      this.$store.dispatch("posts/minTotalComment", this.post);
     },
   },
 };

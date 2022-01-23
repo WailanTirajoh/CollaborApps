@@ -136,15 +136,6 @@
 
 <script>
 export default {
-
-  computed: {
-    totalInvoice() {
-      // return this.$store.state.invoice.totalInvoice
-
-      return this.$store.getters["invoice/getTotalInvoice"]();
-    },
-  },
-
   methods: {
     async logout() {
       try {
@@ -154,20 +145,6 @@ export default {
         console.log(error);
       }
     },
-    incrementTotalInvoice() {
-      this.$store.dispatch(
-        "invoice/setNewTotalMutation",
-        this.totalInvoice + 1
-      );
-    },
-    decrementTotalInvoice() {
-      this.$store.dispatch(
-        "invoice/setNewTotalMutation",
-        this.totalInvoice - 1
-      );
-    },
-
-    async test() {},
   },
 };
 </script>

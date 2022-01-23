@@ -10,10 +10,16 @@ export const mutations = {
     state.posts.splice(state.posts.indexOf(post), 1);
   },
   editPost(state, post) {
-    state.posts[state.posts.findIndex(x => x.id === post.id)] = post;
+    state.posts[state.posts.findIndex(x => x.id == post.id)] = post;
   },
   resetPosts(state) {
     state.posts = [];
+  },
+  addTotalComment(state, post) {
+    state.posts[state.posts.findIndex(x => x.id == post.id)].total_comments++;
+  },
+  minTotalComment(state, post){
+    state.posts[state.posts.findIndex(x => x.id == post.id)].total_comments--;
   }
 }
 
@@ -39,7 +45,14 @@ export const actions = {
   },
   resetPosts({ commit }) {
     commit('resetPosts');
-  }
+  },
+  addTotalComment({ commit }, post) {
+    commit('addTotalComment', post);
+  },
+  minTotalComment({ commit }, post) {
+    commit('minTotalComment', post);
+  },
+
 }
 
 export const getters = {

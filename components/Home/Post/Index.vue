@@ -45,26 +45,36 @@
                   />
                 </button>
                 <ul
-                  class="dropdown-menu dropdown-menu-end"
+                  class="dropdown-menu dropdown-menu-end text-sm text-secondary"
                   aria-labelledby="dropdownMenuButton1"
                 >
-                  <li><a class="dropdown-item text-sm" href="#">Share</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <font-awesome-icon :icon="['far', 'bookmark']" />
+                      Pin
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <font-awesome-icon :icon="['far', 'share-square']" />
+                      Share
+                    </a>
+                  </li>
                   <li>
                     <button
                       type="button"
-                      class="dropdown-item text-sm"
+                      class="dropdown-item"
                       data-bs-toggle="modal"
                       :data-bs-target="`#theModal-${index}`"
                     >
+                      <font-awesome-icon :icon="['far', 'edit']" />
                       Edit
                     </button>
                   </li>
                   <li>
-                    <a
-                      @click="deletePost(post)"
-                      class="dropdown-item text-sm"
-                      href="#"
-                      >Delete</a
+                    <a @click="deletePost(post)" class="dropdown-item" href="#">
+                      <font-awesome-icon :icon="['far', 'trash-alt']" />
+                      Delete</a
                     >
                   </li>
                 </ul>
@@ -74,8 +84,12 @@
           <div class="body">
             {{ post.text }}
           </div>
-          <hr class="mb-0" />
-          <HomePostComment :post="post"/>
+          <div class="d-flex justify-content-between text-sm text-secondary mt-2">
+            <div class="">0 Likes</div>
+            <div class="">{{ post.total_comments }} {{post.total_comments > 1 ? 'comments' : 'comment'}}</div>
+          </div>
+          <hr class="mb-0 mt-1" />
+          <HomePostComment :post="post" />
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="createComment">
+  <form class="mt-2" @submit.prevent="createComment">
     <div class="d-flex align-items-center gap-2">
       <img
         class="img-fluid rounded-circle object-fit-cover"
@@ -24,7 +24,7 @@
 <script>
 export default {
   props: {
-    post: Object,
+    comment: Object,
     url: String,
   },
   data() {
@@ -41,10 +41,11 @@ export default {
       this.form.isProcessing = true;
       try {
         var result = await this.$axios.$post(
-          `/post/${this.post.id}/comment`,
+          `/comment/${this.comment.id}/subComment`,
           this.form
         );
-        this.$emit("add-comment", result.comment);
+        alert(result.message);
+        // this.$emit("add-sub-comment", result.comment);
       } catch (e) {
         console.log(e);
         this.error = e.response.data.errors;
