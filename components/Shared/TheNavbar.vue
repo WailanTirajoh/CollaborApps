@@ -56,7 +56,7 @@
         <div>
           <ul v-if="$auth.loggedIn" class="navbar-nav mb-2 mb-lg-0 gap-2">
             <li class="nav-item">
-              <NuxtLink class="nav-link active" aria-current="page" to="/"
+              <NuxtLink class="nav-link" aria-current="page" to="/"
                 >Beranda</NuxtLink
               >
             </li>

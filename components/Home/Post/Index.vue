@@ -2,7 +2,7 @@
   <div class="row post">
     <div
       v-if="fetching"
-      class="d-flex align-items-center justify-content-center"
+      class="d-flex align-items-center justify-content-center intro-y"
       style="min-height: 300px"
     >
       <DefaultLoading />
