@@ -16,8 +16,11 @@
           :placeholder="`Reply`"
           autocomplete="off"
         />
-        <button class="btn text-sm">
-          <font-awesome-icon class="me-1" :icon="['far', 'paper-plane']" />
+        <button class="btn text-sm" :disabled="form.text == ''">
+          <font-awesome-icon
+            :class="{ 'me-1': true, 'fa-pulse': form.isProcessing }"
+            :icon="['fas', form.isProcessing ? 'spinner' : 'paper-plane']"
+          />
         </button>
       </div>
     </div>
@@ -35,7 +38,7 @@ export default {
   data() {
     return {
       form: {
-        text: null,
+        text: '',
         isProcessing: false
       },
       error: {}
@@ -43,6 +46,7 @@ export default {
   },
   methods: {
     async createComment() {
+      if (this.form.text == '') return
       this.form.isProcessing = true
       try {
         const result = await this.$axios.$post(
@@ -56,7 +60,7 @@ export default {
       this.resetForm()
     },
     resetForm() {
-      this.form.text = null
+      this.form.text = ''
       this.form.isProcessing = false
     }
   }

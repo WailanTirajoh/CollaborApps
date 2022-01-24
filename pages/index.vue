@@ -51,15 +51,18 @@ export default {
       ]
     }
   },
+  beforeDestroy() {
+    this.$echo.leave('post')
+  },
   mounted() {
     this.$echo.channel('post').listen('.created', (e) => {
       this.$store.dispatch('posts/addNewPost', e.post)
       this.$toast
-        .success(`New post created! ${e.post.user.name}: ${e.post.text}`, {
-          position: 'top-center',
+        .success(`New post created by ${e.post.user.name}`, {
+          position: 'top-right',
           Icon: 'check'
         })
-        .goAway(5000)
+        .goAway(10000)
     })
   },
   methods: {

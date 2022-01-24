@@ -5,7 +5,7 @@
     background-color: $comment-background;
     height: 100%;
     position: absolute;
-    top: -25px;
+    top: -45px;
     left: -1.5rem;
     z-index: 0;
   }
@@ -26,9 +26,9 @@
   &:before {
     content: "";
     width: 1.5rem;
-    height: 1rem;
+    height: 4.5rem;
     position: absolute;
-    top: 0px;
+    top: -60px;
     left: -1.5rem;
     border-bottom-left-radius: 0.5rem;
     border-bottom: 0.15rem solid $comment-background;
