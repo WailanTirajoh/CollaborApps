@@ -12,6 +12,7 @@
           v-model="form.text"
           class="text-sm w-100"
           type="text"
+          :disabled="form.isProcessing"
           :errors="error.text"
           :placeholder="`Balas pesan ${nickname}`"
           autocomplete="off"

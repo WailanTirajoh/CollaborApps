@@ -11,6 +11,7 @@
             id="disabledTextInput"
             v-model="form.text"
             type="text"
+            :disabled="form.isProcessing"
             :errors="error.text"
             :placeholder="`Hai ${nickname}, apa yang sedang anda kerjakan?`"
             autocomplete="off"
