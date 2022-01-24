@@ -3,14 +3,14 @@
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-8 col-12">
         <div class="text-center">
-          <h5>Create your account</h5>
+          <h5>Buat akun</h5>
         </div>
         <form
           class="bg-white rounded shadow border p-4 mt-3"
           @submit.prevent="register"
         >
           <div class="mb-3">
-            <label for="name" class="form-label">Full Name</label>
+            <label for="name" class="form-label">Nama lengkap</label>
             <input
               id="name"
               v-model="form.name"
@@ -31,7 +31,7 @@
             />
           </div>
           <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
+            <label for="password" class="form-label">Kata sandi</label>
             <input
               id="password"
               v-model="form.password"
@@ -42,7 +42,7 @@
           </div>
           <div class="mb-3">
             <label for="password_confirmation" class="form-label"
-              >Password Confirmation</label
+              >Konfirmasi</label
             >
             <input
               id="password_confirmation"
@@ -52,15 +52,23 @@
               placeholder="********"
             />
           </div>
-          <div class="d-flex align-items-center justify-content-center gap-3">
-            <FormSubmitButton
-              type="submit"
-              class="btn btn-light border px-4 shadow-sm"
-              :loading="form.isLoading"
-            >
-              Register
-            </FormSubmitButton>
-            <div>or <NuxtLink to="/auth/login">Login</NuxtLink></div>
+          <div class="text-center gap-3">
+            <div class="d-flex justify-content-center mb-2">
+              <FormSubmitButton
+                type="submit"
+                class="btn btn-light border px-4 shadow-sm w-100"
+                :loading="form.isLoading"
+              >
+                Daftar
+              </FormSubmitButton>
+            </div>
+            <hr />
+            <div class="text-sm">
+              <div>Sudah memiliki akun?</div>
+              <div>
+                <NuxtLink to="/auth/login">Masuk</NuxtLink>
+              </div>
+            </div>
           </div>
         </form>
       </div>
@@ -70,6 +78,7 @@
 
 <script>
 export default {
+  layout: 'login',
   data() {
     return {
       form: {

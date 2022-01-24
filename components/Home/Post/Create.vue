@@ -24,7 +24,7 @@
           :loading="form.isProcessing"
           :disabled="!form.text"
         >
-          Send
+          Kirim
         </FormSubmitButton>
       </div>
     </form>
@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       form: {
-        text: null,
+        text: '',
         isProcessing: false
       },
       error: {}
@@ -50,7 +50,7 @@ export default {
   methods: {
     async createPost() {
       this.form.isProcessing = true
-      if (this.form.text == null) return
+      if (this.form.text == '') return
       try {
         await this.$axios.$post('/post', this.form)
       } catch (e) {
@@ -59,7 +59,7 @@ export default {
       this.resetForm()
     },
     resetForm() {
-      this.form.text = null
+      this.form.text = ''
       this.form.isProcessing = false
     }
   }

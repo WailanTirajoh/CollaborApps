@@ -35,11 +35,6 @@
             </li>
           </ul>
         </div>
-        <div v-else class="nav-item">
-          <NuxtLink to="/auth/login" class="nav-link text-decoration-none"
-            >Masuk</NuxtLink
-          >
-        </div>
       </div>
       <button
         class="navbar-toggler"
@@ -53,40 +48,59 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div id="navbarSupportedContent" class="collapse navbar-collapse">
-        <div>
-          <ul v-if="$auth.loggedIn" class="navbar-nav mb-2 mb-lg-0 gap-2">
-            <li class="nav-item">
-              <NuxtLink class="nav-link" aria-current="page" to="/"
-                >Beranda</NuxtLink
-              >
-            </li>
-            <li class="nav-item">
-              <NuxtLink
-                class="nav-link text-transform-capitalize"
-                to="/projects"
-                >Projek</NuxtLink
-              >
-            </li>
-            <li class="nav-item">
-              <NuxtLink class="nav-link text-transform-capitalize" to="/clients"
-                >Klien</NuxtLink
-              >
-            </li>
-            <li class="nav-item">
-              <NuxtLink class="nav-link text-transform-capitalize" to="/teams"
-                >Tim</NuxtLink
-              >
-            </li>
-          </ul>
+        <div v-if="!$auth.loggedIn">
+          <div class="nav-item">
+            <NuxtLink to="/auth/login" class="nav-link text-decoration-none"
+              >Masuk</NuxtLink
+            >
+          </div>
+          <div class="nav-item">
+            <NuxtLink to="/auth/register" class="nav-link text-decoration-none"
+              >Daftar</NuxtLink
+            >
+          </div>
         </div>
+
+        <ul v-if="$auth.loggedIn" class="navbar-nav mb-2 mb-lg-0 gap-2">
+          <li class="nav-item">
+            <NuxtLink class="nav-link" aria-current="page" to="/"
+              >Beranda</NuxtLink
+            >
+          </li>
+          <li class="nav-item">
+            <NuxtLink class="nav-link text-transform-capitalize" to="/projects"
+              >Projek</NuxtLink
+            >
+          </li>
+          <li class="nav-item">
+            <NuxtLink class="nav-link text-transform-capitalize" to="/clients"
+              >Klien</NuxtLink
+            >
+          </li>
+          <li class="nav-item">
+            <NuxtLink class="nav-link text-transform-capitalize" to="/teams"
+              >Tim</NuxtLink
+            >
+          </li>
+        </ul>
+
         <div class="d-flex ms-auto">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li v-if="!$auth.loggedIn" class="nav-item show-desktop">
+          <ul v-if="!$auth.loggedIn" class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item show-desktop">
               <NuxtLink to="/auth/login" class="nav-link text-decoration-none"
                 >Masuk</NuxtLink
               >
             </li>
-            <li v-else class="nav-item dropdown show-desktop">
+            <li class="nav-item show-desktop">
+              <NuxtLink
+                to="/auth/register"
+                class="nav-link text-decoration-none"
+                >Daftar</NuxtLink
+              >
+            </li>
+          </ul>
+          <ul v-else class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown show-desktop">
               <a
                 id="navbarDropdown"
                 class="dropdown-toggle text-white"

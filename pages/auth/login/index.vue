@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-8 col-12">
         <div class="text-center">
-          <h5>Please login to start the session</h5>
+          <h5>Login untuk memulai sesi</h5>
         </div>
         <form
           class="bg-white rounded shadow border p-3 mt-3"
@@ -20,7 +20,7 @@
               placeholder="johndoe@example.example"
             />
             <div id="email-help" class="form-text">
-              We'll never share your email with anyone else.
+              Kami tidak akan menyebarkan email anda kepada siapapun.
             </div>
           </div>
           <div class="mb-3">
@@ -40,7 +40,7 @@
               type="checkbox"
               class="form-check-input"
             />
-            <label class="form-check-label" for="remember">Remember me</label>
+            <label class="form-check-label" for="remember">Ingat saya</label>
           </div>
           <div class="d-flex align-items-center justify-content-center gap-3">
             <div class="text-center w-100">
@@ -50,16 +50,14 @@
                   type="submit"
                   :loading="form.isProcessing"
                 >
-                  Login
+                  Masuk
                 </FormSubmitButton>
               </div>
               <!-- <div>or</div> -->
               <hr />
               <div>
-                <div class="text-sm">Doesnt have account?</div>
-                <NuxtLink class="text-sm" to="/auth/register"
-                  >Register</NuxtLink
-                >
+                <div class="text-sm">Tidak memiliki akun?</div>
+                <NuxtLink class="text-sm" to="/auth/register">Daftar</NuxtLink>
               </div>
             </div>
           </div>
