@@ -20,9 +20,6 @@ export default {
       type: Object,
       required: true
     }
-  },
-  methods: {
-
   }
 }
 </script>
