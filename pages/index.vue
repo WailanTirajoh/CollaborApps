@@ -2,11 +2,13 @@
   <div>
     <div class="row sidebar" style="min-height: 60vh">
       <div class="px-1 col-lg-3 show-desktop">
-        <div class="rounded shadow-sm px-2 py-2 bg-white mb-2 text-center">
+        <div
+          class="rounded shadow-sm px-2 py-2 bg-white mb-2 text-center intro-y"
+        >
           <font-awesome-icon :icon="['fas', 'project-diagram']" /> Recent
           Projects
         </div>
-        <HomeSideProject />
+        <HomeSideProject class="intro-y" />
       </div>
       <div
         class="px-sm-1 col-12"
@@ -17,7 +19,7 @@
       >
         <div class="row">
           <div class="col-lg-12">
-            <HomePostCreate />
+            <HomePostCreate class="intro-y" />
           </div>
           <div class="col-lg-12">
             <HomePost />

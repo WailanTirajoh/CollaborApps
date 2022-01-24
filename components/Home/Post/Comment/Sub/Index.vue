@@ -79,14 +79,15 @@
             :key="thecomment.id"
             :post="post"
             :comment="thecomment"
+            class="intro-y"
             @delete-comment="deleteComment"
           ></HomePostCommentShow>
         </ul>
-        <div v-else class="text-center text-secondary mb-2">
+        <div v-else class="text-center text-secondary mb-2 intro-y">
           <i class="text-sm"> No comment, be the first to comment </i>
         </div>
       </div>
-      <div v-else class="left-border">
+      <div v-else class="left-border intro-y">
         <DefaultLoading class="text-sm mb-2" message="Fetching comment" />
       </div>
       <HomePostCommentSubCreate :comment="comment" @add-comment="addComment" />

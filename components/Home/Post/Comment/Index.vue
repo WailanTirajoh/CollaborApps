@@ -23,7 +23,7 @@
     <div v-show="isOpen">
       <div v-if="comments">
         <ul v-if="comments.length > 0" class="p-0 m-0">
-          <div v-for="comment in comments" :key="comment.id" class="">
+          <div v-for="comment in comments" :key="comment.id" class="intro-y">
             <HomePostCommentShow
               :post="post"
               :comment="comment"
@@ -33,14 +33,14 @@
             />
           </div>
         </ul>
-        <div v-else class="my-2 text-center">
+        <div v-else class="my-2 text-center intro-y">
           <i class="text-sm">
             "Seems quiet in here, be the first to comment"
           </i>
         </div>
       </div>
       <div v-else>
-        <DefaultLoading class="text-sm" message="Fetching comment" />
+        <DefaultLoading class="text-sm intro-y" message="Fetching comment" />
       </div>
       <HomePostCommentCreate :post="post" @add-comment="addComment" />
     </div>

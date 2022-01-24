@@ -152,7 +152,7 @@ export default {
   color: white;
 }
 
-.d-header-home {
-  background-color: rgba(2, 1, 10, var(--tw-bg-opacity));
-}
+// .d-header-home {
+//   background-color: rgba(2, 1, 10, var(--tw-bg-opacity));
+// }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div
     class="px-1 position-fixed show-desktop chat-box bg-blizard-blue shadow px-2 py-2 bg-white"
+    style="z-index: 1000"
     :class="{ pinned: isPinned }"
   >
     <div class="h-100">

@@ -1,18 +1,22 @@
-.nav-item {
-  .nav-link {
-    border-bottom: 0rem solid $primary-color;
-    transition: all 0.35s ease;
-    border-radius: 0rem;
-    font-weight: 100;
-    &:hover {
-      border-radius: 0.15rem;
-      border-bottom: 2px solid white;
+.navbar {
+  .nav-item {
+    .nav-link {
+      border-bottom: 0rem solid $primary-color;
+      transition: all 0.35s ease;
+      border-radius: 0rem;
+      font-weight: 100;
+      &:hover {
+        border-radius: 0.15rem;
+        border-bottom: 2px solid white;
+        color: rgba(229, 231, 235, var(--tw-text-opacity)) !important;
+      }
+    }
+    .nuxt-link-exact-active {
       color: rgba(229, 231, 235, var(--tw-text-opacity)) !important;
+      font-weight: 600;
+      border-bottom: 2px solid white;
     }
   }
-  .nuxt-link-exact-active {
-    color: rgba(229, 231, 235, var(--tw-text-opacity)) !important;
-    font-weight: 600;
-    border-bottom: 2px solid white;
-  }
+
+  background-color: $main-color;
 }

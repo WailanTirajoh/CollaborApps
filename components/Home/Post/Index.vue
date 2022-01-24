@@ -8,7 +8,11 @@
       <DefaultLoading />
     </div>
     <div v-else>
-      <div v-for="(post, index) in posts" :key="index" class="col-lg-12">
+      <div
+        v-for="(post, index) in posts"
+        :key="index"
+        class="col-lg-12 intro-y"
+      >
         <DefaultModal :id="index">
           <HomePostEdit :post="post" />
         </DefaultModal>

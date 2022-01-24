@@ -5,11 +5,11 @@
     display: none;
   }
   &-thumb {
-    background: $line-color;
+    background: $main-color;
     border-radius: 100vh;
     border: 0.125rem solid white;
     &:hover {
-      background: #a0aec0;
+      background: $line-color;
     }
   }
 }

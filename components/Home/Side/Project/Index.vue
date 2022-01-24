@@ -177,12 +177,10 @@
         </ul>
       </li>
       <li class="position-sticky bottom-0">
-        <NuxtLink to="/my-work">
-          <div class="side-link mt-2 text-center bg-dark-gray text-white">
-            <font-awesome-icon :icon="['fas', 'plus']" />
-            Add More Project
-          </div>
-        </NuxtLink>
+        <button class="btn w-100 text-sm mt-2 text-center bg-button text-white">
+          <font-awesome-icon :icon="['fas', 'plus']" />
+          Add More Project
+        </button>
       </li>
     </ul>
   </div>
