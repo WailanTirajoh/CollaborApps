@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-8 col-12">
         <div class="text-center">
-          <h5>Please login to start the session {{ error.email }}</h5>
+          <h5>Please login to start the session</h5>
         </div>
         <form
           class="bg-white rounded shadow border p-3 mt-3"
@@ -15,7 +15,7 @@
               v-model="form.email"
               type="email"
               label="Email"
-              :errors="error.email"
+              :errors="errors.email"
               aria-describedby="email-help"
               placeholder="johndoe@example.example"
             />
@@ -29,7 +29,7 @@
               v-model="form.password"
               type="password"
               label="Password"
-              :errors="error.password"
+              :errors="errors.password"
               placeholder="*********"
             />
           </div>
@@ -81,8 +81,9 @@ export default {
         remember: false,
         isProcessing: false
       },
-      error: {
-        email: null
+      errors: {
+        email: null,
+        password: null
       }
     }
   },
@@ -106,7 +107,7 @@ export default {
           data: this.form
         })
       } catch (e) {
-        this.error.email = e.response.data.errors.email[0]
+        this.errors = e.response.data.errors
       }
       this.form.isProcessing = false
     }

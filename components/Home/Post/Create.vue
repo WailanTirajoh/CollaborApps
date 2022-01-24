@@ -45,9 +45,9 @@ export default {
   methods: {
     async createPost() {
       this.form.isProcessing = true
+      if (this.form.text == null) return
       try {
-        const result = await this.$axios.$post('/post', this.form)
-        this.$emit('push-post', result.post)
+        await this.$axios.$post('/post', this.form)
       } catch (e) {
         this.error = e.response.data.errors
       }

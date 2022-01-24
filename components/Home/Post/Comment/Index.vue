@@ -1,7 +1,10 @@
 <template>
   <div class="">
     <div class="d-flex justify-content-between text-secondary">
-      <button class="btn btn-sm d-flex align-items-center gap-1">
+      <button
+        class="btn btn-sm d-flex align-items-center gap-1"
+        @click="likePost"
+      >
         <font-awesome-icon :icon="['far', 'thumbs-up']" />
         <div class="text-sm">Like</div>
       </button>
@@ -31,7 +34,9 @@
           </div>
         </ul>
         <div v-else class="my-2 text-center">
-          "Seems quiet in here, lets make some noise {{ $auth.user.name }}"
+          <i class="text-sm">
+            "Seems quiet in here, be the first to comment"
+          </i>
         </div>
       </div>
       <div v-else>
@@ -61,6 +66,20 @@ export default {
       try {
         const response = await this.$axios.$get(`/post/${this.post.id}/comment`)
         this.comments = response.comments
+      } catch (e) {}
+    },
+    async likePost() {
+      try {
+        const response = await this.$axios.$post(
+          `/post/${this.post.id}/react`,
+          { react_id: 1 }
+        )
+        if (response.like) {
+          this.$store.dispatch('posts/addTotalReacts', this.post)
+        } else {
+          this.$store.dispatch('posts/minTotalReacts', this.post)
+        }
+        alert(response.message)
       } catch (e) {}
     },
     openComment() {

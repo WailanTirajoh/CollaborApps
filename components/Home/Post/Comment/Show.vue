@@ -6,47 +6,6 @@
       :src="comment.user.avatar"
     />
     <HomePostCommentSub :post="post" :comment="comment" />
-    <div>
-      <div class="dropdown">
-        <button
-          id="dropdownMenuButton1"
-          class="btn"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <font-awesome-icon class="text-sm" :icon="['fas', 'ellipsis-h']" />
-        </button>
-        <ul
-          v-if="comment.user.id == $auth.user.id"
-          class="dropdown-menu"
-          aria-labelledby="dropdownMenuButton1"
-        >
-          <li>
-            <a
-              class="dropdown-item text-sm"
-              href="#"
-              @click="deleteComment(comment)"
-            >
-              <font-awesome-icon
-                class="me-1"
-                :icon="['far', 'trash-alt']"
-              />Delete</a
-            >
-          </li>
-        </ul>
-        <ul v-else class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li>
-            <a class="dropdown-item text-sm" href="#">
-              <font-awesome-icon
-                :icon="['fas', 'bullhorn']"
-                class="me-1 color-red"
-              />Report</a
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
   </li>
 </template>
 

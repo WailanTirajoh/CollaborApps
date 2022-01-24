@@ -1,21 +1,24 @@
 <template>
   <form @submit.prevent="createComment">
-    <div class="d-flex align-items-center gap-2 my-2">
+    <div class="d-flex align-items-center gap-2 mb-2">
       <img
         class="img-fluid rounded-circle object-fit-cover"
         style="width: 2rem; height: 2rem; z-index: 1"
         :src="$auth.user.avatar"
       />
-      <div class="w-100">
+      <div class="w-100 d-flex">
         <FormInput
           id="disabledTextInput"
           v-model="form.text"
-          class="text-sm"
+          class="text-sm w-100"
           type="text"
           :errors="error.text"
           :placeholder="`Reply`"
           autocomplete="off"
         />
+        <button class="btn text-sm">
+          <font-awesome-icon class="me-1" :icon="['far', 'paper-plane']" />
+        </button>
       </div>
     </div>
   </form>

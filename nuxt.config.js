@@ -33,7 +33,19 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@nuxtjs/fontawesome'
+    '@nuxtjs/fontawesome',
+    '@nuxtjs/toast',
+    [
+      '@nuxtjs/laravel-echo',
+      {
+        broadcaster: 'pusher',
+        key: 'localasdf',
+        wsHost: 'localhost',
+        wsPort: 6001,
+        forceTLS: false,
+        disableStats: true
+      }
+    ]
     // '@nuxtjs/eslint-module'
   ],
 
@@ -57,10 +69,6 @@ export default {
           },
           user: {
             url: '/api/user'
-          },
-          updateProfile: {
-            url: '/api/user/update',
-            method: 'POST'
           }
         },
         user: {
@@ -91,5 +99,22 @@ export default {
     height: '5px',
     duration: 1000,
     continuous: true
+  },
+  echo: {
+    plugins: ['~/plugins/echo.js']
+  },
+
+  toast: {
+    position: 'top-center',
+    register: [
+      // Register custom toasts
+      {
+        name: 'my-error',
+        message: 'Oops...Something went wrong',
+        options: {
+          type: 'error'
+        }
+      }
+    ]
   }
 }

@@ -1,12 +1,15 @@
 /**
  * state.posts [data structure]
- * {
- *  'id':int,
- *  'text':string,
- *  'total_comments':int,
- *  'created_at':string,
- *  'user':Object,
- * };
+ * [
+ *  {
+ *    'id':int,
+ *    'text':string,
+ *    'total_comments':int,
+ *    'created_at':string,
+ *    'user':Object,
+ *  }
+ * ]
+ * ;
  *
  * user [data structure]
  * {
@@ -20,7 +23,7 @@ export const state = () => ({
 })
 
 export const mutations = {
-  addPosts(state, posts) {
+  addNewPost(state, posts) {
     state.posts.unshift(...posts)
   },
   removePost(state, post) {
@@ -43,6 +46,18 @@ export const mutations = {
     if (thepost) {
       post.total_comments--
     }
+  },
+  addTotalReacts(state, post) {
+    const thepost = state.posts[state.posts.findIndex((x) => x.id == post.id)]
+    if (thepost) {
+      post.total_reacts++
+    }
+  },
+  minTotalReacts(state, post) {
+    const thepost = state.posts[state.posts.findIndex((x) => x.id == post.id)]
+    if (thepost) {
+      post.total_reacts--
+    }
   }
 }
 
@@ -51,12 +66,12 @@ export const actions = {
     commit('resetPosts')
     try {
       const result = await this.$axios.$get('/post')
-      commit('addPosts', result.posts)
+      commit('addNewPost', result.posts)
       return result
     } catch (e) {}
   },
   addNewPost({ commit }, post) {
-    commit('addPosts', [post])
+    commit('addNewPost', [post])
   },
   removePost({ commit }, post) {
     commit('removePost', post)
@@ -72,6 +87,12 @@ export const actions = {
   },
   minTotalComment({ commit }, post) {
     commit('minTotalComment', post)
+  },
+  addTotalReacts({ commit }, post) {
+    commit('addTotalReacts', post)
+  },
+  minTotalReacts({ commit }, post) {
+    commit('minTotalReacts', post)
   }
 }
 

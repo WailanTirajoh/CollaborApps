@@ -11,13 +11,13 @@
       <div
         class="px-sm-1 col-12"
         :class="{
-          'col-lg-7': !$store.state.chat.isPinned,
+          'col-lg-8': !$store.state.chat.isPinned,
           'col-lg-6 pe-sm-4': $store.state.chat.isPinned
         }"
       >
         <div class="row">
           <div class="col-lg-12">
-            <HomePostCreate @push-post="addPost" />
+            <HomePostCreate />
           </div>
           <div class="col-lg-12">
             <HomePost />
@@ -25,27 +25,6 @@
         </div>
       </div>
       <HomeSideChat />
-    </div>
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-      <div
-        id="liveToast"
-        class="toast"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-      >
-        <div class="toast-header">
-          <strong class="me-auto">Bootstrap</strong>
-          <small>11 mins ago</small>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="toast"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="toast-body">Hello, world! This is a toast message.</div>
-      </div>
     </div>
   </div>
 </template>
@@ -70,11 +49,22 @@ export default {
       ]
     }
   },
+  mounted() {
+    this.$echo.channel('post').listen('.created', (e) => {
+      this.$store.dispatch('posts/addNewPost', e.post)
+      this.$toast
+        .success(`New post created! ${e.post.user.name}: ${e.post.text}`, {
+          position: 'top-center',
+          Icon: 'check'
+        })
+        .goAway(5000)
+    })
+  },
   methods: {
-    ...mapActions(['posts/addNewPost']),
-    addPost(post) {
-      this.$store.dispatch('posts/addNewPost', post)
-    }
+    ...mapActions(['posts/addNewPost'])
+    // addPost(post) {
+    //   this.$store.dispatch('posts/addNewPost', post)
+    // }
   }
 }
 </script>

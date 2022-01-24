@@ -1,11 +1,56 @@
 <template>
-  <div class="w-100">
-    <div class="p-2 bg-light-gray rounded-3xl">
-      <div class="fw-medium text-sm">
-        {{ comment.user.name }}
+  <div class="w-100 position-relative">
+    <div class="d-flex">
+      <div class="p-2 bg-light-gray rounded-3xl w-100">
+        <div class="fw-medium text-sm">
+          {{ comment.user.name }}
+        </div>
+        <div class="text-sm">
+          {{ comment.text }}
+        </div>
       </div>
-      <div class="text-sm">
-        {{ comment.text }}
+      <div class="dropdown">
+        <button
+          id="dropdownMenuButton1"
+          class="btn"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <font-awesome-icon class="text-sm" :icon="['fas', 'ellipsis-h']" />
+        </button>
+        <ul
+          v-if="comment.user.id == $auth.user.id"
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="dropdownMenuButton1"
+        >
+          <li>
+            <a
+              class="dropdown-item text-sm"
+              href="#"
+              @click="deleteComment(comment)"
+            >
+              <font-awesome-icon
+                class="me-1"
+                :icon="['far', 'trash-alt']"
+              />Delete</a
+            >
+          </li>
+        </ul>
+        <ul
+          v-else
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="dropdownMenuButton1"
+        >
+          <li>
+            <a class="dropdown-item text-sm" href="#">
+              <font-awesome-icon
+                :icon="['fas', 'bullhorn']"
+                class="me-1 color-red"
+              />Report</a
+            >
+          </li>
+        </ul>
       </div>
     </div>
     <div class="text-xs text-secondary d-flex gap-2 px-2 py-1">
@@ -37,8 +82,8 @@
             @delete-comment="deleteComment"
           ></HomePostCommentShow>
         </ul>
-        <div v-else class="text-sm text-center text-secondary mb-2">
-          No comment, be the first to comment
+        <div v-else class="text-center text-secondary mb-2">
+          <i class="text-sm"> No comment, be the first to comment </i>
         </div>
       </div>
       <div v-else class="left-border">

@@ -1,8 +1,8 @@
 .left-border {
   &:before {
     content: "";
-    width: 0.05rem;
-    background-color: gray;
+    width: 0.15rem;
+    background-color: $comment-background;
     height: 100%;
     position: absolute;
     top: -25px;
@@ -12,13 +12,13 @@
   li.left-line {
     &:before {
       content: "";
-      width: 3.5rem;
+      width: 1.5rem;
       height: 1rem;
       position: absolute;
       top: 0px;
       left: -1.5rem;
       border-bottom-left-radius: 0.75rem;
-      border-bottom: 0.05rem solid gray;
+      border-bottom: 0.15rem solid $comment-background;
     }
   }
 }
@@ -31,7 +31,7 @@
     top: 0px;
     left: -1.5rem;
     border-bottom-left-radius: 0.5rem;
-    border-bottom: 0.05rem solid gray;
-    border-left: 0.05rem solid gray;
+    border-bottom: 0.15rem solid $comment-background;
+    border-left: 0.15rem solid $comment-background;
   }
 }

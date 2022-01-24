@@ -13,28 +13,28 @@
             <div class="col-lg-12">
               <div class="d-flex justify-content-center position-relative">
                 <div class="position-absolute bottom-0 mb-2">
-                  <button
+                  <div
                     class="btn btn-sm btn-light"
                     @click.prevent="deleteProfilePhoto"
                   >
                     Delete Photo
-                  </button>
+                  </div>
                 </div>
                 <img :src="url" class="img-fluid w-50 mb-2 rounded" />
               </div>
               <input
                 type="file"
                 class="form-control"
-                :class="{ 'is-invalid': error.avatar }"
+                :class="{ 'is-invalid': errors.avatar }"
                 @change="onFileChange"
                 @input="form.avatar = $event.target.files[0]"
               />
               <div
-                v-if="error.avatar"
+                v-if="errors.avatar"
                 :id="`${id}Feedback`"
                 class="invalid-feedback"
               >
-                {{ error.avatar[0] }}
+                {{ errors.avatar[0] }}
               </div>
             </div>
             <div class="col-lg-12">
@@ -43,7 +43,7 @@
                 v-model="form.name"
                 type="text"
                 label="Name"
-                :errors="error.name"
+                :errors="errors.name"
                 placeholder="John Doe"
               />
             </div>
@@ -78,6 +78,7 @@ export default {
       form: {
         name: this.$auth.user.name,
         avatar: null,
+        _method: 'PUT',
         isProcessing: false
       },
       errors: {},
@@ -107,6 +108,7 @@ export default {
       try {
         const formData = new FormData()
         formData.append('name', this.form.name)
+        formData.append('_method', this.form._method)
         if (this.form.avatar) {
           formData.append('avatar', this.form.avatar)
         }
@@ -121,7 +123,6 @@ export default {
         if (e.response.data) {
           this.errors = e.response.data.errors
         }
-        // this.error.avatar = e.response.data.errors;
       }
       this.form.isProcessing = false
     },
