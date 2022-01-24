@@ -13,7 +13,7 @@
           class="text-sm w-100"
           type="text"
           :errors="error.text"
-          :placeholder="`Reply`"
+          :placeholder="`Balas pesan ${nickname}`"
           autocomplete="off"
         />
         <button class="btn text-sm" :disabled="form.text == ''">
@@ -42,6 +42,11 @@ export default {
         isProcessing: false
       },
       error: {}
+    }
+  },
+  computed: {
+    nickname() {
+      return this.comment.user.name.split(' ')[0]
     }
   },
   methods: {

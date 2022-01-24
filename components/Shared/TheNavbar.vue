@@ -2,8 +2,10 @@
   <nav
     class="navbar navbar-expand-lg navbar-dark shadow d-header-home fixed-top text-center p-sm-0"
   >
-    <div class="container-fluid">
-      <NuxtLink class="navbar-brand text-white" to="/">CollaborApps</NuxtLink>
+    <div class="container-fluid px-3">
+      <NuxtLink class="navbar-brand text-white fw-bold" to="/"
+        >KerjaBareng</NuxtLink
+      >
       <div class="ms-auto hide-desktop me-4">
         <div v-if="$auth.loggedIn" class="nav-item dropdown">
           <a
@@ -23,19 +25,19 @@
             class="dropdown-menu dropdown-menu-end"
             aria-labelledby="navbarDropdown"
           >
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Setting</a></li>
+            <li><a class="dropdown-item" href="#">Profil</a></li>
+            <li><a class="dropdown-item" href="#">Pengaturan</a></li>
             <li><hr class="dropdown-divider" /></li>
             <li>
               <a class="dropdown-item" href="#" @click.prevent="logout()"
-                >Logout</a
+                >Keluar</a
               >
             </li>
           </ul>
         </div>
         <div v-else class="nav-item">
           <NuxtLink to="/auth/login" class="nav-link text-decoration-none"
-            >Login</NuxtLink
+            >Masuk</NuxtLink
           >
         </div>
       </div>
@@ -55,24 +57,24 @@
           <ul v-if="$auth.loggedIn" class="navbar-nav mb-2 mb-lg-0 gap-2">
             <li class="nav-item">
               <NuxtLink class="nav-link active" aria-current="page" to="/"
-                >Home</NuxtLink
+                >Beranda</NuxtLink
               >
             </li>
             <li class="nav-item">
               <NuxtLink
                 class="nav-link text-transform-capitalize"
                 to="/projects"
-                >projects</NuxtLink
+                >Projek</NuxtLink
               >
             </li>
             <li class="nav-item">
               <NuxtLink class="nav-link text-transform-capitalize" to="/clients"
-                >clients</NuxtLink
+                >Klien</NuxtLink
               >
             </li>
             <li class="nav-item">
               <NuxtLink class="nav-link text-transform-capitalize" to="/teams"
-                >teams</NuxtLink
+                >Tim</NuxtLink
               >
             </li>
           </ul>
@@ -81,7 +83,7 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li v-if="!$auth.loggedIn" class="nav-item show-desktop">
               <NuxtLink to="/auth/login" class="nav-link text-decoration-none"
-                >Login</NuxtLink
+                >Masuk</NuxtLink
               >
             </li>
             <li v-else class="nav-item dropdown show-desktop">
@@ -104,13 +106,13 @@
               >
                 <li>
                   <NuxtLink class="dropdown-item" to="/auth/setting"
-                    >Setting</NuxtLink
+                    >Pengaturan</NuxtLink
                   >
                 </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
                   <a class="dropdown-item" href="#" @click.prevent="logout()"
-                    >Logout</a
+                    >Keluar</a
                   >
                 </li>
               </ul>
@@ -139,10 +141,10 @@ export default {
 .d-header,
 .d-header-home {
   border-style: none;
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  --tw-bg-opacity: 1;
-  --tw-bg-opacity: 0.85;
+  // -webkit-backdrop-filter: blur(12px);
+  // backdrop-filter: blur(12px);
+  // --tw-bg-opacity: 1;
+  // --tw-bg-opacity: 0.85;
   height: var(--header-height);
   position: sticky;
   position: -webkit-sticky;

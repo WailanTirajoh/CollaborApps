@@ -1,13 +1,13 @@
 <template>
   <div
     class="px-1 position-fixed show-desktop chat-box bg-blizard-blue shadow px-2 py-2 bg-white"
-    style="z-index: 1000"
+    style="z-index: 10"
     :class="{ pinned: isPinned }"
   >
     <div class="h-100">
       <div class="d-flex justify-content-between align-items-center">
         <div>
-          <h3 class="my-auto">Chat</h3>
+          <h3 class="my-auto">Pesan</h3>
         </div>
         <button class="btn me-2" @click="togglePin">
           <div v-if="isPinned">

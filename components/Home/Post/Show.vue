@@ -10,10 +10,10 @@
         />
       </div>
       <div class="mid ps-3">
-        <div class="fw-bold">
+        <div class="fw-bold mb-1">
           {{ post.user.name }}
         </div>
-        <div class="text-sm text-secondary" style="margin-top: -4px">
+        <div class="text-xs text-secondary" style="margin-top: -4px">
           {{ post.created_at }}
         </div>
       </div>
@@ -42,7 +42,7 @@
             <li>
               <a class="dropdown-item" href="#">
                 <font-awesome-icon :icon="['far', 'share-square']" />
-                Share
+                Bagikan
               </a>
             </li>
             <li>
@@ -52,13 +52,13 @@
                 data-bs-toggle="modal"
               >
                 <font-awesome-icon :icon="['far', 'edit']" />
-                Edit
+                Ubah
               </button>
             </li>
             <li>
               <a class="dropdown-item" href="#" @click="deletePost(post)">
                 <font-awesome-icon :icon="['far', 'trash-alt']" />
-                Delete</a
+                Hapus</a
               >
             </li>
           </ul>
@@ -72,7 +72,7 @@
                 <font-awesome-icon
                   :icon="['fas', 'bullhorn']"
                   class="me-1 color-red"
-                />Report</a
+                />Laporkan</a
               >
             </li>
           </ul>
@@ -82,11 +82,11 @@
     <div class="body">
       {{ post.text }}
     </div>
-    <div class="d-flex justify-content-between text-sm text-secondary mt-2">
-      <div class="">{{ post.total_reacts }} Likes</div>
+    <div class="d-flex justify-content-between text-xs text-secondary mt-2">
+      <div class="">{{ post.total_reacts }} Suka</div>
       <div class="">
         {{ post.total_comments }}
-        {{ post.total_comments > 1 ? 'comments' : 'comment' }}
+        Komentar
       </div>
     </div>
     <hr class="my-1" />

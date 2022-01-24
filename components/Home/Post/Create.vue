@@ -12,7 +12,7 @@
             v-model="form.text"
             type="text"
             :errors="error.text"
-            :placeholder="`Hi ${$auth.user.name}, what are you thinking right now?`"
+            :placeholder="`Hai ${nickname}, apa yang sedang anda kerjakan?`"
             autocomplete="off"
           />
         </div>
@@ -40,6 +40,11 @@ export default {
         isProcessing: false
       },
       error: {}
+    }
+  },
+  computed: {
+    nickname() {
+      return this.$auth.user.name.split(' ')[0]
     }
   },
   methods: {

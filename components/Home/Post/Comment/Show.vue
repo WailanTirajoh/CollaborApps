@@ -22,18 +22,7 @@ export default {
     }
   },
   methods: {
-    async deleteComment(comment) {
-      try {
-        if (confirm('Are you sure want to delete this comment?')) {
-          await this.$axios.$delete(
-            `/post/${this.post.id}/comment/${comment.id}`
-          )
-          this.$emit('delete-comment', comment)
-        }
-      } catch (e) {
-        alert(e.response.data.message)
-      }
-    }
+
   }
 }
 </script>

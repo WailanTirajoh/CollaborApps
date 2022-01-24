@@ -33,7 +33,7 @@
               <font-awesome-icon
                 class="me-1"
                 :icon="['far', 'trash-alt']"
-              />Delete</a
+              />Hapus</a
             >
           </li>
         </ul>
@@ -47,21 +47,21 @@
               <font-awesome-icon
                 :icon="['fas', 'bullhorn']"
                 class="me-1 color-red"
-              />Report</a
+              />Laporkan</a
             >
           </li>
         </ul>
       </div>
     </div>
     <div class="text-xs text-secondary d-flex gap-2 px-2 py-1">
-      <div class="fw-bold">Like</div>
+      <div class="fw-bold">Suka</div>
       <span class="">·</span>
       <div
         class="fw-bold cursor-pointer noselect"
         :class="{ 'fw-bold text-black ': isOpen }"
         @click="openComment"
       >
-        Comment
+        Komentar
         <span v-if="comment.total_comments > 0"
           >({{ comment.total_comments }})</span
         >
@@ -84,7 +84,7 @@
           ></HomePostCommentShow>
         </ul>
         <div v-else class="text-center text-secondary mb-2 intro-y">
-          <i class="text-sm"> No comment, be the first to comment </i>
+          <i class="text-sm"> Tidak ada komentar, jadilah yang pertama </i>
         </div>
       </div>
       <div v-else class="left-border intro-y">
@@ -133,10 +133,17 @@ export default {
       this.comment.total_comments++
       this.$store.dispatch('posts/addTotalComment', this.post)
     },
-    deleteComment(comment) {
-      this.comments.splice(this.comments.indexOf(comment), 1)
-      this.comment.total_comments--
-      this.$store.dispatch('posts/minTotalComment', this.post)
+    async deleteComment(comment) {
+      try {
+        if (confirm('Are you sure want to delete this comment?')) {
+          await this.$axios.$delete(
+            `/post/${this.post.id}/comment/${comment.id}`
+          )
+          this.$emit('delete-comment', comment)
+        }
+      } catch (e) {
+        alert(e.response.data.message)
+      }
     }
   }
 }

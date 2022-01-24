@@ -179,7 +179,7 @@
       <li class="position-sticky bottom-0">
         <button class="btn w-100 text-sm mt-2 text-center bg-button text-white">
           <font-awesome-icon :icon="['fas', 'plus']" />
-          Add More Project
+          Tambah Projek Baru
         </button>
       </li>
     </ul>

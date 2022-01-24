@@ -71,6 +71,7 @@
 
 <script>
 export default {
+  layout: 'login',
   middleware: 'auth',
   auth: 'guest',
   data() {

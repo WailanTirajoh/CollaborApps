@@ -6,18 +6,18 @@
         @click="likePost"
       >
         <font-awesome-icon :icon="['far', 'thumbs-up']" />
-        <div class="text-sm">Like</div>
+        <div class="text-sm">Suka</div>
       </button>
       <button
         class="btn btn-sm d-flex align-items-center gap-1"
         @click="openComment"
       >
         <font-awesome-icon :icon="[isOpen ? 'fas' : 'far', 'comments']" />
-        <div class="text-sm">Comment</div>
+        <div class="text-sm">Komentar</div>
       </button>
       <button class="btn btn-sm d-flex align-items-center gap-1">
         <font-awesome-icon :icon="['far', 'share-square']" />
-        <div class="text-sm">Share</div>
+        <div class="text-sm">Bagikan</div>
       </button>
     </div>
     <div v-show="isOpen">
@@ -34,13 +34,11 @@
           </div>
         </ul>
         <div v-else class="my-2 text-center intro-y">
-          <i class="text-sm">
-            "Seems quiet in here, be the first to comment"
-          </i>
+          <i class="text-sm"> "Tidak ada balasan, jadilah yang pertama" </i>
         </div>
       </div>
-      <div v-else>
-        <DefaultLoading class="text-sm intro-y" message="Fetching comment" />
+      <div v-else class="left-border">
+        <DefaultLoading class="text-sm intro-y" message="Mengambil komentar" />
       </div>
       <HomePostCommentCreate :post="post" @add-comment="addComment" />
     </div>
