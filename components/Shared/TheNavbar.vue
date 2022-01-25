@@ -1,7 +1,6 @@
 <template>
   <nav
     class="navbar navbar-expand-lg navbar-light d-header-home fixed-top text-center p-sm-0 bg-white"
-    style="min-height: 50px"
   >
     <div class="container px-3">
       <NuxtLink class="navbar-brand" to="/">KerjaBareng</NuxtLink>
@@ -65,24 +64,28 @@
         <div class=""></div>
         <ul v-if="$auth.loggedIn" class="navbar-nav mb-2 mb-lg-0 gap-2">
           <li class="nav-item">
-            <NuxtLink class="nav-link" aria-current="page" to="/"
-              >Beranda</NuxtLink
-            >
+            <NuxtLink class="nav-link" aria-current="page" to="/">
+              <!-- <IconHome /> -->
+              Beranda
+            </NuxtLink>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link text-transform-capitalize" to="/projects"
-              >Projek</NuxtLink
-            >
+            <NuxtLink class="nav-link text-transform-capitalize" to="/projects">
+              <!-- <IconBriefcase /> -->
+              Tugas
+            </NuxtLink>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link text-transform-capitalize" to="/clients"
-              >Klien</NuxtLink
-            >
+            <NuxtLink class="nav-link text-transform-capitalize" to="/clients">
+              <!-- <IconAward /> -->
+              Hadiah
+            </NuxtLink>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link text-transform-capitalize" to="/teams"
-              >Tim</NuxtLink
-            >
+            <NuxtLink class="nav-link text-transform-capitalize" to="/teams">
+              <!-- <IconCalendar /> -->
+              Kalender
+            </NuxtLink>
           </li>
         </ul>
         <div class="">

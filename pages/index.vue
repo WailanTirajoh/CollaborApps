@@ -23,15 +23,7 @@
         </div>
       </div>
       <div class="col-lg-3 position-relative">
-        <div class="px-1 show-desktop position-sticky" style="top: 60px">
-          <div
-            class="rounded shadow-sm px-2 py-2 bg-white mb-2 text-center intro-y"
-          >
-            <font-awesome-icon :icon="['fas', 'project-diagram']" />
-            Projek
-          </div>
-          <HomeSideProject class="intro-y" />
-        </div>
+        <div class="px-1 show-desktop position-sticky" style="top: 60px"></div>
       </div>
     </div>
   </div>

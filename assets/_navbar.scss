@@ -5,14 +5,16 @@
   }
   .nav-item {
     .nav-link {
+      height: 50px;
+      display: flex;
+      align-items: center;
       .icon {
         padding-top: 5px;
         margin-bottom: -5px;
       }
       &:hover {
-        border-radius: 0.15rem;
-        color: #191919 !important;
-        border-bottom: 2px solid #191919;
+        // color: #191919 !important;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.55);
       }
       transition: all 0.35s ease;
       color: rgba(0, 0, 0, 0.55);
@@ -20,7 +22,7 @@
     .nuxt-link-exact-active {
       font-weight: 600;
       color: rgba(0, 0, 0, 0.55);
-      border-bottom: 2px solid #191919;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.55);
     }
   }
 }
