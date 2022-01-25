@@ -3,15 +3,21 @@
     <ul class="side-parent position-relative">
       <li>
         <NuxtLink to="/my-work">
-          <div class="side-link">
-            <font-awesome-icon :icon="['fas', 'briefcase']" /> OK Bank
+          <div class="side-link d-flex gap-1">
+            <div class="side-icon">
+              <font-awesome-icon :icon="['fas', 'briefcase']" />
+            </div>
+            OK Bank
           </div>
         </NuxtLink>
         <ul class="parent-2">
           <NuxtLink to="/my-work">
             <li>
-              <div class="side-link">
-                <font-awesome-icon :icon="['fas', 'tasks']" /> FE Development
+              <div class="side-link d-flex gap-1">
+                <div class="side-icon">
+                  <font-awesome-icon :icon="['fas', 'tasks']" />
+                </div>
+                FE Development
               </div>
             </li>
           </NuxtLink>
@@ -19,23 +25,30 @@
             <ul>
               <NuxtLink to="/my-work">
                 <li>
-                  <div class="side-link">
-                    <font-awesome-icon :icon="['fas', 'retweet']" />
+                  <div class="side-link d-flex gap-1">
+                    <div class="side-icon">
+                      <font-awesome-icon :icon="['fas', 'retweet']" />
+                    </div>
                     Request
                   </div>
                 </li>
               </NuxtLink>
               <NuxtLink to="/my-work">
                 <li>
-                  <div class="side-link">
-                    <font-awesome-icon :icon="['fas', 'running']" /> On Going
+                  <div class="side-link d-flex gap-1">
+                    <div class="side-icon">
+                      <font-awesome-icon :icon="['fas', 'running']" />
+                    </div>
+                    On Going
                   </div>
                 </li>
               </NuxtLink>
               <NuxtLink to="/my-work">
                 <li>
-                  <div class="side-link">
-                    <font-awesome-icon :icon="['fas', 'globe-asia']" />
+                  <div class="side-link d-flex gap-1">
+                    <div class="side-icon">
+                      <font-awesome-icon :icon="['fas', 'globe-asia']" />
+                    </div>
                     Staging
                   </div>
                 </li>
@@ -44,24 +57,30 @@
                 <ul>
                   <NuxtLink to="/my-work">
                     <li>
-                      <div class="side-link">
-                        <font-awesome-icon :icon="['fas', 'code-branch']" />
+                      <div class="side-link d-flex gap-1">
+                        <div class="side-icon">
+                          <font-awesome-icon :icon="['fas', 'code-branch']" />
+                        </div>
                         Check
                       </div>
                     </li>
                   </NuxtLink>
                   <NuxtLink to="/my-work">
                     <li>
-                      <div class="side-link">
-                        <font-awesome-icon :icon="['fas', 'code-branch']" />
+                      <div class="side-link d-flex gap-1">
+                        <div class="side-icon">
+                          <font-awesome-icon :icon="['fas', 'code-branch']" />
+                        </div>
                         Check
                       </div>
                     </li>
                   </NuxtLink>
                   <NuxtLink to="/my-work">
                     <li>
-                      <div class="side-link">
-                        <font-awesome-icon :icon="['fas', 'code-branch']" />
+                      <div class="side-link d-flex gap-1">
+                        <div class="side-icon">
+                          <font-awesome-icon :icon="['fas', 'code-branch']" />
+                        </div>
                         Check
                       </div>
                     </li>
@@ -70,16 +89,20 @@
               </li>
               <NuxtLink to="/my-work">
                 <li>
-                  <div class="side-link">
-                    <font-awesome-icon :icon="['fas', 'check']" />
+                  <div class="side-link d-flex gap-1">
+                    <div class="side-icon">
+                      <font-awesome-icon :icon="['fas', 'check']" />
+                    </div>
                     Confirmed
                   </div>
                 </li>
               </NuxtLink>
               <NuxtLink to="/my-work">
                 <li>
-                  <div class="side-link">
-                    <font-awesome-icon :icon="['fas', 'flag-checkered']" />
+                  <div class="side-link d-flex gap-1">
+                    <div class="side-icon">
+                      <font-awesome-icon :icon="['fas', 'flag-checkered']" />
+                    </div>
                     Finish
                   </div>
                 </li>
@@ -90,16 +113,21 @@
       </li>
       <li>
         <NuxtLink to="/my-work">
-          <div class="side-link">
-            <font-awesome-icon :icon="['fas', 'briefcase']" /> Unilever
-            International
+          <div class="side-link d-flex gap-1">
+            <div class="side-icon">
+              <font-awesome-icon :icon="['fas', 'briefcase']" />
+            </div>
+            Unilever International
           </div>
         </NuxtLink>
         <ul class="parent-2">
           <NuxtLink to="/my-work">
             <li>
-              <div class="side-link">
-                <font-awesome-icon :icon="['fas', 'tasks']" /> FE Development
+              <div class="side-link d-flex gap-1">
+                <div class="side-icon">
+                  <font-awesome-icon :icon="['fas', 'tasks']" />
+                </div>
+                FE Development
               </div>
             </li>
           </NuxtLink>
@@ -107,23 +135,30 @@
             <ul>
               <NuxtLink to="/my-work">
                 <li>
-                  <div class="side-link">
-                    <font-awesome-icon :icon="['fas', 'retweet']" />
+                  <div class="side-link d-flex gap-1">
+                    <div class="side-icon">
+                      <font-awesome-icon :icon="['fas', 'retweet']" />
+                    </div>
                     Request
                   </div>
                 </li>
               </NuxtLink>
               <NuxtLink to="/my-work">
                 <li>
-                  <div class="side-link">
-                    <font-awesome-icon :icon="['fas', 'running']" /> On Going
+                  <div class="side-link d-flex gap-1">
+                    <div class="side-icon">
+                      <font-awesome-icon :icon="['fas', 'running']" />
+                    </div>
+                    On Going
                   </div>
                 </li>
               </NuxtLink>
               <NuxtLink to="/my-work">
                 <li>
-                  <div class="side-link">
-                    <font-awesome-icon :icon="['fas', 'globe-asia']" />
+                  <div class="side-link d-flex gap-1">
+                    <div class="side-icon">
+                      <font-awesome-icon :icon="['fas', 'globe-asia']" />
+                    </div>
                     Staging
                   </div>
                 </li>
@@ -132,24 +167,30 @@
                 <ul>
                   <NuxtLink to="/my-work">
                     <li>
-                      <div class="side-link">
-                        <font-awesome-icon :icon="['fas', 'code-branch']" />
+                      <div class="side-link d-flex gap-1">
+                        <div class="side-icon">
+                          <font-awesome-icon :icon="['fas', 'code-branch']" />
+                        </div>
                         Check
                       </div>
                     </li>
                   </NuxtLink>
                   <NuxtLink to="/my-work">
                     <li>
-                      <div class="side-link">
-                        <font-awesome-icon :icon="['fas', 'code-branch']" />
+                      <div class="side-link d-flex gap-1">
+                        <div class="side-icon">
+                          <font-awesome-icon :icon="['fas', 'code-branch']" />
+                        </div>
                         Check
                       </div>
                     </li>
                   </NuxtLink>
                   <NuxtLink to="/my-work">
                     <li>
-                      <div class="side-link">
-                        <font-awesome-icon :icon="['fas', 'code-branch']" />
+                      <div class="side-link d-flex gap-1">
+                        <div class="side-icon">
+                          <font-awesome-icon :icon="['fas', 'code-branch']" />
+                        </div>
                         Check
                       </div>
                     </li>
@@ -158,16 +199,20 @@
               </li>
               <NuxtLink to="/my-work">
                 <li>
-                  <div class="side-link">
-                    <font-awesome-icon :icon="['fas', 'check']" />
+                  <div class="side-link d-flex gap-1">
+                    <div class="side-icon">
+                      <font-awesome-icon :icon="['fas', 'check']" />
+                    </div>
                     Confirmed
                   </div>
                 </li>
               </NuxtLink>
               <NuxtLink to="/my-work">
                 <li>
-                  <div class="side-link">
-                    <font-awesome-icon :icon="['fas', 'flag-checkered']" />
+                  <div class="side-link d-flex gap-1">
+                    <div class="side-icon">
+                      <font-awesome-icon :icon="['fas', 'flag-checkered']" />
+                    </div>
                     Finish
                   </div>
                 </li>
@@ -177,8 +222,13 @@
         </ul>
       </li>
       <li class="position-sticky bottom-0">
-        <button class="btn w-100 text-sm mt-2 text-center bg-button text-white">
-          <font-awesome-icon :icon="['fas', 'plus']" />
+        <button
+          class="btn w-100 text-sm mt-2 text-center bg-light border d-flex gap-1 align-items-center justify-content-center"
+        >
+          <div class="side-icon">
+            <font-awesome-icon :icon="['fas', 'plus']" />
+          </div>
+
           Tambah Projek Baru
         </button>
       </li>

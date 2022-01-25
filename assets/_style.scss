@@ -43,6 +43,10 @@
   background-color: $light-gray;
 }
 
+.h-50-px {
+  height: 50px;
+}
+
 .max-h-250-px {
   max-height: 250px;
 }
@@ -58,13 +62,18 @@
 }
 
 body {
-  overflow: overlay;
+  // overflow: overlay;
+  background-color: #f0f2f5;
 }
 
-// -- Navbar
-.text-white {
-  color: white !important;
+.light-black {
+  color: rgba(0, 0, 0, 0.55);
 }
+
+.color-gray {
+  color: gray;
+}
+
 .text-decoration-none {
   text-decoration: none;
 }
@@ -136,30 +145,6 @@ body {
   border-left: 0.3em solid transparent;
 }
 // End of dropdown
-
-// Default
-
-.bg {
-  &-blizard-blue {
-    background-color: $blizzard-blue-color;
-  }
-}
-
-.bg-waves {
-  background-image: url(/svg/wave.svg);
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-.bot-waves {
-  background-image: url(/svg/bot-wave.svg);
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-.waves-color {
-  background-color: $waves-color;
-}
 
 .show-desktop {
   display: none;

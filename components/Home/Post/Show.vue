@@ -45,16 +45,6 @@
                 Bagikan
               </a>
             </li>
-            <!-- <li>
-              <button
-                type="button"
-                class="dropdown-item"
-                data-bs-toggle="modal"
-              >
-                <font-awesome-icon :icon="['far', 'edit']" />
-                Ubah
-              </button>
-            </li> -->
             <li>
               <a class="dropdown-item" href="#" @click="deletePost(post)">
                 <font-awesome-icon :icon="['far', 'trash-alt']" />
@@ -116,9 +106,8 @@ export default {
       if (confirm('Are you sure want to delete this post?')) {
         try {
           await this.$axios.$delete(`/post/${post.id}`)
-          this.$store.dispatch('posts/removePost', post)
         } catch (e) {
-          alert('something went wrong')
+          alert(e.message)
         }
       }
     }

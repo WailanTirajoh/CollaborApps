@@ -1,23 +1,26 @@
 .navbar {
+  border-bottom: 1px solid #dee2e6 !important;
+  .navbar-brand {
+    color: #191919 !important;
+  }
   .nav-item {
     .nav-link {
-      border-bottom: 0rem solid $primary-color;
-      transition: all 0.35s ease;
-      border-radius: 0rem;
-      font-weight: 100;
-      color: white;
+      .icon {
+        padding-top: 5px;
+        margin-bottom: -5px;
+      }
       &:hover {
         border-radius: 0.15rem;
-        border-bottom: 2px solid white;
-        color: rgba(229, 231, 235, var(--tw-text-opacity)) !important;
+        color: #191919 !important;
+        border-bottom: 2px solid #191919;
       }
+      transition: all 0.35s ease;
+      color: rgba(0, 0, 0, 0.55);
     }
     .nuxt-link-exact-active {
-      color: rgba(229, 231, 235, var(--tw-text-opacity)) !important;
       font-weight: 600;
-      border-bottom: 2px solid white;
+      color: rgba(0, 0, 0, 0.55);
+      border-bottom: 2px solid #191919;
     }
   }
-
-  background-color: $main-color;
 }

@@ -16,7 +16,7 @@
         </div>
         <div class="me-2">
           <font-awesome-icon
-            :icon="['fas', isPinned ? 'angle-up' : 'angle-down']"
+            :icon="['fas', isPinned ? 'chevron-up' : 'chevron-down']"
           />
         </div>
       </div>

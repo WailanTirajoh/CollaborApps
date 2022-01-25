@@ -1,12 +1,9 @@
 <template>
   <div>
-    <div class="header">
-      <h1>Setting</h1>
-    </div>
     <div class="row justify-content-center">
       <div class="col-lg-4 col-12">
         <form
-          class="bg-white rounded shadow p-3 py-4 mt-3"
+          class="bg-white rounded border p-3 py-4 mt-3"
           @submit.prevent="editProfile"
         >
           <div class="row mb-3">

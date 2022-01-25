@@ -20,9 +20,9 @@
       </div>
       <div
         v-if="url"
-        class="my-1 d-flex justify-content-center position-relative"
+        class="my-1 d-flex justify-content-center position-relative bg-gray rounded p-1"
       >
-        <img :src="url" class="img-fluid max-h-250-px" />
+        <img :src="url" class="img-fluid rounded max-h-250-px" />
       </div>
       <div class="d-flex justify-content-between mt-2">
         <div>

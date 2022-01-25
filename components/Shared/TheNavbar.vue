@@ -1,16 +1,15 @@
 <template>
   <nav
-    class="navbar navbar-expand-lg navbar-dark shadow d-header-home fixed-top text-center p-sm-0"
+    class="navbar navbar-expand-lg navbar-light d-header-home fixed-top text-center p-sm-0 bg-white"
+    style="min-height: 50px"
   >
     <div class="container px-3">
-      <NuxtLink class="navbar-brand text-white fw-bold" to="/"
-        >KerjaBareng</NuxtLink
-      >
-      <div class="ms-auto hide-desktop me-4">
-        <div v-if="$auth.loggedIn" class="nav-item dropdown">
+      <NuxtLink class="navbar-brand" to="/">KerjaBareng</NuxtLink>
+      <div v-if="$auth.loggedIn" class="ms-auto hide-desktop me-4">
+        <div class="nav-item dropdown">
           <a
             id="navbarDropdown"
-            class="dropdown-toggle text-white"
+            class="dropdown-toggle"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -47,7 +46,10 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <div
+        id="navbarSupportedContent"
+        class="collapse navbar-collapse d-flex justify-content-between"
+      >
         <div v-if="!$auth.loggedIn" class="hide-desktop">
           <div class="nav-item">
             <NuxtLink to="/auth/login" class="nav-link text-decoration-none"
@@ -60,7 +62,7 @@
             >
           </div>
         </div>
-
+        <div class=""></div>
         <ul v-if="$auth.loggedIn" class="navbar-nav mb-2 mb-lg-0 gap-2">
           <li class="nav-item">
             <NuxtLink class="nav-link" aria-current="page" to="/"
@@ -83,8 +85,7 @@
             >
           </li>
         </ul>
-
-        <div class="d-flex ms-auto">
+        <div class="">
           <ul v-if="!$auth.loggedIn" class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item show-desktop">
               <NuxtLink to="/auth/login" class="nav-link text-decoration-none"
@@ -103,7 +104,7 @@
             <li class="nav-item dropdown show-desktop">
               <a
                 id="navbarDropdown"
-                class="dropdown-toggle text-white"
+                class="dropdown-toggle color-gray"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -167,20 +168,11 @@ export default {
 .d-header,
 .d-header-home {
   border-style: none;
-  // -webkit-backdrop-filter: blur(12px);
-  // backdrop-filter: blur(12px);
-  // --tw-bg-opacity: 1;
-  // --tw-bg-opacity: 0.85;
   height: var(--header-height);
   position: sticky;
   position: -webkit-sticky;
   top: 0;
   width: 100%;
   z-index: 50;
-  color: white;
 }
-
-// .d-header-home {
-//   background-color: rgba(2, 1, 10, var(--tw-bg-opacity));
-// }
 </style>

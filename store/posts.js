@@ -27,7 +27,8 @@ export const mutations = {
     state.posts.unshift(...posts)
   },
   removePost(state, post) {
-    state.posts.splice(state.posts.indexOf(post), 1)
+    const index = state.posts.findIndex((x) => x.id == post.id)
+    state.posts.splice(index, 1)
   },
   editPost(state, post) {
     state.posts[state.posts.findIndex((x) => x.id == post.id)] = post
