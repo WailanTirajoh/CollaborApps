@@ -100,7 +100,6 @@ export default {
   methods: {
     onFileChange(e) {
       const file = e.target.files[0]
-      this.form.avatar = e.target.files[0]
       this.url = URL.createObjectURL(file)
     },
     async editProfile() {

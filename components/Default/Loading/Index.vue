@@ -13,7 +13,7 @@ export default {
     message: {
       type: String,
       required: false,
-      default: 'Please wait'
+      default: 'Mohon menunggu'
     }
   }
 }

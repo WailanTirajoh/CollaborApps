@@ -1,7 +1,7 @@
 <template>
   <div class="font-mono bg-waves bg-gray position-relative">
     <SharedTheNavbar />
-    <section class="container-fluid py-2">
+    <section class="container py-2">
       <SharedTheChatBox />
       <Nuxt />
     </section>

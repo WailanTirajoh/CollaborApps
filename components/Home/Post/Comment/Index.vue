@@ -1,21 +1,21 @@
 <template>
-  <div class="">
-    <div class="d-flex justify-content-between text-secondary">
+  <div>
+    <div class="d-flex justify-content-between">
       <button
-        class="btn btn-sm d-flex align-items-center gap-1"
+        class="btn btn-sm d-flex align-items-center gap-1 text-secondary"
         @click="likePost"
       >
         <font-awesome-icon :icon="['far', 'thumbs-up']" />
         <div class="text-sm">Suka</div>
       </button>
       <button
-        class="btn btn-sm d-flex align-items-center gap-1"
+        class="btn btn-sm d-flex align-items-center gap-1 text-secondary"
         @click="openComment"
       >
         <font-awesome-icon :icon="[isOpen ? 'fas' : 'far', 'comments']" />
         <div class="text-sm">Komentar</div>
       </button>
-      <button class="btn btn-sm d-flex align-items-center gap-1">
+      <button class="btn btn-sm d-flex align-items-center gap-1 text-secondary">
         <font-awesome-icon :icon="['far', 'share-square']" />
         <div class="text-sm">Bagikan</div>
       </button>
@@ -77,7 +77,13 @@ export default {
         } else {
           this.$store.dispatch('posts/minTotalReacts', this.post)
         }
-        alert(response.message)
+
+        this.$toast
+          .success(response.message, {
+            position: 'top-right',
+            Icon: 'check'
+          })
+          .goAway(2500)
       } catch (e) {}
     },
     openComment() {

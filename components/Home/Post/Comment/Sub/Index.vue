@@ -80,7 +80,7 @@
             :post="post"
             :comment="thecomment"
             class="intro-y"
-            @delete-comment="deleteComment"
+            @delete-comment-from-child="deleteTheComment"
           ></HomePostCommentShow>
         </ul>
         <div v-else class="text-center text-secondary mb-2 intro-y">
@@ -139,6 +139,7 @@ export default {
           await this.$axios.$delete(
             `/post/${this.post.id}/comment/${comment.id}`
           )
+
           this.$emit('delete-comment', comment)
         }
       } catch (e) {

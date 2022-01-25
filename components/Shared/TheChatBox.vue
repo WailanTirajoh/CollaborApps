@@ -1,27 +1,27 @@
 <template>
   <div
-    class="px-1 position-fixed show-desktop chat-box bg-blizard-blue shadow px-2 py-2 bg-white"
+    class="position-fixed show-desktop chat-box shadow-sm bg-white"
     style="z-index: 10"
     :class="{ pinned: isPinned }"
   >
-    <div class="h-100">
-      <div class="d-flex justify-content-between align-items-center">
-        <div>
-          <h3 class="my-auto">Pesan</h3>
+    <div class="header cursor-pointer" @click="togglePin">
+      <div class="d-flex justify-content-between align-items-center py-2 px-2">
+        <div class="d-flex gap-2">
+          <img
+            :src="$auth.user.avatar"
+            class="img-fluid rounded-circle object-fit-cover w-2r h-2r"
+            alt=""
+          />
+          <h6 class="my-auto">Pesan</h6>
         </div>
-        <button class="btn me-2" @click="togglePin">
-          <div v-if="isPinned">
-            <font-awesome-icon :icon="['fas', 'unlock']" />
-          </div>
-          <div v-else>
-            <font-awesome-icon :icon="['fas', 'lock']" />
-          </div>
-        </button>
-      </div>
-      <div class="">
-        <hr />
+        <div class="me-2">
+          <font-awesome-icon
+            :icon="['fas', isPinned ? 'angle-up' : 'angle-down']"
+          />
+        </div>
       </div>
     </div>
+    <div class="body"></div>
   </div>
 </template>
 

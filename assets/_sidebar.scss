@@ -9,7 +9,7 @@
       list-style: none;
       position: relative;
       &::before {
-        content: "";
+        content: '';
         width: 0.5px;
         background-color: $line-color;
         height: 100%;
@@ -22,13 +22,13 @@
     padding-left: 0px;
     position: relative;
     a {
-      color: black;
+      color: darkslategray;
       text-decoration: none;
       position: relative;
 
       li {
         &::before {
-          content: "";
+          content: '';
           width: 1rem;
           height: 0.5px;
           background-color: $line-color;
@@ -43,7 +43,7 @@
         padding-left: 0.5rem;
         margin-bottom: 0.25rem;
         border-radius: 0.2rem;
-        font-size: 0.8rem;
+        // font-size: 0.8rem;
         &.bg {
           &-dark {
             &-gray {

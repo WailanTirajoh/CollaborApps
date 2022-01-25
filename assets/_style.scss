@@ -43,6 +43,10 @@
   background-color: $light-gray;
 }
 
+.max-h-250-px {
+  max-height: 250px;
+}
+
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */

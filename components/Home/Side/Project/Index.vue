@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded shadow-sm px-2 py-2 bg-white mb-2 side-list">
+  <div class="rounded shadow-sm px-2 py-2 bg-white mb-2 side-list text-sm">
     <ul class="side-parent position-relative">
       <li>
         <NuxtLink to="/my-work">

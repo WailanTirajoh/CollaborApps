@@ -53,7 +53,15 @@ export default {
     this.$echo.channel('post').listen('.created', (e) => {
       this.$store.dispatch('posts/addNewPost', e.post)
       this.$toast
-        .success(`New post created by ${e.post.user.name}`, {
+        .success(e.message, {
+          position: 'top-right',
+          Icon: 'check'
+        })
+        .goAway(10000)
+    })
+    this.$echo.channel('hello').listen('.hello', (e) => {
+      this.$toast
+        .success(e.message, {
           position: 'top-right',
           Icon: 'check'
         })

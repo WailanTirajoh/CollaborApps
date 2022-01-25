@@ -2,7 +2,7 @@
   <nav
     class="navbar navbar-expand-lg navbar-dark shadow d-header-home fixed-top text-center p-sm-0"
   >
-    <div class="container-fluid px-3">
+    <div class="container px-3">
       <NuxtLink class="navbar-brand text-white fw-bold" to="/"
         >KerjaBareng</NuxtLink
       >
@@ -48,7 +48,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div id="navbarSupportedContent" class="collapse navbar-collapse">
-        <div v-if="!$auth.loggedIn">
+        <div v-if="!$auth.loggedIn" class="hide-desktop">
           <div class="nav-item">
             <NuxtLink to="/auth/login" class="nav-link text-decoration-none"
               >Masuk</NuxtLink
@@ -115,19 +115,31 @@
                 />
               </a>
               <ul
-                class="dropdown-menu dropdown-menu-end"
+                class="dropdown-menu dropdown-menu-end text-sm"
                 aria-labelledby="navbarDropdown"
               >
                 <li>
                   <NuxtLink class="dropdown-item" to="/auth/setting"
-                    >Pengaturan</NuxtLink
-                  >
+                    ><font-awesome-icon
+                      :icon="['fas', 'user-cog']"
+                      style="width: 15px"
+                    />
+                    Pengaturan
+                  </NuxtLink>
                 </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="#" @click.prevent="logout()"
-                    >Keluar</a
+                  <div
+                    class="dropdown-item cursor-pointer"
+                    href="#"
+                    @click.prevent="logout()"
                   >
+                    <font-awesome-icon
+                      :icon="['fas', 'sign-out-alt']"
+                      style="width: 15px"
+                    />
+                    Keluar
+                  </div>
                 </li>
               </ul>
             </li>

@@ -47,13 +47,6 @@ export default {
       await this.$store.dispatch('posts/fetchPost')
       this.fetching = false
     },
-    async deletePost(post) {
-      if (confirm('Are you sure want to delete this post?')) {
-        const response = await this.$axios.$delete(`/post/${post.id}`)
-        this.$store.dispatch('posts/removePost', post)
-        alert(response.message)
-      }
-    },
     scroll() {
       window.onscroll = () => {
         const bottomOfWindow =

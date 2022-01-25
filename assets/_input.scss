@@ -1,0 +1,11 @@
+.input-file::-webkit-file-upload-button {
+  color: $dark-gray;
+  display: inline-block;
+  background: white;
+  border: 1px solid #dee2e6 !important;
+  padding: 7px 15px;
+  border-radius: 3px;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 10pt;
+}

@@ -45,7 +45,7 @@
                 Bagikan
               </a>
             </li>
-            <li>
+            <!-- <li>
               <button
                 type="button"
                 class="dropdown-item"
@@ -54,7 +54,7 @@
                 <font-awesome-icon :icon="['far', 'edit']" />
                 Ubah
               </button>
-            </li>
+            </li> -->
             <li>
               <a class="dropdown-item" href="#" @click="deletePost(post)">
                 <font-awesome-icon :icon="['far', 'trash-alt']" />
@@ -80,16 +80,24 @@
       </div>
     </div>
     <div class="body">
-      {{ post.text }}
+      <div class="text">
+        {{ post.text }}
+      </div>
+      <div
+        v-if="post.file"
+        class="d-flex justify-content-center bg-gray rounded py-1 my-1"
+      >
+        <img :src="post.file" class="img-fluid max-h-250-px rounded" />
+      </div>
     </div>
     <div class="d-flex justify-content-between text-xs text-secondary mt-2">
-      <div class="">{{ post.total_reacts }} Suka</div>
-      <div class="">
+      <div>{{ post.total_reacts }} Suka</div>
+      <div>
         {{ post.total_comments }}
         Komentar
       </div>
     </div>
-    <hr class="my-1" />
+    <hr class="my-1 text-secondary" />
     <HomePostComment :post="post" />
   </div>
 </template>
@@ -101,6 +109,18 @@ export default {
       type: Object,
       required: true,
       default: () => {}
+    }
+  },
+  methods: {
+    async deletePost(post) {
+      if (confirm('Are you sure want to delete this post?')) {
+        try {
+          await this.$axios.$delete(`/post/${post.id}`)
+          this.$store.dispatch('posts/removePost', post)
+        } catch (e) {
+          alert('something went wrong')
+        }
+      }
     }
   }
 }

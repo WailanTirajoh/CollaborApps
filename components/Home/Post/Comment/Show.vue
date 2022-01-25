@@ -5,7 +5,11 @@
       style="width: 2rem; height: 2rem; z-index: 1"
       :src="comment.user.avatar"
     />
-    <HomePostCommentSub :post="post" :comment="comment" />
+    <HomePostCommentSub
+      :post="post"
+      :comment="comment"
+      @delete-comment="deleteComment"
+    />
   </li>
 </template>
 
@@ -19,6 +23,11 @@ export default {
     post: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    deleteComment(comment) {
+      this.$emit('delete-comment', comment)
     }
   }
 }
