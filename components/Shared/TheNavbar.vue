@@ -45,10 +45,7 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div
-        id="navbarSupportedContent"
-        class="collapse navbar-collapse d-flex justify-content-between"
-      >
+      <div id="navbarSupportedContent" class="collapse navbar-collapse">
         <div v-if="!$auth.loggedIn" class="hide-desktop">
           <div class="nav-item">
             <NuxtLink to="/auth/login" class="nav-link text-decoration-none"
@@ -61,8 +58,11 @@
             >
           </div>
         </div>
-        <div class=""></div>
-        <ul v-if="$auth.loggedIn" class="navbar-nav mb-2 mb-lg-0 gap-2">
+        <!-- <div class=""></div> -->
+        <ul
+          v-if="$auth.loggedIn"
+          class="navbar-nav mb-2 mb-lg-0 gap-2 w-100 d-flex justify-content-center"
+        >
           <li class="nav-item">
             <NuxtLink class="nav-link" aria-current="page" to="/">
               <!-- <IconHome /> -->
@@ -103,7 +103,7 @@
               >
             </li>
           </ul>
-          <ul v-else class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul v-else class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
             <li class="nav-item dropdown show-desktop">
               <a
                 id="navbarDropdown"
