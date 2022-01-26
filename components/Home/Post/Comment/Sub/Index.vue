@@ -55,7 +55,7 @@
     </div>
     <div class="text-xs text-secondary d-flex gap-2 px-2 py-1">
       <div class="fw-bold">Suka</div>
-      <span class="">·</span>
+      <!-- <span class="">·</span>
       <div
         class="fw-bold cursor-pointer noselect"
         :class="{ 'fw-bold text-black ': isOpen }"
@@ -65,7 +65,7 @@
         <span v-if="comment.total_comments > 0"
           >({{ comment.total_comments }})</span
         >
-      </div>
+      </div> -->
       <span class="">·</span>
       <div>
         {{ comment.created_at }}
@@ -80,7 +80,6 @@
             :post="post"
             :comment="thecomment"
             class="intro-y"
-            @delete-comment-from-child="deleteTheComment"
           ></HomePostCommentShow>
         </ul>
         <div v-else class="text-center text-secondary mb-2 intro-y">
@@ -130,16 +129,20 @@ export default {
     },
     addComment(comment) {
       this.comments.push(comment)
-      this.comment.total_comments++
       this.$store.dispatch('posts/addTotalComment', this.post)
     },
     async deleteComment(comment) {
       try {
         if (confirm('Are you sure want to delete this comment?')) {
-          await this.$axios.$delete(
+          const response = await this.$axios.$delete(
             `/post/${this.post.id}/comment/${comment.id}`
           )
-
+          this.$toast
+            .success(response.message, {
+              position: 'top-right',
+              Icon: 'check'
+            })
+            .goAway(2500)
           this.$emit('delete-comment', comment)
         }
       } catch (e) {

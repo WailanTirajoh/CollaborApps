@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 export default {
   beforeRouteLeave(to, from, next) {
     this.$store.dispatch('posts/resetPosts')
@@ -38,27 +37,20 @@ export default {
     next()
   },
   middleware: 'auth',
-  data() {
-    return {
-      toastr: {
-        isConnected: false
-      }
-    }
-  },
   head() {
     return {
-      title: 'Home Page',
+      title: 'Beranda',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'Homepage'
+          content: 'Beranda'
         }
       ]
     }
   },
   beforeDestroy() {
-    this.$echo.leave('post', 'hello')
+    this.$echo.leave('post', 'toastr')
   },
   mounted() {
     this.$echo
@@ -70,20 +62,14 @@ export default {
         this.$store.dispatch('posts/removePost', e.post)
       })
 
-    if (!this.toastr.isConnected) {
-      this.$echo.channel('toastr').listen('.message', (e) => {
-        this.$toast
-          .success(e.message, {
-            position: 'top-right',
-            Icon: 'check'
-          })
-          .goAway(4500)
-      })
-      this.toastr.isConnected = true
-    }
-  },
-  methods: {
-    ...mapActions(['posts/addNewPost'])
+    this.$echo.channel('toastr').listen('.message', (e) => {
+      this.$toast
+        .success(e.message, {
+          position: 'top-right',
+          Icon: 'check'
+        })
+        .goAway(4500)
+    })
   }
 }
 </script>

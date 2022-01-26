@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between">
       <button
         class="btn btn-sm d-flex align-items-center gap-1 text-secondary"
-        @click="likePost"
+        @click="like"
       >
         <font-awesome-icon :icon="['far', 'thumbs-up']" />
         <div class="text-sm">Suka</div>
@@ -21,24 +21,17 @@
       </button>
     </div>
     <div v-show="isOpen">
-      <div v-if="comments">
-        <ul v-if="comments.length > 0" class="p-0 m-0">
-          <div v-for="comment in comments" :key="comment.id" class="intro-y">
-            <HomePostCommentShow
-              :post="post"
-              :comment="comment"
-              @delete-comment="deleteComment"
-              @decrement-comment="decrementComment"
-              @increment-comment="incrementComment"
-            />
-          </div>
-        </ul>
-        <div v-else class="my-2 text-center intro-y">
-          <i class="text-sm"> "Tidak ada balasan, jadilah yang pertama" </i>
+      <ul v-if="post.comments.length > 0" class="p-0 m-0">
+        <div v-for="comment in post.comments" :key="comment.id" class="intro-y">
+          <HomePostCommentShow
+            :post="post"
+            :comment="comment"
+            @delete-comment="deleteComment"
+          />
         </div>
-      </div>
-      <div v-else class="left-border">
-        <DefaultLoading class="text-sm intro-y" message="Mengambil komentar" />
+      </ul>
+      <div v-else class="my-2 text-center intro-y">
+        <i class="text-sm"> "Tidak ada balasan, jadilah yang pertama" </i>
       </div>
       <HomePostCommentCreate :post="post" @add-comment="addComment" />
     </div>
@@ -55,18 +48,11 @@ export default {
   },
   data() {
     return {
-      isOpen: false,
-      comments: null
+      isOpen: false
     }
   },
   methods: {
-    async fetch() {
-      try {
-        const response = await this.$axios.$get(`/post/${this.post.id}/comment`)
-        this.comments = response.comments
-      } catch (e) {}
-    },
-    async likePost() {
+    async like() {
       try {
         const response = await this.$axios.$post(
           `/post/${this.post.id}/react`,
@@ -88,25 +74,18 @@ export default {
     },
     openComment() {
       this.isOpen = !this.isOpen
-      if (this.comments == null) {
-        this.fetch()
-      }
     },
     addComment(comment) {
-      this.comments.push(comment)
-      this.$store.dispatch('posts/addTotalComment', this.post)
+      this.$store.dispatch('posts/addComment', {
+        post: this.post,
+        comment
+      })
     },
     deleteComment(comment) {
-      this.comments.splice(this.comments.indexOf(comment), 1)
-      this.$store.dispatch('posts/minTotalComment', this.post)
-    },
-    incrementComment(comment) {
-      this.comments[this.comments.findIndex((cmt) => cmt.id == comment.id)]
-        .total_comments++
-    },
-    decrementComment(comment) {
-      this.comments[this.comments.findIndex((cmt) => cmt.id == comment.id)]
-        .total_comments--
+      this.$store.dispatch('posts/deleteComment', {
+        post: this.post,
+        comment
+      })
     }
   }
 }

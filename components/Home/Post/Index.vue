@@ -16,7 +16,7 @@
         <DefaultModal :id="index">
           <HomePostEdit :post="post" />
         </DefaultModal>
-        <HomePostShow :post="post" />
+        <HomePostShow v-if="post" :post="post" />
       </div>
     </div>
   </div>

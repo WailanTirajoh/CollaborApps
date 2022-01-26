@@ -55,11 +55,17 @@ export default {
       if (this.form.text == '') return
       this.form.isProcessing = true
       try {
-        const result = await this.$axios.$post(
+        const response = await this.$axios.$post(
           `/comment/${this.comment.id}/subComment`,
           this.form
         )
-        this.$emit('add-comment', result.comment)
+        this.$toast
+          .success(response.message, {
+            position: 'top-right',
+            Icon: 'check'
+          })
+          .goAway(2500)
+        this.$emit('add-comment', response.comment)
       } catch (e) {
         this.error = e.response.data.errors
       }

@@ -36,22 +36,18 @@ export const mutations = {
   resetPosts(state) {
     state.posts = []
   },
-  addTotalComment(state, post) {
-    const thepost = state.posts[state.posts.findIndex((x) => x.id == post.id)]
-    if (thepost) {
-      post.total_comments++
-    }
+  addComment(state, { post, comment }) {
+    state.posts.find((x) => x.id == post.id).comments.push(comment)
   },
-  minTotalComment(state, post) {
-    const thepost = state.posts[state.posts.findIndex((x) => x.id == post.id)]
-    if (thepost) {
-      post.total_comments--
-    }
+  deleteComment(state, { post, comment }) {
+    const postComments = state.posts.find((x) => x.id == post.id).comments
+    const commetIndex = postComments.findIndex((x) => x.id == comment.id)
+    postComments.splice(commetIndex, 1)
   },
   addTotalReacts(state, post) {
     const thepost = state.posts[state.posts.findIndex((x) => x.id == post.id)]
     if (thepost) {
-      post.total_reacts++
+      thepost.total_reacts++
     }
   },
   minTotalReacts(state, post) {
@@ -83,11 +79,11 @@ export const actions = {
   resetPosts({ commit }) {
     commit('resetPosts')
   },
-  addTotalComment({ commit }, post) {
-    commit('addTotalComment', post)
+  addComment({ commit }, { post, comment }) {
+    commit('addComment', { post, comment })
   },
-  minTotalComment({ commit }, post) {
-    commit('minTotalComment', post)
+  deleteComment({ commit }, { post, comment }) {
+    commit('deleteComment', { post, comment })
   },
   addTotalReacts({ commit }, post) {
     commit('addTotalReacts', post)

@@ -83,7 +83,7 @@
     <div class="d-flex justify-content-between text-xs text-secondary mt-2">
       <div>{{ post.total_reacts }} Suka</div>
       <div>
-        {{ post.total_comments }}
+        {{ post.comments.length }}
         Komentar
       </div>
     </div>
