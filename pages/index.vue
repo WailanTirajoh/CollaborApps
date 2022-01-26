@@ -61,6 +61,18 @@ export default {
       .listen('.deleted', (e) => {
         this.$store.dispatch('posts/removePost', e.post)
       })
+      .listen('.comment.created', (e) => {
+        this.$store.dispatch('posts/addComment', {
+          post: e.post,
+          comment: e.comment
+        })
+      })
+      .listen('.comment.deleted', (e) => {
+        this.$store.dispatch('posts/deleteComment', {
+          post: e.post,
+          comment: e.comment
+        })
+      })
 
     this.$echo.channel('toastr').listen('.message', (e) => {
       this.$toast

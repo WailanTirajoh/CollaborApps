@@ -65,7 +65,6 @@ export default {
             Icon: 'check'
           })
           .goAway(2500)
-        this.$emit('add-comment', response.comment)
       } catch (e) {
         this.error = e.response.data.errors
       }

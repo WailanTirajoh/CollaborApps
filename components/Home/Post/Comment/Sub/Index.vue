@@ -55,41 +55,10 @@
     </div>
     <div class="text-xs text-secondary d-flex gap-2 px-2 py-1">
       <div class="fw-bold">Suka</div>
-      <!-- <span class="">·</span>
-      <div
-        class="fw-bold cursor-pointer noselect"
-        :class="{ 'fw-bold text-black ': isOpen }"
-        @click="openComment"
-      >
-        Komentar
-        <span v-if="comment.total_comments > 0"
-          >({{ comment.total_comments }})</span
-        >
-      </div> -->
       <span class="">·</span>
       <div>
         {{ comment.created_at }}
       </div>
-    </div>
-    <div v-show="isOpen" class="position-relative">
-      <div v-if="comments" class="py-2 left-border">
-        <ul v-if="comments.length > 0" class="p-0">
-          <HomePostCommentShow
-            v-for="thecomment in comments"
-            :key="thecomment.id"
-            :post="post"
-            :comment="thecomment"
-            class="intro-y"
-          ></HomePostCommentShow>
-        </ul>
-        <div v-else class="text-center text-secondary mb-2 intro-y">
-          <i class="text-sm"> Tidak ada komentar, jadilah yang pertama </i>
-        </div>
-      </div>
-      <div v-else class="left-border intro-y">
-        <DefaultLoading class="text-sm mb-2" message="Fetching comment" />
-      </div>
-      <HomePostCommentSubCreate :comment="comment" @add-comment="addComment" />
     </div>
   </div>
 </template>
@@ -108,28 +77,12 @@ export default {
   },
   data() {
     return {
-      isOpen: false,
-      comments: null
+      isOpen: false
     }
   },
   methods: {
     openComment() {
       this.isOpen = !this.isOpen
-      if (this.comments == null) {
-        this.fetchComments()
-      }
-    },
-    async fetchComments() {
-      try {
-        const result = await this.$axios.$get(
-          `/comment/${this.comment.id}/subComment`
-        )
-        this.comments = result.comments
-      } catch (e) {}
-    },
-    addComment(comment) {
-      this.comments.push(comment)
-      this.$store.dispatch('posts/addTotalComment', this.post)
     },
     async deleteComment(comment) {
       try {

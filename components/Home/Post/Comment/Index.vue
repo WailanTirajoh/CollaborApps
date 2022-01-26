@@ -23,17 +23,13 @@
     <div v-show="isOpen">
       <ul v-if="post.comments.length > 0" class="p-0 m-0">
         <div v-for="comment in post.comments" :key="comment.id" class="intro-y">
-          <HomePostCommentShow
-            :post="post"
-            :comment="comment"
-            @delete-comment="deleteComment"
-          />
+          <HomePostCommentShow :post="post" :comment="comment" />
         </div>
       </ul>
       <div v-else class="my-2 text-center intro-y">
         <i class="text-sm"> "Tidak ada balasan, jadilah yang pertama" </i>
       </div>
-      <HomePostCommentCreate :post="post" @add-comment="addComment" />
+      <HomePostCommentCreate :post="post" />
     </div>
   </div>
 </template>
@@ -74,18 +70,6 @@ export default {
     },
     openComment() {
       this.isOpen = !this.isOpen
-    },
-    addComment(comment) {
-      this.$store.dispatch('posts/addComment', {
-        post: this.post,
-        comment
-      })
-    },
-    deleteComment(comment) {
-      this.$store.dispatch('posts/deleteComment', {
-        post: this.post,
-        comment
-      })
     }
   }
 }
