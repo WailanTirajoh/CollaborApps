@@ -33,7 +33,7 @@
 export default {
   beforeRouteLeave(to, from, next) {
     this.$store.dispatch('posts/resetPosts')
-    this.$echo.leave('post', 'toastr', 'home.1', `users.${this.$auth.user.id}`)
+    this.$echo.leave('post', 'home.1', `users.${this.$auth.user.id}`)
     next()
   },
   middleware: 'auth',
@@ -58,58 +58,6 @@ export default {
       .listen('.deleted', (e) => {
         this.$store.dispatch('posts/deletePost', e.post)
       })
-      .listen('.comment.created', (e) => {
-        this.$store.dispatch('posts/addComment', {
-          post: e.post,
-          comment: e.comment
-        })
-      })
-      .listen('.comment.deleted', (e) => {
-        this.$store.dispatch('posts/deleteComment', {
-          post: e.post,
-          comment: e.comment
-        })
-      })
-      .listen('.react.created', (e) => {
-        this.$store.dispatch('posts/addReact', {
-          post: e.post,
-          react: e.react
-        })
-      })
-      .listen('.react.deleted', (e) => {
-        this.$store.dispatch('posts/deleteReact', {
-          post: e.post,
-          react: e.react
-        })
-      })
-
-    this.$echo.channel('toastr').listen('.message', (e) => {
-      this.$toast
-        .success(e.message, {
-          position: 'top-right',
-          Icon: 'check'
-        })
-        .goAway(4500)
-    })
-    this.$echo
-      .private(`users.${this.$auth.user.id}`)
-      .listen('.post.commented', (e) => {
-        this.$toast
-          .success(e.message, {
-            position: 'top-right',
-            Icon: 'check'
-          })
-          .goAway(4500)
-      })
-      .listen('.post.reacted', (e) => {
-        this.$toast
-          .success(e.message, {
-            position: 'top-right',
-            Icon: 'check'
-          })
-          .goAway(4500)
-      })
-
     // this.$echo
     //   .join(`home.1`)
     //   .here((users) => {

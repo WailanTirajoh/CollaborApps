@@ -3,7 +3,9 @@
     class="navbar navbar-expand-lg navbar-light d-header-home fixed-top text-center p-sm-0 bg-white"
   >
     <div class="container px-3">
-      <NuxtLink class="navbar-brand" to="/">KerjaBareng</NuxtLink>
+      <NuxtLink class="navbar-brand" to="/"
+        >KerjaBareng {{ $store.state.posts.page }}</NuxtLink
+      >
       <div v-if="$auth.loggedIn" class="ms-auto hide-desktop me-4">
         <div class="nav-item dropdown">
           <a

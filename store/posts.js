@@ -19,12 +19,26 @@
  * };
  */
 export const state = () => ({
-  posts: []
+  posts: [],
+  page: 1,
+  noData: false
 })
 
 export const mutations = {
-  addPost(state, posts) {
-    state.posts.unshift(...posts)
+  addPage(state) {
+    state.page++
+  },
+  /**
+   * add array of post into state post
+   * @param {Array} posts
+   * @param {Boolean} infiniteScroll
+   */
+  addPost(state, { posts, infiniteScroll }) {
+    if (infiniteScroll) {
+      state.posts.push(...posts)
+    } else {
+      state.posts.unshift(...posts)
+    }
   },
   deletePost(state, post) {
     const index = state.posts.findIndex((x) => x.id == post.id)
@@ -51,16 +65,25 @@ export const mutations = {
     const postReacts = state.posts.find((x) => x.id == post.id).reacts
     const reactIndex = postReacts.findIndex((x) => x.user_id == react.user_id)
     postReacts.splice(reactIndex, 1)
+  },
+  setNoData(state) {
+    state.noData = true
   }
 }
 
 export const actions = {
-  async fetchPost({ commit }) {
-    commit('resetPosts')
+  async fetchPost({ commit, getters }, { infiniteScroll }) {
     try {
-      const result = await this.$axios.$get('/posts')
-      commit('addPost', result.posts)
-      return result
+      // const result = await this.$axios.$get(`/posts?page=${getters.page}`)
+      const result = await this.$axios.$get('/posts', {
+        params: { page: getters.page }
+      })
+      if (result.posts.length > 0) {
+        commit('addPage')
+        commit('addPost', { posts: result.posts, infiniteScroll })
+      } else {
+        commit('setNoData')
+      }
     } catch (e) {}
   },
   addPost({ commit }, post) {
@@ -92,5 +115,8 @@ export const actions = {
 export const getters = {
   posts(state) {
     return state.posts
+  },
+  page(state) {
+    return state.page
   }
 }

@@ -32,22 +32,25 @@
             aria-labelledby="dropdownMenuButton1"
           >
             <li>
-              <a class="dropdown-item" href="#">
+              <button class="dropdown-item btn btn-sm">
                 <font-awesome-icon :icon="['far', 'bookmark']" />
                 Pin
-              </a>
+              </button>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
+              <button class="dropdown-item btn btn-sm">
                 <font-awesome-icon :icon="['far', 'share-square']" />
                 Bagikan
-              </a>
+              </button>
             </li>
             <li>
-              <a class="dropdown-item" href="#" @click="deletePost(post)">
-                <font-awesome-icon :icon="['far', 'trash-alt']" />
-                Hapus</a
+              <button
+                class="dropdown-item btn btn-sm"
+                @click="deletePost(post)"
               >
+                <font-awesome-icon :icon="['far', 'trash-alt']" />
+                Hapus
+              </button>
             </li>
           </ul>
           <ul
@@ -56,12 +59,12 @@
             aria-labelledby="dropdownMenuButton1"
           >
             <li>
-              <a class="dropdown-item text-sm" href="#">
+              <button class="dropdown-item text-sm btn btn-sm">
                 <font-awesome-icon
                   :icon="['fas', 'bullhorn']"
                   class="me-1 color-red"
-                />Laporkan</a
-              >
+                />Laporkan
+              </button>
             </li>
           </ul>
         </div>
@@ -78,14 +81,6 @@
         <img :src="post.file" class="img-fluid max-h-250-px rounded" />
       </div>
     </div>
-    <div class="d-flex justify-content-between text-xs text-secondary mt-2">
-      <div>{{ post.reacts.length }} Suka</div>
-      <div>
-        {{ post.comments.length }}
-        Komentar
-      </div>
-    </div>
-    <hr class="my-1 text-secondary" />
     <HomePostComment :post="post" />
   </div>
 </template>
@@ -98,6 +93,37 @@ export default {
       required: true,
       default: () => {}
     }
+  },
+  destroyed() {
+    this.$echo.leave(`post.${this.post.id}`)
+  },
+  mounted() {
+    this.$echo
+      .private(`post.${this.post.id}`)
+      .listen('.comment.created', (e) => {
+        this.$store.dispatch('posts/addComment', {
+          post: this.post,
+          comment: e.comment
+        })
+      })
+      .listen('.comment.deleted', (e) => {
+        this.$store.dispatch('posts/deleteComment', {
+          post: this.post,
+          comment: e.comment
+        })
+      })
+      .listen('.react.created', (e) => {
+        this.$store.dispatch('posts/addReact', {
+          post: this.post,
+          react: e.react
+        })
+      })
+      .listen('.react.deleted', (e) => {
+        this.$store.dispatch('posts/deleteReact', {
+          post: this.post,
+          react: e.react
+        })
+      })
   },
   methods: {
     async deletePost(post) {

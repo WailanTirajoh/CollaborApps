@@ -1,21 +1,40 @@
 <template>
   <div>
+    <div class="d-flex justify-content-between text-xs text-secondary mt-2">
+      <div class="cursor-pointer" @click="postReactList">
+        {{ post.reacts.length }} Suka
+      </div>
+      <div class="cursor-pointer no-select" @click="commentOpen">
+        {{ post.comments.length }}
+        Komentar
+      </div>
+    </div>
+    <hr class="my-1 text-secondary" />
     <div class="d-flex justify-content-between">
       <button
         class="btn btn-sm d-flex align-items-center gap-1 text-secondary"
-        @click="like"
+        @click="postReactCreate"
       >
-        <font-awesome-icon :icon="[isLiked ? 'fas' : 'far', 'thumbs-up']" />
+        <font-awesome-icon
+          :class="{ 'fa-pulse': form.isProcessing }"
+          :icon="[
+            form.isProcessing ? 'fas' : isLiked ? 'fas' : 'far',
+            form.isProcessing ? 'spinner' : 'thumbs-up'
+          ]"
+        />
         <div class="text-sm">Suka</div>
       </button>
       <button
         class="btn btn-sm d-flex align-items-center gap-1 text-secondary"
-        @click="openComment"
+        @click="commentOpen"
       >
         <font-awesome-icon :icon="[isOpen ? 'fas' : 'far', 'comments']" />
         <div class="text-sm">Komentar</div>
       </button>
-      <button class="btn btn-sm d-flex align-items-center gap-1 text-secondary">
+      <button
+        class="btn btn-sm d-flex align-items-center gap-1 text-secondary"
+        @click="postShare"
+      >
         <font-awesome-icon :icon="['far', 'share-square']" />
         <div class="text-sm">Bagikan</div>
       </button>
@@ -44,6 +63,9 @@ export default {
   },
   data() {
     return {
+      form: {
+        isProcessing: false
+      },
       isOpen: false
     }
   },
@@ -57,7 +79,8 @@ export default {
     }
   },
   methods: {
-    async like() {
+    async postReactCreate() {
+      this.form.isProcessing = true
       try {
         const response = await this.$axios.$post(
           `/posts/${this.post.id}/reacts`,
@@ -70,9 +93,18 @@ export default {
           })
           .goAway(2500)
       } catch (e) {}
+      this.form.isProcessing = false
     },
-    openComment() {
+    commentOpen() {
       this.isOpen = !this.isOpen
+    },
+    postReactList() {
+      alert('belom')
+      // to be code
+    },
+    postShare() {
+      alert('belom')
+      // to be code
     }
   }
 }
