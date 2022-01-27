@@ -23,10 +23,10 @@ export const state = () => ({
 })
 
 export const mutations = {
-  addNewPost(state, posts) {
+  addPost(state, posts) {
     state.posts.unshift(...posts)
   },
-  removePost(state, post) {
+  deletePost(state, post) {
     const index = state.posts.findIndex((x) => x.id == post.id)
     state.posts.splice(index, 1)
   },
@@ -41,20 +41,16 @@ export const mutations = {
   },
   deleteComment(state, { post, comment }) {
     const postComments = state.posts.find((x) => x.id == post.id).comments
-    const commetIndex = postComments.findIndex((x) => x.id == comment.id)
-    postComments.splice(commetIndex, 1)
+    const commentIndex = postComments.findIndex((x) => x.id == comment.id)
+    postComments.splice(commentIndex, 1)
   },
-  addTotalReacts(state, post) {
-    const thepost = state.posts[state.posts.findIndex((x) => x.id == post.id)]
-    if (thepost) {
-      thepost.total_reacts++
-    }
+  addReact(state, { post, react }) {
+    state.posts.find((x) => x.id == post.id).reacts.push(react)
   },
-  minTotalReacts(state, post) {
-    const thepost = state.posts[state.posts.findIndex((x) => x.id == post.id)]
-    if (thepost) {
-      post.total_reacts--
-    }
+  deleteReact(state, { post, react }) {
+    const postReacts = state.posts.find((x) => x.id == post.id).reacts
+    const reactIndex = postReacts.findIndex((x) => x.user_id == react.user_id)
+    postReacts.splice(reactIndex, 1)
   }
 }
 
@@ -63,15 +59,15 @@ export const actions = {
     commit('resetPosts')
     try {
       const result = await this.$axios.$get('/posts')
-      commit('addNewPost', result.posts)
+      commit('addPost', result.posts)
       return result
     } catch (e) {}
   },
-  addNewPost({ commit }, post) {
-    commit('addNewPost', [post])
+  addPost({ commit }, post) {
+    commit('addPost', [post])
   },
-  removePost({ commit }, post) {
-    commit('removePost', post)
+  deletePost({ commit }, post) {
+    commit('deletePost', post)
   },
   editPost({ commit }, post) {
     commit('editPost', post)
@@ -85,11 +81,11 @@ export const actions = {
   deleteComment({ commit }, { post, comment }) {
     commit('deleteComment', { post, comment })
   },
-  addTotalReacts({ commit }, post) {
-    commit('addTotalReacts', post)
+  addReact({ commit }, { post, react }) {
+    commit('addReact', { post, react })
   },
-  minTotalReacts({ commit }, post) {
-    commit('minTotalReacts', post)
+  deleteReact({ commit }, { post, react }) {
+    commit('deleteReact', { post, react })
   }
 }
 

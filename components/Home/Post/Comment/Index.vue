@@ -5,7 +5,7 @@
         class="btn btn-sm d-flex align-items-center gap-1 text-secondary"
         @click="like"
       >
-        <font-awesome-icon :icon="['far', 'thumbs-up']" />
+        <font-awesome-icon :icon="[isLiked ? 'fas' : 'far', 'thumbs-up']" />
         <div class="text-sm">Suka</div>
       </button>
       <button
@@ -47,6 +47,15 @@ export default {
       isOpen: false
     }
   },
+  computed: {
+    isLiked() {
+      return this.post.reacts[
+        this.post.reacts.findIndex(
+          (react) => react.user_id == this.$auth.user.id
+        )
+      ]
+    }
+  },
   methods: {
     async like() {
       try {
@@ -54,12 +63,6 @@ export default {
           `/posts/${this.post.id}/reacts`,
           { react_id: 1 }
         )
-        if (response.like) {
-          this.$store.dispatch('posts/addTotalReacts', this.post)
-        } else {
-          this.$store.dispatch('posts/minTotalReacts', this.post)
-        }
-
         this.$toast
           .success(response.message, {
             position: 'top-right',

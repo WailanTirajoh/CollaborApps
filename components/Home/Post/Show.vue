@@ -10,9 +10,7 @@
         />
       </div>
       <div class="mid ps-3">
-        <div class="fw-bold mb-1">
-          {{ post.user.name }}
-        </div>
+        <div class="fw-bold mb-1">{{ post.user.name }}</div>
         <div class="text-xs text-secondary" style="margin-top: -4px">
           {{ post.created_at }}
         </div>
@@ -81,7 +79,7 @@
       </div>
     </div>
     <div class="d-flex justify-content-between text-xs text-secondary mt-2">
-      <div>{{ post.total_reacts }} Suka</div>
+      <div>{{ post.reacts.length }} Suka</div>
       <div>
         {{ post.comments.length }}
         Komentar

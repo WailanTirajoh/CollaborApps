@@ -33,7 +33,7 @@
 export default {
   beforeRouteLeave(to, from, next) {
     this.$store.dispatch('posts/resetPosts')
-    this.$echo.leave('post')
+    this.$echo.leave('post', 'toastr', 'home.1', `users.${this.$auth.user.id}`)
     next()
   },
   middleware: 'auth',
@@ -49,18 +49,14 @@ export default {
       ]
     }
   },
-  beforeDestroy() {
-    this.$echo.leave('post', 'toastr')
-  },
   mounted() {
-    console.log(this.$auth.strategy.token)
     this.$echo
       .channel('post')
       .listen('.created', (e) => {
-        this.$store.dispatch('posts/addNewPost', e.post)
+        this.$store.dispatch('posts/addPost', e.post)
       })
       .listen('.deleted', (e) => {
-        this.$store.dispatch('posts/removePost', e.post)
+        this.$store.dispatch('posts/deletePost', e.post)
       })
       .listen('.comment.created', (e) => {
         this.$store.dispatch('posts/addComment', {
@@ -74,6 +70,18 @@ export default {
           comment: e.comment
         })
       })
+      .listen('.react.created', (e) => {
+        this.$store.dispatch('posts/addReact', {
+          post: e.post,
+          react: e.react
+        })
+      })
+      .listen('.react.deleted', (e) => {
+        this.$store.dispatch('posts/deleteReact', {
+          post: e.post,
+          react: e.react
+        })
+      })
 
     this.$echo.channel('toastr').listen('.message', (e) => {
       this.$toast
@@ -85,8 +93,7 @@ export default {
     })
     this.$echo
       .private(`users.${this.$auth.user.id}`)
-      .listen('.testing', (e) => {
-        alert(e.message)
+      .listen('.post.commented', (e) => {
         this.$toast
           .success(e.message, {
             position: 'top-right',
@@ -94,6 +101,48 @@ export default {
           })
           .goAway(4500)
       })
+      .listen('.post.reacted', (e) => {
+        this.$toast
+          .success(e.message, {
+            position: 'top-right',
+            Icon: 'check'
+          })
+          .goAway(4500)
+      })
+
+    // this.$echo
+    //   .join(`home.1`)
+    //   .here((users) => {
+    //     //
+    //   })
+    //   .whisper('typing', {
+    //     name: this.$auth.user.name
+    //   })
+    //   .listenForWhisper('typing', (e) => {
+    //     console.log(e)
+    //   })
+    //   .joining((user) => {
+    //     this.$toast
+    //       .success(`${user.name} masuk ke halaman ini`, {
+    //         position: 'top-right',
+    //         Icon: 'check'
+    //       })
+    //       .goAway(4500)
+    //   })
+    //   .leaving((user) => {
+    //     this.$toast
+    //       .success(`${user.name} keluar dari halaman ini`, {
+    //         position: 'top-right',
+    //         Icon: 'check'
+    //       })
+    //       .goAway(4500)
+    //   })
+    //   .error((error) => {
+    //     console.error(error)
+    //   })
+    //   .listen('.index', (e) => {
+    //     console.log(e)
+    //   })
   }
 }
 </script>

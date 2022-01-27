@@ -59,9 +59,9 @@ export default {
           document.documentElement.offsetHeight - 50
 
         if (bottomOfWindow) {
-          this.scrolledToBottom = true // replace it with your code
+          this.scrolledToBottom = true
         } else {
-          this.scrolledToBottom = false // replace it with your code
+          this.scrolledToBottom = false
         }
       }
     }
