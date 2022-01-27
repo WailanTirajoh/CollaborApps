@@ -88,7 +88,7 @@ export default {
       try {
         if (confirm('Are you sure want to delete this comment?')) {
           const response = await this.$axios.$delete(
-            `/post/${this.post.id}/comment/${comment.id}`
+            `/posts/${this.post.id}/comments/${comment.id}`
           )
           this.$toast
             .success(response.message, {

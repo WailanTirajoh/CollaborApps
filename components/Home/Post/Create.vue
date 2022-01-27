@@ -89,7 +89,7 @@ export default {
         if (this.form.file) {
           formData.append('file', this.form.file)
         }
-        await this.$axios.$post('/post', formData, {
+        await this.$axios.$post('/posts', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }

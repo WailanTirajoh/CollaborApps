@@ -13,7 +13,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@nuxtjs/auth-next": "5.0.0-1640716105.da0587d",
     "@nuxtjs/fontawesome": "^1.1.2",
-    "@nuxtjs/laravel-echo": "^1.1.0",
     "@nuxtjs/toast": "^3.3.1",
     "@popperjs/core": "^2.11.0",
     "bootstrap": "^5.1.3",
@@ -29,15 +28,16 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/eslint-config": "6.0.1",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/laravel-echo": "github:JoaoPedroAS51/laravel-echo#feat/auth-v5",
     "babel-eslint": "~10.1.0",
     "eslint": "~7.32.0",
     "eslint-config-prettier": "~8.3.0",
     "eslint-plugin-nuxt": "2.0.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.4.0",
     "fibers": "^5.0.0",
+    "prettier": "^2.4.0",
     "sass": "^1.45.2",
     "sass-loader": "^10.2.0"
   }

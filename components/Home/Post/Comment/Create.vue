@@ -56,7 +56,7 @@ export default {
       this.form.isProcessing = true
       try {
         const response = await this.$axios.$post(
-          `/post/${this.post.id}/comment`,
+          `/posts/${this.post.id}/comments`,
           this.form
         )
         this.$toast

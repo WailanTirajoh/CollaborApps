@@ -105,7 +105,7 @@ export default {
     async deletePost(post) {
       if (confirm('Are you sure want to delete this post?')) {
         try {
-          await this.$axios.$delete(`/post/${post.id}`)
+          await this.$axios.$delete(`/posts/${post.id}`)
         } catch (e) {
           alert(e.message)
         }

@@ -51,7 +51,7 @@ export default {
     async like() {
       try {
         const response = await this.$axios.$post(
-          `/post/${this.post.id}/react`,
+          `/posts/${this.post.id}/reacts`,
           { react_id: 1 }
         )
         if (response.like) {

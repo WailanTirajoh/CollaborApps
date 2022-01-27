@@ -62,7 +62,7 @@ export const actions = {
   async fetchPost({ commit }) {
     commit('resetPosts')
     try {
-      const result = await this.$axios.$get('/post')
+      const result = await this.$axios.$get('/posts')
       commit('addNewPost', result.posts)
       return result
     } catch (e) {}

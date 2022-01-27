@@ -53,6 +53,7 @@ export default {
     this.$echo.leave('post', 'toastr')
   },
   mounted() {
+    console.log(this.$auth.strategy.token)
     this.$echo
       .channel('post')
       .listen('.created', (e) => {
@@ -82,6 +83,17 @@ export default {
         })
         .goAway(4500)
     })
+    this.$echo
+      .private(`users.${this.$auth.user.id}`)
+      .listen('.testing', (e) => {
+        alert(e.message)
+        this.$toast
+          .success(e.message, {
+            position: 'top-right',
+            Icon: 'check'
+          })
+          .goAway(4500)
+      })
   }
 }
 </script>

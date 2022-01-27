@@ -53,7 +53,7 @@ export default {
       this.form.isProcessing = true
       try {
         const result = await this.$axios.$put(
-          `/post/${this.post.id}`,
+          `/posts/${this.post.id}`,
           this.form
         )
         alert(result.message)

@@ -39,11 +39,12 @@ export default {
       '@nuxtjs/laravel-echo',
       {
         broadcaster: 'pusher',
-        key: 'localasdf',
-        wsHost: 'localhost',
-        wsPort: 6001,
+        key: process.env.PUSHER_KEY,
+        wsHost: process.env.PUSHER_WS_HOST,
+        wsPort: process.env.PUSHER_WS_PORT,
         forceTLS: false,
-        disableStats: true
+        disableStats: true,
+        authEndpoint: `${process.env.BACKEND_BASE_URL}/api/broadcasting/auth`
       }
     ]
     // '@nuxtjs/eslint-module'
@@ -57,7 +58,13 @@ export default {
   },
   auth: {
     strategies: {
-      laravelSanctum: {
+      local: {
+        token: {
+          property: 'token',
+          required: true,
+          type: 'Bearer',
+          maxAge: 60 * 2
+        },
         provider: 'laravel/sanctum',
         url: 'http://localhost:8000',
         endpoints: {
@@ -72,7 +79,8 @@ export default {
           }
         },
         user: {
-          property: false
+          property: false,
+          autoFetch: true
         }
       }
     },
@@ -101,7 +109,10 @@ export default {
     continuous: true
   },
   echo: {
-    plugins: ['~/plugins/echo.js']
+    plugins: ['~/plugins/echo.js'],
+    authModule: true,
+    connectOnLogin: true,
+    disconnectOnLogout: true
   },
 
   toast: {

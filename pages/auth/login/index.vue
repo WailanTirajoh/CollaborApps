@@ -102,10 +102,12 @@ export default {
     async login() {
       this.form.isProcessing = true
       try {
-        await this.$auth.loginWith('laravelSanctum', {
+        const response = await this.$auth.loginWith('local', {
           data: this.form
         })
+        console.log(response);
       } catch (e) {
+        alert('something went wrong')
         this.errors = e.response.data.errors
       }
       this.form.isProcessing = false
