@@ -7,4 +7,12 @@
       box-shadow: inset 0px 0px 4px rgb(0 0 0 / 25%);
     }
   }
+  &-border {
+    &-right {
+      border-right: 0.5px solid rgba(108, 117, 125, 0.25);
+    }
+    &-left {
+      border-left: 0.5px solid rgba(108, 117, 125, 0.25);
+    }
+  }
 }

@@ -3,7 +3,7 @@
     class="position-fixed top-0 d-flex justify-content-end pe-0 end-0"
     style="z-index: 1"
   >
-    <li
+    <!-- <li
       class="nav-item dropdown show-desktop bg-white py-2 px-4 user-profile shadow-sm"
     >
       <a
@@ -48,7 +48,7 @@
           </div>
         </li>
       </ul>
-    </li>
+    </li> -->
   </div>
 </template>
 

@@ -63,7 +63,6 @@ export const mutations = {
   deletePost(state, post) {
     const index = state.posts.findIndex((statePost) => statePost.id == post.id)
     if (index > -1) {
-      console.log(index)
       state.posts.splice(index, 1)
     }
   },

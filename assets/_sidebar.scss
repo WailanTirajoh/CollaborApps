@@ -1,8 +1,17 @@
 .server {
   max-width: 5rem;
+  .dropdown-toggle::after {
+    display: unset;
+    margin-left: unset;
+    vertical-align: unset;
+    content: unset;
+    border-top: unset;
+    border-right: unset;
+    border-left: unset;
+  }
 }
 
-.room {
+.channel {
   max-width: 18rem;
   .side-list {
     overflow: hidden;
