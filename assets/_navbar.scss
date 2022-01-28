@@ -1,10 +1,11 @@
 .navbar {
+  height: 3.5rem;
   .navbar-brand {
     color: #191919 !important;
   }
   .nav-item {
     .nav-link {
-      height: 3.25rem;
+      // height: 3.5rem;
       display: flex;
       align-items: center;
       .icon {
