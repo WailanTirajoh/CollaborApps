@@ -103,7 +103,9 @@ export default {
     }
   },
   methods: {
-    register() {}
+    register() {
+      this.$axios.post(``)
+    }
   }
 }
 </script>

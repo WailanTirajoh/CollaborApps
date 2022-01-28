@@ -54,7 +54,7 @@ export default {
   modules: ['@nuxtjs/axios', '@nuxtjs/auth-next'],
   axios: {
     credentials: true,
-    baseUrl: 'http://localhost:8000/api'
+    baseUrl: 'http://localhost:8000/api/v1'
   },
   auth: {
     strategies: {
@@ -69,13 +69,16 @@ export default {
         url: 'http://localhost:8000',
         endpoints: {
           login: {
-            url: '/api/login'
+            url: '/api/v1/login',
+            method: 'post',
+            propertyName: 'token'
           },
           logout: {
-            url: '/api/logout'
+            url: '/api/v1/logout',
+            method: 'post'
           },
           user: {
-            url: '/api/user'
+            url: '/api/v1/user'
           }
         },
         user: {
