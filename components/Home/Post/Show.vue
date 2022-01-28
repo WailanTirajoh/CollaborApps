@@ -102,25 +102,25 @@ export default {
       .private(`post.${this.post.id}`)
       .listen('.comment.created', (e) => {
         this.$store.dispatch('posts/addComment', {
-          post: this.post,
+          post: e.post,
           comment: e.comment
         })
       })
       .listen('.comment.deleted', (e) => {
         this.$store.dispatch('posts/deleteComment', {
-          post: this.post,
+          post: e.post,
           comment: e.comment
         })
       })
       .listen('.react.created', (e) => {
         this.$store.dispatch('posts/addReact', {
-          post: this.post,
+          post: e.post,
           react: e.react
         })
       })
       .listen('.react.deleted', (e) => {
         this.$store.dispatch('posts/deleteReact', {
-          post: this.post,
+          post: e.post,
           react: e.react
         })
       })
