@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-4 col-12">
         <form
-          class="bg-white rounded border p-3 py-4 mt-3"
+          class="bg-white rounded custom-shadow p-3 py-4 mt-3"
           @submit.prevent="editProfile"
         >
           <div class="row mb-3">
@@ -108,13 +108,18 @@ export default {
         if (this.form.avatar) {
           formData.append('avatar', this.form.avatar)
         }
-        const result = await this.$axios.$post('/user/update', formData, {
+        const response = await this.$axios.$post('/user/update', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         })
         await this.$auth.fetchUser()
-        alert(result.message)
+        this.$toast
+          .success(response.message, {
+            position: 'top-right',
+            Icon: 'check'
+          })
+          .goAway(2500)
       } catch (e) {
         if (e.response.data) {
           this.errors = e.response.data.errors
@@ -125,10 +130,15 @@ export default {
     async deleteProfilePhoto() {
       this.form.isProcessing = true
       try {
-        const result = await this.$axios.$delete('/user/profile-photo')
+        const response = await this.$axios.$delete('/user/profile-photo')
         await this.$auth.fetchUser()
         this.url = this.$auth.user.avatar
-        alert(result.message)
+        this.$toast
+          .success(response.message, {
+            position: 'top-right',
+            Icon: 'check'
+          })
+          .goAway(2500)
       } catch (e) {}
       this.form.isProcessing = false
     }

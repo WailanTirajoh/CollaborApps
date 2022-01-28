@@ -2,28 +2,13 @@
   <div>
     <div class="row sidebar" style="min-height: 60vh">
       <div class="col-lg-3 position-relative">
-        <div class="px-1 show-desktop position-sticky" style="top: 60px">
-          <div
-            class="rounded shadow-sm px-2 py-2 bg-white mb-2 text-center intro-y"
-          >
-            <font-awesome-icon :icon="['fas', 'project-diagram']" />
-            Projek
-          </div>
-          <HomeSideProject class="intro-y" />
+        <div class="show-desktop position-sticky pr-1" style="top: 70px">
+          <HomeSideRoom class="intro-y" />
         </div>
       </div>
-      <div class="px-sm-1 col-12 col-lg-6">
-        <div class="row">
-          <div class="col-lg-12">
-            <HomePostCreate class="intro-y" />
-          </div>
-          <div class="col-lg-12">
-            <HomePost />
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 position-relative">
-        <div class="px-1 show-desktop position-sticky" style="top: 60px"></div>
+      <div class="col-12 col-lg-6 px-0">
+        <HomePostCreate class="intro-y" />
+        <HomePost />
       </div>
     </div>
   </div>

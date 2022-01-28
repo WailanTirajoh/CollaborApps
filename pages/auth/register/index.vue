@@ -6,7 +6,7 @@
           <h5>Buat akun</h5>
         </div>
         <form
-          class="bg-white rounded shadow border p-4 mt-3"
+          class="bg-white rounded shadow custom-shadow p-4 mt-3"
           @submit.prevent="register"
         >
           <div class="mb-3">
@@ -56,7 +56,7 @@
             <div class="d-flex justify-content-center mb-2">
               <FormSubmitButton
                 type="submit"
-                class="btn btn-light border px-4 shadow-sm w-100"
+                class="btn btn-light custom-shadow px-4 shadow-sm w-100"
                 :loading="form.isLoading"
               >
                 Daftar

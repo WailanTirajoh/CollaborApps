@@ -6,7 +6,7 @@
           <h5>Login untuk memulai sesi</h5>
         </div>
         <form
-          class="bg-white rounded shadow border p-3 mt-3"
+          class="bg-white rounded shadow custom-shadow p-3 mt-3"
           @submit.prevent="login"
         >
           <div class="mb-3">

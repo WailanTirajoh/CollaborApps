@@ -1,8 +1,8 @@
 <template>
   <nav
-    class="navbar navbar-expand-lg navbar-light d-header-home fixed-top text-center p-sm-0 bg-white"
+    class="navbar navbar-expand-lg navbar-light d-header-home fixed-top text-center p-sm-0 bg-white shadow-sm"
   >
-    <div class="container px-3">
+    <div class="container-fluid px-3">
       <NuxtLink class="navbar-brand" to="/"
         >KerjaBareng {{ $store.state.posts.page }}</NuxtLink
       >
@@ -47,7 +47,10 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <div
+        id="navbarSupportedContent"
+        class="collapse navbar-collapse justify-content-end"
+      >
         <div v-if="!$auth.loggedIn" class="hide-desktop">
           <div class="nav-item">
             <NuxtLink to="/auth/login" class="nav-link text-decoration-none"
@@ -61,35 +64,28 @@
           </div>
         </div>
         <!-- <div class=""></div> -->
-        <ul
-          v-if="$auth.loggedIn"
-          class="navbar-nav mb-2 mb-lg-0 gap-2 w-100 d-flex justify-content-center"
-        >
+        <!-- <ul v-if="$auth.loggedIn" class="navbar-nav mb-2 mb-lg-0 gap-2">
           <li class="nav-item">
             <NuxtLink class="nav-link" aria-current="page" to="/">
-              <!-- <IconHome /> -->
               Beranda
             </NuxtLink>
           </li>
           <li class="nav-item">
             <NuxtLink class="nav-link text-transform-capitalize" to="/projects">
-              <!-- <IconBriefcase /> -->
               Tugas
             </NuxtLink>
           </li>
           <li class="nav-item">
             <NuxtLink class="nav-link text-transform-capitalize" to="/clients">
-              <!-- <IconAward /> -->
               Hadiah
             </NuxtLink>
           </li>
           <li class="nav-item">
             <NuxtLink class="nav-link text-transform-capitalize" to="/teams">
-              <!-- <IconCalendar /> -->
               Kalender
             </NuxtLink>
           </li>
-        </ul>
+        </ul> -->
         <div class="">
           <ul v-if="!$auth.loggedIn" class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item show-desktop">
@@ -172,8 +168,7 @@ export default {
 <style lang="scss" scoped>
 .d-header,
 .d-header-home {
-  border-style: none;
-  height: var(--header-height);
+  custom-shadow-style: none;
   position: sticky;
   position: -webkit-sticky;
   top: 0;

@@ -1,5 +1,5 @@
 .side-list {
-  max-height: 82vh;
+  max-height: 85vh;
   overflow-y: auto;
   position: relative;
   .side-parent {
@@ -11,7 +11,7 @@
       &::before {
         content: '';
         width: 0.15rem;
-        background-color: $comment-background;
+        background-color: white;
         height: 100%;
         position: absolute;
         top: 0;
@@ -31,16 +31,16 @@
           content: '';
           width: 1rem;
           height: 0.15rem;
-          background-color: $comment-background;
+          background-color: white;
           position: absolute;
-          top: 15px;
+          top: 0.75rem;
           left: -1rem;
         }
       }
       .side-link {
-        background-color: $gray-400 !important;
+        background-color: white !important;
         padding: 0.25rem;
-        padding-left: 0.5rem;
+        padding-left: 0.15rem;
         margin-bottom: 0.25rem;
         border-radius: 0.2rem;
         .side-icon {

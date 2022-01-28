@@ -5,8 +5,8 @@
         <img
           :src="post.user.avatar"
           alt="user-avatar"
-          class="img-fluid rounded-circle"
-          style="width: 40px"
+          class="img-fluid rounded-circle object-fit-cover"
+          style="width: 40px; height: 40px"
         />
       </div>
       <div class="mid ps-3">

@@ -1,15 +1,15 @@
-// ::-webkit-scrollbar {
-//   width: 0.55rem;
-//   height: 0.55rem;
-//   &-track {
-//     display: none;
-//   }
-//   &-thumb {
-//     background: #606060;
-//     border-radius: 100vh;
-//     // border: 0.125rem solid white;
-//     &:hover {
-//       background: $line-color;
-//     }
-//   }
-// }
+::-webkit-scrollbar {
+  width: 0.55rem;
+  height: 0.55rem;
+  &-track {
+    display: none;
+  }
+  &-thumb {
+    background: #b3b3b3;
+    border-radius: 100vh;
+    // border: 0.125rem solid white;
+    &:hover {
+      background: #9d9d9d;
+    }
+  }
+}

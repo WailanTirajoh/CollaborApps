@@ -1,20 +1,26 @@
 .chat-box {
   transition: all 0.35s ease-in-out;
-  width: 20rem;
-  height: 2.65rem;
-  right: 2rem;
+  width: 23.5vw;
+  right: 0.5rem;
   bottom: 0;
   border-radius: 1rem 1rem 0rem 0rem;
-
-  &.pinned {
-    height: 80%;
+  height: 90vh;
+  transform: translateY(82.5vh);
+  background-color: white;
+  &.isPinned {
+    transform: translateY(0vh);
+    height: 90%;
   }
 
   .header {
+    display: flex;
+    align-items: center;
+    height: 7.5vh;
     border-radius: 1rem 1rem 0rem 0rem;
     border-bottom: 2px solid beige;
+    background-color: white;
     &:hover {
-      background-color: beige;
+      background-color: ghostwhite;
     }
   }
 }

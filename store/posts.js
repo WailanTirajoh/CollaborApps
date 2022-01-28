@@ -35,31 +35,60 @@ export const mutations = {
    */
   addPost(state, { posts, infiniteScroll }) {
     if (infiniteScroll) {
+      // Method 1
+      // const filteredPost = posts.filter(function (post) {
+      //   return state.posts.some(function (statePost) {
+      //     console.log(statePost.id, post.id)
+      //     return statePost.id != post.id
+      //   })
+      // })
+      // ------------------------------------------------------
+      // method 2
+      // const filteredPost = {}
+      // await posts.forEach((post) => {
+      //   const isInStatePost = state.posts.find(
+      //     (statePost) => statePost.id == post.id
+      //   )
+      //   if (isInStatePost == undefined) {
+      //     filteredPost.push(isInStatePost)
+      //   }
+      // })
+      // state.posts.push(...filteredPost)
+      // End filter
       state.posts.push(...posts)
     } else {
       state.posts.unshift(...posts)
     }
   },
   deletePost(state, post) {
-    const index = state.posts.findIndex((x) => x.id == post.id)
+    const index = state.posts.findIndex((statePost) => statePost.id == post.id)
     state.posts.splice(index, 1)
   },
   editPost(state, post) {
-    state.posts[state.posts.findIndex((x) => x.id == post.id)] = post
+    state.posts[state.posts.findIndex((statePost) => statePost.id == post.id)] =
+      post
   },
   resetPosts(state) {
     state.posts = []
+    state.page = 1
+    state.noData = false
   },
   addComment(state, { post, comment }) {
-    state.posts.find((x) => x.id == post.id).comments.push(comment)
+    state.posts
+      .find((statePost) => statePost.id == post.id)
+      .comments.push(comment)
   },
   deleteComment(state, { post, comment }) {
-    const postComments = state.posts.find((x) => x.id == post.id).comments
-    const commentIndex = postComments.findIndex((x) => x.id == comment.id)
+    const postComments = state.posts.find(
+      (statePost) => statePost.id == post.id
+    ).comments
+    const commentIndex = postComments.findIndex(
+      (postComment) => postComment.id == comment.id
+    )
     postComments.splice(commentIndex, 1)
   },
   addReact(state, { post, react }) {
-    state.posts.find((x) => x.id == post.id).reacts.push(react)
+    state.posts.find((statePost) => statePost.id == post.id).reacts.push(react)
   },
   deleteReact(state, { post, react }) {
     const postReacts = state.posts.find((x) => x.id == post.id).reacts
@@ -87,7 +116,7 @@ export const actions = {
     } catch (e) {}
   },
   addPost({ commit }, post) {
-    commit('addPost', [post])
+    commit('addPost', { posts: [post], infiniteScroll: false })
   },
   deletePost({ commit }, post) {
     commit('deletePost', post)
