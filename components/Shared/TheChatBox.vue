@@ -1,6 +1,6 @@
 <template>
   <div
-    class="position-fixed show-desktop chat-box"
+    class="position-fixed show-desktop chat-box shadow-sm"
     :class="{ isPinned }"
     style="z-index: 10"
   >

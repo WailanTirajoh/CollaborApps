@@ -1,9 +1,29 @@
 <template>
   <div>
-    <div class="row justify-content-center">
-      <div class="col-lg-4 col-12">
+    <NuxtLink
+      to="/"
+      class="p-2 rounded-circle bg-white cursor-pointer shadow-sm text-secondary intro-y"
+      style="
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        font-size: 1.5rem;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <font-awesome-icon class="color-white" :icon="['fas', 'home']" />
+    </NuxtLink>
+    <div
+      class="row justify-content-center align-items-center"
+      style="height: 100vh"
+    >
+      <div class="col-lg-4 col-8">
         <form
-          class="bg-white rounded custom-shadow p-3 py-4 mt-3"
+          class="bg-white rounded custom-shadow p-3 py-4 intro-y"
           @submit.prevent="editProfile"
         >
           <div class="row mb-3">

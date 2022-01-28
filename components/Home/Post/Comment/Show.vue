@@ -22,8 +22,13 @@
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
+            :disabled="form.isProcessing"
           >
-            <font-awesome-icon class="text-sm" :icon="['fas', 'ellipsis-h']" />
+            <font-awesome-icon
+              class="text-sm"
+              :class="{ 'fa-pulse': form.isProcessing }"
+              :icon="['fas', form.isProcessing ? 'spinner' : 'ellipsis-h']"
+            />
           </button>
           <ul
             v-if="comment.user.id == $auth.user.id"
@@ -31,16 +36,15 @@
             aria-labelledby="dropdownMenuButton1"
           >
             <li>
-              <a
-                class="dropdown-item text-sm"
-                href="#"
+              <button
+                class="dropdown-item text-sm btn"
                 @click="deleteComment(comment)"
               >
                 <font-awesome-icon
                   class="me-1"
                   :icon="['far', 'trash-alt']"
-                />Hapus</a
-              >
+                />Hapus
+              </button>
             </li>
           </ul>
           <ul
@@ -49,12 +53,12 @@
             aria-labelledby="dropdownMenuButton1"
           >
             <li>
-              <a class="dropdown-item text-sm" href="#">
+              <button class="dropdown-item text-sm btn">
                 <font-awesome-icon
                   :icon="['fas', 'bullhorn']"
                   class="me-1 color-red"
-                />Laporkan</a
-              >
+                />Laporkan
+              </button>
             </li>
           </ul>
         </div>
@@ -84,6 +88,9 @@ export default {
   },
   data() {
     return {
+      form: {
+        isProcessing: false
+      },
       isOpen: false
     }
   },
@@ -92,6 +99,7 @@ export default {
       this.isOpen = !this.isOpen
     },
     async deleteComment(comment) {
+      this.form.isProcessing = true
       try {
         if (confirm('Are you sure want to delete this comment?')) {
           const response = await this.$axios.$delete(
@@ -108,6 +116,7 @@ export default {
       } catch (e) {
         alert(e.response.data.message)
       }
+      this.form.isProcessing = false
     }
   }
 }

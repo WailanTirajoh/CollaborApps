@@ -1,12 +1,13 @@
 ::-webkit-scrollbar {
-  width: 0.55rem;
-  height: 0.55rem;
+  width: 0.75rem;
+  height: 0.75rem;
   &-track {
-    display: none;
+    padding: 0.25rem;
+    // display: none;
   }
   &-thumb {
     background: #b3b3b3;
-    border-radius: 100vh;
+  border-radius: 10rem;
     // border: 0.125rem solid white;
     &:hover {
       background: #9d9d9d;
