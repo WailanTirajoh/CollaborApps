@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="rounded px-2 mb-2 side-list text-sm">
+    <div class="rounded px-2 mb-2 side-list text-sm py-4">
       <ul class="side-parent position-relative">
         <li>
           <NuxtLink to="/my-work">
@@ -230,7 +230,7 @@
               <font-awesome-icon :icon="['fas', 'plus']" />
             </div>
 
-            Tambah Projek Baru
+            Tambah Channel Baru
           </button>
         </li>
       </ul>

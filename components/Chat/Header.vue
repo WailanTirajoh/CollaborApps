@@ -22,6 +22,11 @@
 
 <script>
 export default {
+  computed: {
+    isPinned() {
+      return this.$store.state.chat.isPinned
+    }
+  },
   methods: {
     togglePin() {
       this.$store.dispatch('chat/updatePin')

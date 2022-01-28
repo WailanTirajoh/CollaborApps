@@ -29,7 +29,7 @@
           <label
             v-if="form.file == null"
             for="files"
-            class="input-file btn custom-shadow text-secondary btn-sm h-100 d-flex align-items-center text-sm"
+            class="input-file btn border text-secondary btn-sm h-100 d-flex align-items-center text-sm"
             >Pilih berkas</label
           >
           <div

@@ -1,28 +1,16 @@
-.navbar {
-  height: 3.5rem;
-  .navbar-brand {
-    color: #191919 !important;
-  }
-  .nav-item {
-    .nav-link {
-      // height: 3.5rem;
-      display: flex;
-      align-items: center;
-      .icon {
-        padding-top: 5px;
-        margin-bottom: -5px;
-      }
-      &:hover {
-        // color: #191919 !important;
-        border-bottom: 2px solid rgba(0, 0, 0, 0.55);
-      }
-      transition: all 0.35s ease;
-      color: rgba(0, 0, 0, 0.55);
+.user-profile {
+  padding-left: 0.5rem !important;
+  border-radius: 0px 0rem 0rem 1rem;
+  a {
+    img {
+      margin-right: 0.5rem;
     }
-    .nuxt-link-exact-active {
-      font-weight: 600;
-      color: rgba(0, 0, 0, 0.55);
-      border-bottom: 2px solid rgba(0, 0, 0, 0.55);
+    &:hover {
+      color: darkslategray;
     }
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
   }
 }

@@ -1,12 +1,15 @@
 <template>
   <div>
     <div class="row sidebar" style="min-height: 60vh">
-      <div class="col-lg-3 position-relative">
-        <div class="show-desktop position-sticky pr-1" style="top: 70px">
+      <div class="col-lg-3 pe-1 position-relative">
+        <div class="show-desktop position-sticky" style="top: 0px">
           <HomeSideRoom class="intro-y" />
         </div>
       </div>
-      <div class="col-12 col-lg-6 px-0">
+      <div
+        class="col-12 col-lg-6 py-4"
+        style="border-left: 1px solid rgba(108, 117, 125, 0.5)"
+      >
         <HomePostCreate class="intro-y" />
         <HomePost />
       </div>
