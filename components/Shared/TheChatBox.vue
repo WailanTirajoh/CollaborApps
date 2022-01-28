@@ -4,25 +4,7 @@
     :class="{ isPinned }"
     style="z-index: 10"
   >
-    <div class="header cursor-pointer" @click="togglePin">
-      <div
-        class="d-flex justify-content-between align-items-center py-2 px-2 w-100"
-      >
-        <div class="d-flex gap-2">
-          <img
-            :src="$auth.user.avatar"
-            class="img-fluid rounded-circle object-fit-cover w-2r h-2r"
-            alt=""
-          />
-          <h6 class="my-auto">Pesan</h6>
-        </div>
-        <div class="me-2">
-          <font-awesome-icon
-            :icon="['fas', isPinned ? 'chevron-down' : 'chevron-up']"
-          />
-        </div>
-      </div>
-    </div>
+    <ChatHeader />
     <div class="h-100">
       <div class="textbox px-2 py-1" style="overflow-y: auto; height: 80%">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores ex
@@ -94,17 +76,10 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 export default {
   computed: {
     isPinned() {
       return this.$store.state.chat.isPinned
-    }
-  },
-  methods: {
-    ...mapActions(['chat/updatePin']),
-    togglePin() {
-      this.$store.dispatch('chat/updatePin')
     }
   }
 }

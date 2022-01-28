@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="navbar navbar-expand-lg navbar-light d-header-home fixed-top text-center p-sm-0 bg-white shadow-sm"
+    class="navbar navbar-expand-lg navbar-light d-header-home fixed-top text-center p-sm-0 bg-white custom-shadow"
   >
     <div class="container-fluid px-3">
       <NuxtLink class="navbar-brand" to="/"

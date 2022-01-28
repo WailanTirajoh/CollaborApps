@@ -6,7 +6,7 @@
           <h5>Buat akun</h5>
         </div>
         <form
-          class="bg-white rounded shadow custom-shadow p-4 mt-3"
+          class="bg-white rounded custom-shadow p-4 mt-3"
           @submit.prevent="register"
         >
           <div class="mb-3">

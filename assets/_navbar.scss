@@ -1,12 +1,10 @@
 .navbar {
-  border-bottom: 1px solid #dee2e6 !important;
-  height: 3.25rem;
   .navbar-brand {
     color: #191919 !important;
   }
   .nav-item {
     .nav-link {
-      height: 3rem;
+      height: 3.25rem;
       display: flex;
       align-items: center;
       .icon {
