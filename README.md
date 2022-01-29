@@ -1,11 +1,8 @@
 # Collabor Apps
 Realtime collaboration Web Based Application built with Laravel & Vue. Communicate with message & voice realtime.
 
-### Video Preview
-https://user-images.githubusercontent.com/53980548/151654262-99e983c0-6cd4-4c0b-8018-3a2ab0387462.mp4
-
 ### Image Preview
-![Laravel Social](https://user-images.githubusercontent.com/53980548/151654321-fbb177d1-16ac-41a9-abce-b23d13d266a5.png)
+![Example Collaborapps](https://user-images.githubusercontent.com/53980548/151662579-218da4f3-df7c-432f-916b-f7f1fe522275.png)
 
 ## Instalation
 ### Backend instalation
