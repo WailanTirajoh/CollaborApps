@@ -1,15 +1,13 @@
 <template>
-  <div class="room position-sticky voice top-0 p-1" style="height: 100vh">
-    <div class="header pb-2 d-flex justify-content-end">
+  <div class="room position-sticky voice top-0" style="height: 100vh">
+    <div class="header py-2 d-flex justify-content-between">
+      <h5>Voice Room</h5>
       <button class="btn btn-sm btn-light border">Pengaturan Ruangan</button>
     </div>
     <div
-      class="bg-white rounded-sm px-2 overflow-y-auto rounded py-1 shadow-sm"
+      class="bg-white rounded-sm px-2 overflow-y-auto rounded py-1 shadow-sm position-relative"
       style="height: 85vh"
     >
-      <div class="text-sm text-secondary text-end pb-1">
-        Tahan "G" untuk mengirim suara
-      </div>
       <div v-if="users.length > 0" class="">
         <HomeSideRoomUser
           v-for="user in users"
@@ -26,6 +24,12 @@
         >
           <DefaultLoading />
         </div>
+      </div>
+
+      <div
+        class="text-sm text-secondary text-end pb-1 position-absolute bottom-0"
+      >
+        Tahan "G" untuk mengirim suara
       </div>
     </div>
     <div class="" style="height: 10vh"></div>

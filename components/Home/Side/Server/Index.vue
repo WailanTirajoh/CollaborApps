@@ -1,5 +1,5 @@
 <template>
-  <div class="position-sticky" style="z-index: 1; top: 5px">
+  <div class="position-sticky" style="z-index: 1; top: 0">
     <div class="nav-item dropdown">
       <a
         id="navbarDropdown"
@@ -10,7 +10,8 @@
         aria-expanded="false"
       >
         <img
-          class="img-fluid rounded-circle object-fit-cover"
+          class="img-fluid object-fit-cover hover-float"
+          style="border-radius: 0 0 2rem 2rem"
           :src="$auth.user.avatar"
         />
       </a>

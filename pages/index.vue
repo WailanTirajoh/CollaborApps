@@ -2,7 +2,7 @@
   <div>
     <div class="row" style="min-height: 100vh">
       <div
-        class="server show-desktop tw-bg-blue-900 bg-light shadow-sm"
+        class="col-md-1 server show-desktop tw-bg-blue-900 bg-light shadow-sm"
         :class="{ hide: hide }"
       >
         <HomeSideServer />
@@ -25,11 +25,11 @@
 
 <script>
 export default {
-  async beforeRouteLeave(to, from, next) {
+  beforeRouteLeave(to, from, next) {
     this.$store.dispatch('posts/resetPosts')
     this.$echo.leave('post', 'home.1', `users.${this.$auth.user.id}`)
-    this.hide = true
-    await new Promise((resolve) => setTimeout(resolve, 500))
+    // this.hide = true
+    // await new Promise((resolve) => setTimeout(resolve, 500))
     next()
   },
   middleware: 'auth',
