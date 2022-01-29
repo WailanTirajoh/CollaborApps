@@ -340,13 +340,13 @@
               <font-awesome-icon :icon="['fas', 'plus']" />
             </div>
 
-            Tambah Channel Baru
+            Tambah Saluran Baru
           </button>
         </li>
       </ul>
     </div>
     <div class="bg-white border-top p-1" style="height: 10%">
-      <div class="text-sm">Channel Setting</div>
+      <div class="text-sm">Pengaturan Saluran</div>
     </div>
   </div>
 </template>

@@ -1,13 +1,13 @@
 <template>
   <div class="room position-sticky voice top-0 p-1" style="height: 100vh">
-    <div class="header pb-2">
-      <div class="">Ruangan Suara</div>
+    <div class="header pb-2 d-flex justify-content-end">
+      <button class="btn btn-sm btn-light border">Pengaturan Ruangan</button>
     </div>
     <div
-      class="bg-white rounded-sm px-2 overflow-y-auto rounded pt-1"
-      style="height: 80vh"
+      class="bg-white rounded-sm px-2 overflow-y-auto rounded py-1 shadow-sm"
+      style="height: 85vh"
     >
-      <div class="text-sm text-secondary text-end">
+      <div class="text-sm text-secondary text-end pb-1">
         Tahan "G" untuk mengirim suara
       </div>
       <div v-if="users.length > 0" class="">
@@ -64,7 +64,7 @@ export default {
       })
       .joining((user) => {
         this.$toast
-          .info(`${user.name} bergabung ke channel`, {
+          .info(`${user.name} bergabung ke saluran`, {
             position: 'top-right',
             Icon: 'check'
           })
@@ -73,7 +73,7 @@ export default {
       })
       .leaving((user) => {
         this.$toast
-          .error(`${user.name} meninggalkan ke channel`, {
+          .error(`${user.name} meninggalkan ke saluran`, {
             position: 'top-right',
             Icon: 'check'
           })
