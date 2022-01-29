@@ -1,5 +1,5 @@
 <template>
-  <div class="font-mono bg-gray position-relative">
+  <div class="font-mono position-relative">
     <SharedTheNavbar />
     <section class="container-fluid">
       <SharedTheChatBox />

@@ -54,7 +54,9 @@ export default {
     }
   },
   beforeDestroy() {
-    this.$echo.leave(`channel.${this.channelId}`)
+    this.$echo.leave(`channel.1`)
+    window.removeEventListener('keydown', this.record)
+    window.removeEventListener('keyup', this.stopRecord)
   },
   mounted() {
     this.$echo

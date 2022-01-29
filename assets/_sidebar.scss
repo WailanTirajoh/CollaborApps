@@ -1,4 +1,8 @@
 .server {
+  transition: all 0.35s ease-in-out;
+  &.hide {
+    transform: translateX(-5rem);
+  }
   max-width: 5rem;
   .dropdown-toggle::after {
     display: unset;
@@ -18,6 +22,7 @@
 }
 
 .channel {
+  transition: all 0.35s ease-in-out;
   max-width: 18rem;
   .side-list {
     overflow: hidden;
@@ -42,6 +47,7 @@
         position: relative;
         .side-link {
           background-color: white !important;
+          box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
           padding: 0.25rem;
           padding-left: 0.15rem;
           margin-bottom: 0.25rem;
@@ -66,12 +72,13 @@
       &:before {
         content: '';
         width: 0.25rem;
-        background-color: $comment-background;
+        background-color: $line-background;
         height: 100%;
         position: absolute;
         top: -45px;
         left: -1.5rem;
         z-index: 0;
+        box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
       }
       li.left-line {
         &:before {
@@ -82,21 +89,23 @@
           top: 0px;
           left: -1.5rem;
           border-bottom-left-radius: 0.75rem;
-          border-bottom: 0.15rem solid $comment-background;
+          border-bottom: 0.15rem solid $line-background;
+          box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
         }
       }
     }
     .h-left-border {
       &:before {
         content: '';
-        width: 1.5rem;
-        height: 1.45rem;
+        left: -1.15rem;
+        width: 1.15rem;
+        height: 1.25rem;
         position: absolute;
-        top: -0.5rem;
-        left: -1.25rem;
+        top: -0.25rem;
         border-bottom-left-radius: 0.5rem;
-        border-bottom: 0.15rem solid $comment-background;
-        border-left: 0.15rem solid $comment-background;
+        border-bottom: 0.15rem solid $line-background;
+        border-left: 0.15rem solid $line-background;
+        box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
       }
     }
 
@@ -107,10 +116,11 @@
         height: 100%;
         position: absolute;
         top: -0.725rem;
-        left: 0.75rem;
+        left: 0.85rem;
         border-bottom-left-radius: 0.5rem;
-        border-bottom: 0.15rem solid $comment-background;
-        border-left: 0.15rem solid $comment-background;
+        border-bottom: 0.15rem solid $line-background;
+        border-left: 0.15rem solid $line-background;
+        box-shadow: 0 0.1rem 0rem rgb(0 0 0 / 8%) !important;
       }
     }
   }

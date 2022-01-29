@@ -1,13 +1,18 @@
 <template>
   <div>
     <div class="row" style="min-height: 100vh">
-      <HomeSideServer />
+      <div
+        class="server show-desktop tw-bg-blue-900 bg-light shadow-sm"
+        :class="{ hide: hide }"
+      >
+        <HomeSideServer />
+      </div>
       <div
         class="channel col-md-2 show-desktop position-relative px-0 custom-border-right"
       >
-        <HomeSideChannel />
+        <HomeSideChannel style="border-radius: 2rem" />
       </div>
-      <div class="col-12 col-md-6 py-2 custom-border-right">
+      <div class="col-12 col-md-6 py-2 bg-dark-4 custom-border-right">
         <HomePostCreate class="intro-y" />
         <HomePost />
       </div>
@@ -20,12 +25,19 @@
 
 <script>
 export default {
-  beforeRouteLeave(to, from, next) {
+  async beforeRouteLeave(to, from, next) {
     this.$store.dispatch('posts/resetPosts')
     this.$echo.leave('post', 'home.1', `users.${this.$auth.user.id}`)
+    this.hide = true
+    await new Promise((resolve) => setTimeout(resolve, 500))
     next()
   },
   middleware: 'auth',
+  data() {
+    return {
+      hide: false
+    }
+  },
   head() {
     return {
       title: 'Beranda',

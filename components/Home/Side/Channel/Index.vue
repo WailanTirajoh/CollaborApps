@@ -1,6 +1,6 @@
 <template>
-  <div class="position-sticky pt-2" style="height: 100vh; top: 0">
-    <div class="rounded px-2 pb-1 side-list text-sm" style="height: 90%">
+  <div class="position-sticky" style="height: 100vh; top: 0">
+    <div class="side-list text-sm p-2" style="height: 90%">
       <ul class="side-parent position-relative mb-0">
         <li>
           <NuxtLink to="/my-work">
@@ -345,7 +345,7 @@
         </li>
       </ul>
     </div>
-    <div class="bg-white border-top p-1" style="height: 10%">
+    <div class="bg-light border-top p-1" style="height: 10%">
       <div class="text-sm">Pengaturan Saluran</div>
     </div>
   </div>

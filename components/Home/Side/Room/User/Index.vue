@@ -24,15 +24,10 @@
           </div>
         </div>
         <div class="w-100">
-          <div class="text-sm text-secondary">
+          <div class="text-xs text-secondary">
             {{ volumePercentage }}
           </div>
-          <div
-            class="input-range"
-            :class="{
-              hide: !showVolume
-            }"
-          >
+          <div class="input-range">
             <input
               v-model="volume"
               class="w-100"
