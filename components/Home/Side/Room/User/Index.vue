@@ -1,12 +1,23 @@
 <template>
   <div
-    class="user d-flex align-items-center justify-content-between bg-gray p-2 pe-3 rounded"
+    class="user d-flex align-items-center justify-content-between bg-gray"
+    style="border-radius: 0.5rem"
     @mouseover="showVolume = true"
     @mouseleave="showVolume = false"
   >
-    <div class="d-flex align-items-center gap-3 intro-y w-100">
-      <img :src="user.image" class="w-3r h-3r rounded-circle" />
-      <div class="w-100">
+    <div class="row align-items-center intro-y w-100">
+      <div class="col-4">
+        <img
+          :src="user.image"
+          class="img-fluid object-fit-cover"
+          style="
+            border-radius: 0.5rem 0rem 0rem 0.5rem;
+            height: 100%;
+            object-fit: cover;
+          "
+        />
+      </div>
+      <div class="col-8 px-0">
         <div class="d-flex justify-content-between">
           <div class="text-lg">{{ user.name }}</div>
           <div v-if="user.isSpeaking">

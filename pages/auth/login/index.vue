@@ -102,12 +102,11 @@ export default {
     async login() {
       this.form.isProcessing = true
       try {
-        const response = await this.$auth.loginWith('local', {
+        await this.$auth.loginWith('local', {
           data: this.form
         })
-        console.log(response);
       } catch (e) {
-        alert('something went wrong')
+        this.$toast.error('ups coba kembali').goAway(5000)
         this.errors = e.response.data.errors
       }
       this.form.isProcessing = false

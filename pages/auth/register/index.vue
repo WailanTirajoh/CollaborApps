@@ -11,32 +11,32 @@
         >
           <div class="mb-3">
             <label for="name" class="form-label">Nama lengkap</label>
-            <input
+            <FormInput
               id="name"
               v-model="form.name"
+              :error="errors.name"
               type="text"
-              class="form-control"
               placeholder="john doe"
             />
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input
+            <FormInput
               id="email"
               v-model="form.email"
+              :error="errors.email"
               type="email"
-              class="form-control"
               aria-describedby="email-help"
               placeholder="john.doe@example.example"
             />
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Kata sandi</label>
-            <input
+            <FormInput
               id="password"
               v-model="form.password"
+              :errors="errors.password"
               type="password"
-              class="form-control"
               placeholder="********"
             />
           </div>
@@ -44,11 +44,11 @@
             <label for="password_confirmation" class="form-label"
               >Konfirmasi</label
             >
-            <input
+            <FormInput
               id="password_confirmation"
               v-model="form.password_confirmation"
+              :error="errors.password_confirmation"
               type="password"
-              class="form-control"
               placeholder="********"
             />
           </div>
@@ -87,7 +87,8 @@ export default {
         password: null,
         password_confirmation: null,
         isLoading: false
-      }
+      },
+      errors: {}
     }
   },
   head() {
@@ -103,8 +104,21 @@ export default {
     }
   },
   methods: {
-    register() {
-      this.$axios.post(``)
+    async register() {
+      this.form.isLoading = true
+      try {
+        await this.$axios.post(`register`, this.form)
+        await this.$auth.loginWith('local', {
+          data: {
+            email: this.form.email,
+            password: this.form.password
+          }
+        })
+      } catch (e) {
+        this.$toast.error(e.response.data.message).goAway(5000)
+        this.errors = e.response.data.errors
+      }
+      this.form.isLoading = false
     }
   }
 }
