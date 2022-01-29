@@ -1,5 +1,5 @@
 # Collabor Apps
-Collaborate realtime with your colleagues on web based application, change file together, communicate with message & voice realtime.
+Realtime collaboration Web Based Application built with Laravel & Vue. Communicate with message & voice realtime.
 
 ### Video Preview
 https://user-images.githubusercontent.com/53980548/151654262-99e983c0-6cd4-4c0b-8018-3a2ab0387462.mp4
