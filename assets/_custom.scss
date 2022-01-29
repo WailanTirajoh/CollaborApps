@@ -1,6 +1,13 @@
 .custom {
   &-shadow {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    &-box {
+      box-shadow: 0 51px 54px rgb(0 0 0 / 5%),
+        0 21.3066px 21.0653px rgb(0 0 0 / 4%),
+        0 11.3915px 10.5568px rgb(0 0 0 / 3%),
+        0 6.38599px 5.52636px rgb(0 0 0 / 3%),
+        0 3.39155px 2.7104px rgb(0 0 0 / 2%), 0 1.4113px 1.027px rgb(0 0 0 / 2%);
+    }
   }
   &-inner {
     &-shadow {

@@ -9,3 +9,18 @@
   cursor: pointer;
   font-size: 10pt;
 }
+
+input[type='range'][orient='vertical'] {
+  writing-mode: bt-lr; /* IE */
+  -webkit-appearance: slider-vertical; /* Chromium */
+  width: 8px;
+  height: 175px;
+}
+
+.input-range {
+  transition: all 0.35s ease-in-out;
+  opacity: 1;
+  &.hide {
+    opacity: 0;
+  }
+}

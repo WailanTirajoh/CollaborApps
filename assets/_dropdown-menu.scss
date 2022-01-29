@@ -1,3 +1,23 @@
 .dropdown-menu {
   min-width: 7rem;
 }
+.room {
+  .user {
+    .dropdown {
+      &-toggle::after {
+        display: unset;
+        margin-left: unset;
+        vertical-align: unset;
+        content: unset;
+        border-top: unset;
+        border-right: unset;
+        border-left: unset;
+      }
+      &-menu {
+        z-index: 9;
+        min-width: 2rem;
+        transform: translate3d(10px, 30px, 0px) !important;
+      }
+    }
+  }
+}

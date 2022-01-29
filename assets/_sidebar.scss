@@ -9,6 +9,12 @@
     border-right: unset;
     border-left: unset;
   }
+  .dropdown-menu {
+    &.show {
+      transform: translate3d(70px, 0px, 0px) !important;
+      border: unset;
+    }
+  }
 }
 
 .channel {
@@ -108,4 +114,8 @@
       }
     }
   }
+}
+
+.poeples {
+  max-width: 5rem;
 }
