@@ -332,21 +332,24 @@
             </li>
           </ul>
         </li>
-        <li class="position-sticky" style="bottom: 0">
-          <button
-            class="btn w-100 text-sm mt-2 text-center bg-light border d-flex gap-1 align-items-center justify-content-center"
-          >
-            <div class="side-icon">
-              <font-awesome-icon :icon="['fas', 'plus']" />
-            </div>
-
-            Tambah Saluran Baru
-          </button>
-        </li>
       </ul>
     </div>
-    <div class="bg-light border-top p-1" style="height: 10%">
-      <div class="text-sm">Pengaturan Saluran</div>
+    <div class="bg-light" style="height: 10%">
+      <div class="dropdown dropup">
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="w-100 text-sm mt-2 text-center bg-light border d-flex gap-1 align-items-center justify-content-center"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          <div class="side-icon">
+            <font-awesome-icon :icon="['fas', 'plus']" />
+          </div>
+
+          Tambah Saluran Baru
+        </button>
+      </div>
     </div>
   </div>
 </template>

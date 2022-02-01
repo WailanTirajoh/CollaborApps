@@ -1,6 +1,6 @@
 <template>
   <div
-    class="user d-flex align-items-center justify-content-between bg-gray"
+    class="user d-flex align-items-center justify-content-between bg-gray intro-y"
     style="border-radius: 0.5rem"
     @mouseover="showVolume = true"
     @mouseleave="showVolume = false"
@@ -22,7 +22,6 @@
           <div class="text-lg">{{ user.name }}</div>
           <div v-if="user.isSpeaking">
             <font-awesome-icon
-              class="intro-opacity"
               :icon="[
                 'fas',
                 volume == 0

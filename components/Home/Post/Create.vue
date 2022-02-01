@@ -68,7 +68,8 @@ export default {
       form: {
         text: '',
         file: null,
-        isProcessing: false
+        isProcessing: false,
+        channel_id: 1
       },
       error: {},
       url: null
@@ -86,6 +87,7 @@ export default {
       try {
         const formData = new FormData()
         formData.append('text', this.form.text)
+        formData.append('channel_id', this.form.channel_id)
         if (this.form.file) {
           formData.append('file', this.form.file)
         }

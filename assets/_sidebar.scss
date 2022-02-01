@@ -15,8 +15,26 @@
   }
   .dropdown-menu {
     &.show {
-      transform: translate3d(130px, 0px, 0px) !important;
+      transform: translate3d(120px, 0px, 0px) !important;
       border: unset;
+    }
+  }
+
+  @keyframes slidenavAnimation {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes slidenavAnimation {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 }

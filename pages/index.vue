@@ -7,10 +7,9 @@
       >
         <HomeSideServer />
       </div>
-      <div
-        class="channel col-md-2 show-desktop position-relative px-0 custom-border-right"
-      >
+      <div class="channel col-md-2 show-desktop px-0 custom-border-right">
         <HomeSideChannel style="border-radius: 2rem" />
+        <HomeSideChannelCreate />
       </div>
       <div class="col-12 col-md-6 py-2 bg-dark-4 custom-border-right">
         <HomePostCreate class="intro-y" />

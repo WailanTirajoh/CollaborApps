@@ -25,9 +25,14 @@ export const state = () => ({
 })
 
 export const mutations = {
-  addPage(state) {
+  /**
+   * increment page
+   * @param {Number} page
+   */
+  incrementPage(state) {
     state.page++
   },
+
   /**
    * add array of post into state post
    * @param {Array} posts
@@ -35,68 +40,92 @@ export const mutations = {
    */
   addPost(state, { posts, infiniteScroll }) {
     if (infiniteScroll) {
-      // Method 1
-      // const filteredPost = posts.filter(function (post) {
-      //   return state.posts.some(function (statePost) {
-      //     console.log(statePost.id, post.id)
-      //     return statePost.id != post.id
-      //   })
-      // })
-      // ------------------------------------------------------
-      // method 2
-      // const filteredPost = {}
-      // await posts.forEach((post) => {
-      //   const isInStatePost = state.posts.find(
-      //     (statePost) => statePost.id == post.id
-      //   )
-      //   if (isInStatePost == undefined) {
-      //     filteredPost.push(isInStatePost)
-      //   }
-      // })
-      // state.posts.push(...filteredPost)
-      // End filter
-      state.posts.push(...posts)
+      posts.forEach((post) => {
+        const isInStatePost = state.posts.find(({ id }) => id == post.id)
+        if (!isInStatePost) {
+          state.posts.push(post)
+        }
+      })
     } else {
       state.posts.unshift(...posts)
     }
   },
+
+  /**
+   * remove post object from state posts
+   * @param {Array} posts
+   * @param {Object} post
+   */
   deletePost(state, post) {
-    const index = state.posts.findIndex((statePost) => statePost.id == post.id)
+    const index = state.posts.findIndex(({ id }) => id == post.id)
     if (index > -1) {
       state.posts.splice(index, 1)
     }
   },
+
+  /**
+   * update state post object based on the same ID
+   * @param {Array} state
+   * @param {Object} post
+   */
   editPost(state, post) {
-    state.posts[state.posts.findIndex((statePost) => statePost.id == post.id)] =
-      post
+    state.posts[state.posts.findIndex(({ id }) => id == post.id)] = post
   },
+
+  /**
+   * reset state
+   * @param {Mixed} state
+   */
   resetPosts(state) {
     state.posts = []
     state.page = 1
     state.noData = false
   },
+
+  /**
+   * add comment into post comments
+   * @param {Array} posts
+   * @param {Object} post, comment
+   */
   addComment(state, { post, comment }) {
-    state.posts
-      .find((statePost) => statePost.id == post.id)
-      .comments.push(comment)
+    state.posts.find(({ id }) => id == post.id).comments.push(comment)
   },
+
+  /**
+   * delete comment from state post object
+   * @param {Array} state post
+   * @param {Object} post, comment
+   */
   deleteComment(state, { post, comment }) {
-    const postComments = state.posts.find(
-      (statePost) => statePost.id == post.id
-    ).comments
-    const commentIndex = postComments.findIndex(
-      (postComment) => postComment.id == comment.id
-    )
+    const postComments = state.posts.find(({ id }) => id == post.id).comments
+    const commentIndex = postComments.findIndex(({ id }) => id == comment.id)
     postComments.splice(commentIndex, 1)
   },
+
+  /**
+   * add react into post.reacts
+   * @param {Array} stateposts
+   * @param {Object} post, react
+   */
   addReact(state, { post, react }) {
-    state.posts.find((statePost) => statePost.id == post.id).reacts.push(react)
+    state.posts.find(({ id }) => id == post.id).reacts.push(react)
   },
+
+  /**
+   * delete react from state post object
+   * @param {Array} state post
+   * @param {Object} post, react
+   */
   deleteReact(state, { post, react }) {
-    const postReacts = state.posts.find((x) => x.id == post.id).reacts
-    const reactIndex = postReacts.findIndex((x) => x.user_id == react.user_id)
+    const postReacts = state.posts.find(({ id }) => id == post.id).reacts
+    const reactIndex = postReacts.findIndex(({ id }) => id == react.id)
     postReacts.splice(reactIndex, 1)
   },
+
+  /**
+   * set state noData to true
+   * @param {Boolean} state nodata
+   */
   setNoData(state) {
     state.noData = true
   }
@@ -105,13 +134,12 @@ export const mutations = {
 export const actions = {
   async fetchPost({ commit, getters }, { infiniteScroll }) {
     try {
-      // const result = await this.$axios.$get(`/posts?page=${getters.page}`)
-      const result = await this.$axios.$get('/posts', {
+      const { posts } = await this.$axios.$get('/posts', {
         params: { page: getters.page }
       })
-      if (result.posts.length > 0) {
-        commit('addPage')
-        commit('addPost', { posts: result.posts, infiniteScroll })
+      if (posts.length > 0) {
+        commit('incrementPage')
+        commit('addPost', { posts, infiniteScroll })
       } else {
         commit('setNoData')
       }
