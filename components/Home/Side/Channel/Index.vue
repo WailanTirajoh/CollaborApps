@@ -1,8 +1,8 @@
 <template>
   <div class="position-sticky" style="height: 100vh; top: 0">
     <div class="side-list text-sm p-2" style="height: 90%">
-      <ul class="side-parent position-relative mb-0">
-        <li>
+      <ul v-if="!fetching" class="side-parent position-relative mb-0">
+        <!-- <li>
           <NuxtLink to="/my-work">
             <div class="side-link d-flex gap-1">
               <div class="side-icon">
@@ -331,12 +331,30 @@
               </ul>
             </li>
           </ul>
+        </li> -->
+        <li v-for="channel in channels" :key="channel.id">
+          <NuxtLink :to="`/channels/${channel.slug}`">
+            <div class="side-link d-flex gap-1 active">
+              <div class="side-icon">
+                <font-awesome-icon :icon="['fas', 'briefcase']" />
+              </div>
+              {{ channel.name }}
+            </div>
+          </NuxtLink>
+          <ul></ul>
         </li>
       </ul>
+      <div v-else>
+        <div
+          class="d-flex align-items-center justify-content-center intro-y"
+          style="min-height: 300px"
+        >
+          <DefaultLoading />
+        </div>
+      </div>
     </div>
     <div class="bg-light" style="height: 10%">
       <div class="dropdown dropup">
-        <!-- Button trigger modal -->
         <button
           type="button"
           class="w-100 text-sm mt-2 text-center bg-light border d-flex gap-1 align-items-center justify-content-center"
@@ -353,3 +371,30 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      fetching: false
+    }
+  },
+  computed: {
+    channels() {
+      return this.$store.state.channels.channels
+    }
+  },
+  mounted() {
+    this.fetch()
+  },
+  methods: {
+    async fetch() {
+      this.fetching = true
+      try {
+        await this.$store.dispatch('channels/fetchChannels')
+      } catch (e) {}
+      this.fetching = false
+    }
+  }
+}
+</script>

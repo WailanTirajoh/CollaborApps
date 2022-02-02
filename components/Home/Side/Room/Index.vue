@@ -2,7 +2,6 @@
   <div class="room position-sticky voice top-0" style="height: 100vh">
     <div class="header py-2 d-flex justify-content-between">
       <h5>Saluran Suara</h5>
-      <!-- <button class="btn btn-sm btn-light border">Pengaturan</button> -->
     </div>
     <div
       class="bg-white rounded-sm p-2 overflow-y-auto shadow-sm position-relative"
@@ -29,7 +28,7 @@
       <div
         class="text-sm text-secondary text-end pb-1 position-absolute bottom-0"
       >
-        Tahan "G" untuk mengirim suara
+        Tahan "4" untuk mengirim suara
       </div>
     </div>
     <div class="" style="height: 5vh"></div>
@@ -37,10 +36,11 @@
 </template>
 
 <script>
+const KEYCODE_4 = 52
 export default {
   props: {
     channelId: {
-      type: Number,
+      type: String,
       required: true
     }
   },
@@ -49,7 +49,7 @@ export default {
       voice: {
         firstRecord: false,
         record: null,
-        handleVar: null,
+        handleRecord: null,
         audioChunks: [],
         blob: null,
         toast: null
@@ -58,7 +58,7 @@ export default {
     }
   },
   beforeDestroy() {
-    this.$echo.leave(`channel.1`)
+    this.$echo.leave(`channel.${this.channelId}`)
     window.removeEventListener('keydown', this.record)
     window.removeEventListener('keyup', this.stopRecord)
   },
@@ -142,13 +142,12 @@ export default {
       }
     },
     async broadcastVoice(src) {
-      await this.$axios.post(`channel/1/voice`, {
+      await this.$axios.post(`channels/${this.channelId}/voice`, {
         voice: src
       })
     },
     async record(e) {
-      // 71 = keycode for "G"
-      if (e.which == 71) {
+      if (e.which == KEYCODE_4 && this.users.length > 0) {
         // setup voice stream only when user want to use mic
         if (this.voice.firstRecord == false) {
           try {
@@ -159,9 +158,9 @@ export default {
           } catch (e) {}
           this.voice.firstRecord = true
         }
-        if (this.voice.handleVar != e.which) {
+        if (this.voice.handleRecord != e.which) {
           this.voice.record.start()
-          this.voice.handleVar = e.which
+          this.voice.handleRecord = e.which
           this.voice.toast = this.$toast.success(`Merekam ...`, {
             position: 'top-right',
             Icon: 'check'
@@ -170,9 +169,9 @@ export default {
       }
     },
     stopRecord() {
-      if (this.voice.handleVar != 71) return
+      if (this.voice.handleRecord != KEYCODE_4) return
       this.voice.record.stop()
-      this.voice.handleVar = null
+      this.voice.handleRecord = null
       this.voice.toast.goAway()
     },
     getUserAudio(userId) {

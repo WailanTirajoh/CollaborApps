@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded shadow-sm px-2 py-2">
+  <div class="bg-white rounded shadow-sm px-2 py-2 mb-2">
     <form @submit.prevent="createPost">
       <div class="d-flex gap-3">
         <img
@@ -63,13 +63,19 @@
 
 <script>
 export default {
+  props: {
+    channelId: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       form: {
         text: '',
         file: null,
-        isProcessing: false,
-        channel_id: 1
+        channel_id: this.channelId,
+        isProcessing: false
       },
       error: {},
       url: null
@@ -91,7 +97,7 @@ export default {
         if (this.form.file) {
           formData.append('file', this.form.file)
         }
-        await this.$axios.$post('/posts', formData, {
+        await this.$axios.$post(`/channels/${this.channelId}/posts`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }

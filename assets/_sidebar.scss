@@ -65,12 +65,16 @@
         text-decoration: none;
         position: relative;
         .side-link {
+          transition: all 0.05s ease-in-out;
           background-color: white !important;
           box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
           padding: 0.25rem;
           padding-left: 0.15rem;
           margin-bottom: 0.25rem;
           border-radius: 0.2rem;
+          &:hover {
+            background-color: #e4e6e9 !important;
+          }
           .side-icon {
             margin-right: 0.05rem;
             text-align: center;

@@ -1,48 +1,27 @@
 <template>
-  <div class="position-sticky" style="z-index: 1; top: 0">
-    <div class="nav-item dropdown">
-      <a
-        id="navbarDropdown"
-        class="dropdown-toggle color-gray"
-        href="#"
-        role="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
+  <div class="position-sticky" style="z-index: 1; top: 0; height: 100vh">
+    <div class="position-relative h-100">
+      <NuxtLink to="/auth/setting">
         <img
           class="img-fluid object-fit-cover hover-float"
           style="border-radius: 0 0 2rem 2rem"
           :src="$auth.user.avatar"
         />
-      </a>
-      <ul
-        class="dropdown-menu custom-shadow-box dropdown-menu-end text-sm hover-float"
-        aria-labelledby="navbarDropdown"
+      </NuxtLink>
+      <div
+        class="position-absolute bottom-0 bg-light w-100 text-center"
+        style="height: 9vh"
       >
-        <li>
-          <NuxtLink class="dropdown-item" to="/auth/setting"
-            ><font-awesome-icon
-              :icon="['fas', 'user-cog']"
-              style="width: 15px"
-            />
-            Pengaturan
-          </NuxtLink>
-        </li>
-        <li><hr class="dropdown-divider" /></li>
-        <li>
-          <div
-            class="dropdown-item cursor-pointer"
-            href="#"
-            @click.prevent="logout()"
-          >
-            <font-awesome-icon
-              :icon="['fas', 'sign-out-alt']"
-              style="width: 15px"
-            />
-            Keluar
-          </div>
-        </li>
-      </ul>
+        <button
+          class="btn bg-gray rounded text-black text-secondary p-1 px-4 border shadow-sm w-100 h-100"
+          @click.prevent="logout()"
+        >
+          <font-awesome-icon
+            :icon="['fas', 'power-off']"
+            style="width: 3vh; height: 3vh"
+          />
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -52,8 +31,10 @@ export default {
   methods: {
     async logout() {
       try {
-        await this.$auth.logout()
-        this.$auth.strategy.token.reset()
+        if (confirm(`Ingin logout?`)) {
+          this.$auth.strategy.token.reset()
+          await this.$auth.logout()
+        }
       } catch (error) {}
     }
   }

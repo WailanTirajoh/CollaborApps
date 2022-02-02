@@ -1,7 +1,7 @@
 <template>
   <div class="row post">
     <div v-for="post in posts" :key="post.id" class="col-lg-12 intro-y">
-      <HomePostShow :post="post" />
+      <HomePostShow :post="post" :channel-id="channelId" />
     </div>
     <div v-if="$store.state.posts.noData" class="col-lg-12">
       <div class="text-center text-sm text-secondary mt-2">
@@ -22,6 +22,12 @@
 
 <script>
 export default {
+  props: {
+    channelId: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       scrolledToBottom: false,
@@ -56,7 +62,8 @@ export default {
       this.fetching = true
       try {
         await this.$store.dispatch('posts/fetchPost', {
-          infiniteScroll: this.infiniteScroll
+          infiniteScroll: this.infiniteScroll,
+          channelId: this.channelId
         })
       } catch (e) {}
       this.fetching = false

@@ -132,9 +132,9 @@ export const mutations = {
 }
 
 export const actions = {
-  async fetchPost({ commit, getters }, { infiniteScroll }) {
+  async fetchPost({ commit, getters }, { infiniteScroll, channelId }) {
     try {
-      const { posts } = await this.$axios.$get('/posts', {
+      const { posts } = await this.$axios.$get(`/channels/${channelId}/posts`, {
         params: { page: getters.page }
       })
       if (posts.length > 0) {

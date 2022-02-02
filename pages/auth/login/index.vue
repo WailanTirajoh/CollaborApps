@@ -80,10 +80,7 @@ export default {
         remember: false,
         isProcessing: false
       },
-      errors: {
-        email: null,
-        password: null
-      }
+      errors: {}
     }
   },
   head() {
@@ -106,7 +103,7 @@ export default {
           data: this.form
         })
       } catch (e) {
-        this.$toast.error('ups coba kembali').goAway(5000)
+        this.$toast.error(e.message).goAway(5000)
         this.errors = e.response.data.errors
       }
       this.form.isProcessing = false
