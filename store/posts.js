@@ -128,6 +128,11 @@ export const mutations = {
    */
   setNoData(state) {
     state.noData = true
+  },
+
+  pinPost(state, { post }) {
+    state.posts[state.posts.findIndex(({ id }) => id == post.id)].is_pinned =
+      !state.posts[state.posts.findIndex(({ id }) => id == post.id)].is_pinned
   }
 }
 
@@ -135,7 +140,7 @@ export const actions = {
   async fetchPost({ commit, getters }, { infiniteScroll, channelId }) {
     try {
       const { posts } = await this.$axios.$get(`/channels/${channelId}/posts`, {
-        params: { page: getters.page }
+        params: { page: getters.page, is_pinned: true }
       })
       if (posts.length > 0) {
         commit('incrementPage')
@@ -168,6 +173,9 @@ export const actions = {
   },
   deleteReact({ commit }, { post, react }) {
     commit('deleteReact', { post, react })
+  },
+  pinPost({ commit }, { post }) {
+    commit('pinPost', { post })
   }
 }
 

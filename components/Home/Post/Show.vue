@@ -44,7 +44,7 @@
                   :icon="['far', 'bookmark']"
                   style="width: 15px"
                 />
-                Pin
+                {{ post.is_pinned ? 'Unpin' : 'Pin' }}
               </button>
             </li>
             <li>
@@ -103,7 +103,7 @@
         <img :src="post.file" class="img-fluid max-h-250-px rounded" />
       </div>
     </div>
-    <HomePostComment :post="post" />
+    <HomePostComment :post="post" :channel-id="channelId" />
   </div>
 </template>
 
@@ -163,7 +163,7 @@ export default {
         this.form.isProcessing = true
         try {
           await this.$axios.$delete(
-            `channels/${this.channelId}/posts/${post.id}`
+            `/channels/${this.channelId}/posts/${post.id}`
           )
         } catch (e) {}
         this.form.isProcessing = false
@@ -175,7 +175,10 @@ export default {
     async pinPost(post) {
       this.form.isProcessing = true
       try {
-        const response = await this.$axios.$post(`/posts/${post.id}/pin`)
+        const response = await this.$axios.$post(
+          `/channels/${this.channelId}/posts/${post.id}/pin`
+        )
+        this.$store.dispatch('posts/pinPost', { post })
         this.$toast
           .success(response.message, {
             position: 'top-right',

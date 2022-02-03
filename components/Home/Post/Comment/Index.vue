@@ -42,13 +42,17 @@
     <div v-show="isOpen">
       <ul v-if="post.comments.length > 0" class="p-0 m-0">
         <div v-for="comment in post.comments" :key="comment.id" class="intro-y">
-          <HomePostCommentShow :post="post" :comment="comment" />
+          <HomePostCommentShow
+            :post="post"
+            :comment="comment"
+            :channel-id="channelId"
+          />
         </div>
       </ul>
       <div v-else class="my-2 text-center intro-y">
         <i class="text-sm"> "Tidak ada balasan, jadilah yang pertama" </i>
       </div>
-      <HomePostCommentCreate :post="post" />
+      <HomePostCommentCreate :post="post" :channel-id="channelId" />
     </div>
   </div>
 </template>
@@ -58,6 +62,10 @@ export default {
   props: {
     post: {
       type: Object,
+      required: true
+    },
+    channelId: {
+      type: String,
       required: true
     }
   },
@@ -83,7 +91,7 @@ export default {
       this.form.isProcessing = true
       try {
         const response = await this.$axios.$post(
-          `/posts/${this.post.id}/reacts`,
+          `/channels/${this.channelId}/posts/${this.post.id}/reacts`,
           { react_id: 1 }
         )
         this.$toast
@@ -92,7 +100,14 @@ export default {
             Icon: 'check'
           })
           .goAway(2500)
-      } catch (e) {}
+      } catch (e) {
+        this.$toast
+          .error(e.message, {
+            position: 'top-right',
+            Icon: 'check'
+          })
+          .goAway(2500)
+      }
       this.form.isProcessing = false
     },
     commentOpen() {

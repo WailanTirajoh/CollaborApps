@@ -34,6 +34,10 @@ export default {
     post: {
       type: Object,
       required: true
+    },
+    channelId: {
+      type: String,
+      required: true
     }
   },
   data() {
@@ -56,7 +60,7 @@ export default {
       this.form.isProcessing = true
       try {
         const response = await this.$axios.$post(
-          `/posts/${this.post.id}/comments`,
+          `/channels/${this.channelId}/posts/${this.post.id}/comments`,
           this.form
         )
         this.$toast
@@ -67,6 +71,12 @@ export default {
           .goAway(2500)
       } catch (e) {
         this.error = e.response.data.errors
+        this.$toast
+          .error(e.message, {
+            position: 'top-right',
+            Icon: 'check'
+          })
+          .goAway(2500)
       }
       this.resetForm()
     },

@@ -84,6 +84,10 @@ export default {
     post: {
       type: Object,
       required: true
+    },
+    channelId: {
+      type: String,
+      required: true
     }
   },
   data() {
@@ -103,7 +107,7 @@ export default {
       try {
         if (confirm('Are you sure want to delete this comment?')) {
           const response = await this.$axios.$delete(
-            `/posts/${this.post.id}/comments/${comment.id}`
+            `/channels/${this.channelId}/posts/${this.post.id}/comments/${comment.id}`
           )
           this.$toast
             .success(response.message, {
@@ -114,7 +118,12 @@ export default {
           this.$emit('delete-comment', comment)
         }
       } catch (e) {
-        alert(e.response.data.message)
+        this.$toast
+          .error(e.message, {
+            position: 'top-right',
+            Icon: 'check'
+          })
+          .goAway(2500)
       }
       this.form.isProcessing = false
     }
