@@ -1,6 +1,14 @@
 <template>
   <div class="">
-    <DefaultLoadingSearch />
+    <div v-if="type == 'search'">
+      <DefaultLoadingSearch />
+    </div>
+    <div v-if="type == 'eater'">
+      <DefaultLoadingEater />
+    </div>
+    <div v-if="type == 'dot'">
+      <DefaultLoadingDot />
+    </div>
     <div class="text-center text-secondary" style="margin-top: -20px">
       {{ message }}
     </div>
@@ -14,6 +22,11 @@ export default {
       type: String,
       required: false,
       default: 'Mohon menunggu'
+    },
+    type: {
+      type: String,
+      required: false,
+      default: 'search'
     }
   }
 }

@@ -25,5 +25,10 @@ export const actions = {
 export const getters = {
   channels(state) {
     return state.channels
+  },
+
+  detailChannels(state, { channelId }) {
+    const index = state.channels.findIndex(({ id }) => id == channelId)
+    return state.channels[index]
   }
 }

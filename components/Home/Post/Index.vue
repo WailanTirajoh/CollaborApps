@@ -1,5 +1,11 @@
 <template>
   <div class="row post">
+    <div class="col-lg-12">
+      <HomePostCreate :channel-id="channelId" />
+    </div>
+    <div class="col-lg-12">
+      <HomePostFilter :channel-id="channelId" />
+    </div>
     <div v-for="post in posts" :key="post.id" class="col-lg-12 intro-y">
       <HomePostShow :post="post" :channel-id="channelId" />
     </div>

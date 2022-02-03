@@ -2,7 +2,6 @@
   <div class="">
     <div class="row">
       <div class="col-12 col-md-8 py-2 bg-dark-4 custom-border-right">
-        <HomePostCreate :channel-id="channelId" />
         <HomePost :channel-id="channelId" />
       </div>
       <div class="col-md-4 peoples position-relative">

@@ -21,7 +21,7 @@
           class="d-flex align-items-center justify-content-center intro-y"
           style="min-height: 300px"
         >
-          <DefaultLoading />
+          <DefaultLoading type="eater" />
         </div>
       </div>
 

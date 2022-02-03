@@ -333,14 +333,7 @@
           </ul>
         </li> -->
         <li v-for="channel in channels" :key="channel.id">
-          <NuxtLink :to="`/channels/${channel.slug}`">
-            <div class="side-link d-flex gap-1 active">
-              <div class="side-icon">
-                <font-awesome-icon :icon="['fas', 'briefcase']" />
-              </div>
-              {{ channel.name }}
-            </div>
-          </NuxtLink>
+          <HomeSideChannelItem :slug="channel.slug" :name="channel.name" />
           <ul></ul>
         </li>
       </ul>
