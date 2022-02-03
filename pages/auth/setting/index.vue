@@ -89,6 +89,7 @@
 
 <script>
 export default {
+  layout: 'profile',
   middleware: 'auth',
   data() {
     return {
