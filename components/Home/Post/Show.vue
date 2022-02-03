@@ -172,8 +172,25 @@ export default {
     sharePost(post) {
       alert('belom')
     },
-    pinPost(post) {
-      alert('belom')
+    async pinPost(post) {
+      this.form.isProcessing = true
+      try {
+        const response = await this.$axios.$post(`/posts/${post.id}/pin`)
+        this.$toast
+          .success(response.message, {
+            position: 'top-right',
+            Icon: 'check'
+          })
+          .goAway(2500)
+      } catch (e) {
+        this.$toast
+          .error(e.message, {
+            position: 'top-right',
+            Icon: 'check'
+          })
+          .goAway(2500)
+      }
+      this.form.isProcessing = false
     },
     reportPost(post) {
       alert('belom')

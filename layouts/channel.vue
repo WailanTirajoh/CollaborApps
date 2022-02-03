@@ -1,25 +1,15 @@
 <template>
-  <div class="font-mono position-relative">
-    <SharedTheNavbar />
-    <section class="container-fluid">
-      <SharedTheChatBox />
-      <div class="row" style="min-height: 100vh">
-        <div
-          class="col-md-1 server show-desktop tw-bg-blue-900 bg-light shadow-sm p-0"
-        >
-          <HomeSideServer />
-        </div>
-        <div class="channel col-md-2 show-desktop px-0 custom-border-right">
-          <HomeSideChannel style="border-radius: 2rem" />
-          <HomeSideChannelCreate />
-        </div>
-        <div class="col-md-9">
-          <Nuxt />
-        </div>
+  <WrapperDefault>
+    <div class="row">
+      <div class="channel col-md-2 show-desktop px-0 custom-border-right">
+        <HomeSideChannel style="border-radius: 2rem" />
+        <HomeSideChannelCreate />
       </div>
-    </section>
-    <SharedTheFooter />
-  </div>
+      <div class="col-md-10">
+        <Nuxt />
+      </div>
+    </div>
+  </WrapperDefault>
 </template>
 
 <script>

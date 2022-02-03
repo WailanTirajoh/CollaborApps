@@ -10,7 +10,7 @@
       </NuxtLink>
       <div
         class="position-absolute bottom-0 bg-light w-100 text-center"
-        style="height: 9vh"
+        style="height: 10vh"
       >
         <button
           class="btn bg-gray rounded text-black text-secondary p-1 px-4 border shadow-sm w-100 h-100"

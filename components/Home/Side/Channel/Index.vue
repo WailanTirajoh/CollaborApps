@@ -350,7 +350,7 @@
       <div class="dropdown dropup">
         <button
           type="button"
-          class="w-100 text-sm mt-2 text-center bg-light border d-flex gap-1 align-items-center justify-content-center"
+          class="w-100 text-sm text-center bg-light border d-flex gap-1 align-items-center justify-content-center"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
         >
