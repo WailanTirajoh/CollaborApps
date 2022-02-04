@@ -47,6 +47,9 @@ php artisan migrate:fresh --seed
 // install dependency
 composer install
 
+// generate backend key
+php artisan key:generate
+
 // open 2 terminal on backend directory and run
 // on terminal 1
 php artisan serv
