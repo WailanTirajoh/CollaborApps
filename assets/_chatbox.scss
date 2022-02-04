@@ -9,7 +9,7 @@
   background-color: white;
   &.isPinned {
     transform: translateY(0vh);
-    height: 90%;
+    height: 680px;
   }
 
   .header {
@@ -22,5 +22,102 @@
     &:hover {
       background-color: ghostwhite;
     }
+  }
+}
+
+.chat {
+  .chat-header {
+    padding: 15px 20px;
+    border-bottom: 2px solid #f4f7f6;
+  }
+
+  .chat-history {
+    height: 500px;
+    padding: 12px;
+    border-bottom: 2px solid #fff;
+    overflow-x: auto;
+
+    ul {
+      padding: 0;
+
+      li {
+        list-style: none;
+
+        &:last-child {
+          margin-bottom: 0px;
+        }
+      }
+    }
+
+    .message-data {
+      margin-bottom: 8px;
+
+      .message-data-time {
+        color: #434651;
+        font-size: 13px;
+      }
+
+      &.other {
+        justify-content: end;
+      }
+    }
+
+    .message {
+      color: #444;
+      padding: 8px;
+      line-height: 26px;
+      font-size: 16px;
+      border-radius: 4px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .other-message {
+      background: #efefef;
+    }
+
+    .my-message {
+      background: #e8f1f3;
+      text-align: right;
+
+      &::after {
+        border-bottom-color: #e8f1f3;
+        left: 93%;
+      }
+    }
+  }
+
+  .chat-message {
+    padding: 20px;
+  }
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: ' ';
+  clear: both;
+  height: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .chat-app .chat {
+    margin: 0;
+  }
+  .chat-app .chat-history {
+    height: 300px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .chat-app .chat-history {
+    height: 600px;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+  .chat-app .chat-history {
+    height: calc(100vh - 350px);
   }
 }
