@@ -1,6 +1,6 @@
 <template>
   <div class="room position-sticky voice top-0" style="height: 100vh">
-    <div class="header py-2 d-flex justify-content-between">
+    <div class="header p-2 d-flex justify-content-end">
       <h5>Saluran Suara</h5>
     </div>
     <div

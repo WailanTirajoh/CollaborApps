@@ -3,17 +3,28 @@
     <div class="position-relative h-100">
       <NuxtLink to="/auth/setting">
         <img
-          class="img-fluid object-fit-cover hover-float"
+          class="img-fluid object-fit-cover"
           style="border-radius: 0 0 2rem 2rem"
           :src="$auth.user.avatar"
         />
       </NuxtLink>
+      <div class="bg-light text-center">
+        <NuxtLink
+          to="/"
+          class="bg-gray text-black text-secondary p-3 border shadow-sm rounded-circle"
+        >
+          <font-awesome-icon
+            :icon="['fas', 'bell']"
+            style="width: 3vh; height: 3vh"
+          />
+        </NuxtLink>
+      </div>
       <div
         class="position-absolute bottom-0 bg-light w-100 text-center"
         style="height: 10vh"
       >
         <button
-          class="btn bg-gray rounded text-black text-secondary p-1 px-4 border shadow-sm w-100 h-100"
+          class="bg-gray text-black text-secondary p-1 px-4 border shadow-sm w-100 h-100"
           @click.prevent="logout()"
         >
           <font-awesome-icon

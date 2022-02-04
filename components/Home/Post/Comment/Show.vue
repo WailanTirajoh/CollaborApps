@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="dropdown">
-          <button
+          <div
             id="dropdownMenuButton1"
             class="btn"
             type="button"
@@ -29,14 +29,14 @@
               :class="{ 'fa-pulse': form.isProcessing }"
               :icon="['fas', form.isProcessing ? 'spinner' : 'ellipsis-h']"
             />
-          </button>
+          </div>
           <ul
             v-if="comment.user.id == $auth.user.id"
             class="dropdown-menu dropdown-menu-end"
             aria-labelledby="dropdownMenuButton1"
           >
             <li>
-              <button
+              <div
                 class="dropdown-item text-sm btn"
                 @click="deleteComment(comment)"
               >
@@ -44,7 +44,7 @@
                   class="me-1"
                   :icon="['far', 'trash-alt']"
                 />Hapus
-              </button>
+              </div>
             </li>
           </ul>
           <ul
@@ -53,12 +53,12 @@
             aria-labelledby="dropdownMenuButton1"
           >
             <li>
-              <button class="dropdown-item text-sm btn">
+              <div class="dropdown-item text-sm btn">
                 <font-awesome-icon
                   :icon="['fas', 'bullhorn']"
                   class="me-1 color-red"
                 />Laporkan
-              </button>
+              </div>
             </li>
           </ul>
         </div>

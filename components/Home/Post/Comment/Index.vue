@@ -11,7 +11,7 @@
     </div>
     <hr class="my-1 text-secondary" />
     <div class="d-flex justify-content-between">
-      <button
+      <div
         class="btn btn-sm d-flex align-items-center gap-1 text-secondary"
         @click="postReactCreate"
       >
@@ -23,21 +23,21 @@
           ]"
         />
         <div class="text-sm">Suka</div>
-      </button>
-      <button
+      </div>
+      <div
         class="btn btn-sm d-flex align-items-center gap-1 text-secondary"
         @click="commentOpen"
       >
         <font-awesome-icon :icon="[isOpen ? 'fas' : 'far', 'comments']" />
         <div class="text-sm">Komentar</div>
-      </button>
-      <button
+      </div>
+      <div
         class="btn btn-sm d-flex align-items-center gap-1 text-secondary"
         @click="postShare"
       >
         <font-awesome-icon :icon="['far', 'share-square']" />
         <div class="text-sm">Bagikan</div>
-      </button>
+      </div>
     </div>
     <div v-show="isOpen">
       <ul v-if="post.comments.length > 0" class="p-0 m-0">

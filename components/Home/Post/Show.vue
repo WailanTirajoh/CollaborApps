@@ -17,7 +17,7 @@
       </div>
       <div class="position-absolute top-0 end-0">
         <div class="dropdown">
-          <button
+          <div
             id="dropdownMenuButton1"
             class="btn"
             type="button"
@@ -29,14 +29,14 @@
               :class="{ 'fa-pulse': form.isProcessing }"
               :icon="['fas', form.isProcessing ? 'spinner' : 'ellipsis-v']"
             />
-          </button>
+          </div>
           <ul
             v-if="post.user.id == $auth.user.id"
             class="dropdown-menu dropdown-menu-end"
             aria-labelledby="dropdownMenuButton1"
           >
             <li>
-              <button
+              <div
                 class="dropdown-item btn btn-sm text-sm"
                 @click="pinPost(post)"
               >
@@ -45,10 +45,10 @@
                   style="width: 15px"
                 />
                 {{ post.is_pinned ? 'Unpin' : 'Pin' }}
-              </button>
+              </div>
             </li>
             <li>
-              <button
+              <div
                 class="dropdown-item btn btn-sm text-sm"
                 @click="sharePost(post)"
               >
@@ -57,10 +57,10 @@
                   style="width: 15px"
                 />
                 Bagikan
-              </button>
+              </div>
             </li>
             <li>
-              <button
+              <div
                 class="dropdown-item btn btn-sm text-sm"
                 @click="deletePost(post)"
               >
@@ -69,7 +69,7 @@
                   style="width: 15px"
                 />
                 Hapus
-              </button>
+              </div>
             </li>
           </ul>
           <ul
@@ -78,7 +78,7 @@
             aria-labelledby="dropdownMenuButton1"
           >
             <li>
-              <button
+              <div
                 class="dropdown-item text-sm btn btn-sm"
                 @click="reportPost(post)"
               >
@@ -86,7 +86,7 @@
                   :icon="['fas', 'bullhorn']"
                   class="me-1 color-red"
                 />Laporkan
-              </button>
+              </div>
             </li>
           </ul>
         </div>
