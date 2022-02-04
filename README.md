@@ -32,7 +32,7 @@ cp .env.example .env
 
 ```
 mysql -u <username> -p
-create database 2021_collaborapps;
+create database 2022_collaborapps;
 ```
 
 - Fresh Migrate DB
@@ -44,12 +44,15 @@ php artisan migrate:fresh --seed
 - serve server & websocket server
 
 ```
+// install dependency
+composer install
+
 // open 2 terminal on backend directory and run
 // on terminal 1
 php artisan serv
 
 // on terminal 2
-php artisan websockets: serv
+php artisan websockets:serv
 ```
 
 ### Frontend Installation
