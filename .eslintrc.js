@@ -16,7 +16,7 @@ module.exports = {
   plugins: ['prettier'],
   // add your custom rules here
   rules: {
-    eqeqeq: 'off',
+    // eqeqeq: 'off',
     'linebreak-style': ['error']
   }
 }

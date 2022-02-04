@@ -11,7 +11,6 @@
         >
           <div class="mb-3">
             <FormInput
-              id="email"
               v-model="form.email"
               type="email"
               label="Email"
@@ -25,17 +24,27 @@
           </div>
           <div class="mb-3">
             <FormInput
-              id="password"
               v-model="form.password"
-              type="password"
+              :type="form.showPassword ? 'password' : 'text'"
               label="Password"
               :errors="errors.password"
               placeholder="*********"
-            />
+            >
+              <template #suffix>
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  @click="form.showPassword = !form.showPassword"
+                >
+                  <font-awesome-icon
+                    :icon="['far', form.showPassword ? 'eye' : 'eye-slash']"
+                  />
+                </button>
+              </template>
+            </FormInput>
           </div>
           <div class="mb-3 form-check">
             <input
-              id="remember"
               v-model="form.remember"
               type="checkbox"
               class="form-check-input"
@@ -77,6 +86,7 @@ export default {
       form: {
         email: null,
         password: null,
+        showPassword: false,
         remember: false,
         isProcessing: false
       },

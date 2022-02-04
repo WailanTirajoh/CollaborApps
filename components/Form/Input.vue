@@ -1,16 +1,19 @@
 <template>
   <div>
     <label v-if="label" :for="id" class="form-label">{{ label }}</label>
-    <input
-      :id="id"
-      ref="input"
-      v-bind="$attrs"
-      :type="type"
-      class="form-control px-3 py-2"
-      :class="{ 'is-invalid': errors }"
-      :value="value"
-      @input="$emit('input', $event.target.value)"
-    />
+    <div class="input-group">
+      <input
+        :id="id"
+        ref="input"
+        v-bind="$attrs"
+        :type="type"
+        class="form-control px-3 py-2"
+        :class="{ 'is-invalid': errors }"
+        :value="value"
+        @input="$emit('input', $event.target.value)"
+      />
+      <slot name="suffix"></slot>
+    </div>
     <div v-if="errors" :id="`${id}Feedback`" class="invalid-feedback">
       <div v-for="(error, index) in errors" :key="index">
         {{ error }}
