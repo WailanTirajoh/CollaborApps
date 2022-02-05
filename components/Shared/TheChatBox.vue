@@ -42,7 +42,7 @@
 export default {
   data() {
     return {
-      message: 'hallo',
+      message: '',
       isLoadingSendMessage: false,
       isLoadingChats: false,
       chats: []
