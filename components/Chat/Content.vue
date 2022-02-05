@@ -1,6 +1,6 @@
 <template>
-  <div ref="chatContent" class="chat">
-    <div class="chat-history">
+  <div class="chat">
+    <div ref="chatContent" class="chat-history">
       <ul class="mb-0">
         <li v-for="(chat, index) in chats" :key="index" class="clearfix my-4">
           <template v-if="isUser(chat)">
@@ -66,6 +66,13 @@ export default {
   methods: {
     isUser(chat) {
       return chat.user.id === this.$auth.user.id
+    },
+    async setBottomOfChat() {
+      await new Promise((resolve) => setTimeout(resolve, 0.2))
+      const element = this.$refs.chatContent
+      if (element) {
+        element.scrollTop = this.$refs.chatContent.scrollHeight
+      }
     }
   }
 }

@@ -7,7 +7,7 @@
     <ChatHeader />
     <div class="h-100">
       <div class="textbox px-2 py-1" style="overflow-y: auto; height: 80%">
-        <ChatContent v-if="!isLoadingChats" :chats="chats" />
+        <ChatContent ref="chatContent" :chats="chats" />
       </div>
       <div>
         <div class="input w-100 position-fixed bottom-0">
@@ -59,6 +59,19 @@ export default {
     }
   },
 
+  beforeDestroy() {
+    console.log('beforedestroy')
+    // this.$store.dispatch('posts/resetPosts')
+    // this.$echo.leave(`channels.${this.channelId}.posts`)
+  },
+  mounted() {
+    this.$refs.chatContent.setBottomOfChat()
+    this.$echo
+      .channel(`chats.index`)
+      .listen('.created', (res) => console.log(res))
+      .listen('.deleted', (res) => console.log(res))
+  },
+
   methods: {
     async addNewChat() {
       if (!this.message) return
@@ -74,7 +87,8 @@ export default {
         this.message = ''
         this.isLoadingSendMessage = false
         this.$nextTick(() => this.$refs.iSendMessage.focus())
-        this.$fetch()
+        await this.$fetch()
+        this.$refs.chatContent.setBottomOfChat()
       } catch (e) {
         alert('gagal kirim pesan silahkan coba lagi...')
       }
