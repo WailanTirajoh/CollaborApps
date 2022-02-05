@@ -1,24 +1,28 @@
 <template>
   <div class="position-sticky" style="z-index: 1; top: 0; height: 100vh">
     <div class="position-relative h-100">
-      <NuxtLink to="/auth/setting">
-        <img
-          class="img-fluid object-fit-cover"
-          style="border-radius: 0 0 2rem 2rem"
-          :src="$auth.user.avatar"
-        />
-      </NuxtLink>
-      <div class="bg-light text-center">
-        <NuxtLink
-          to="/notification/unread"
-          class="bg-gray text-black text-secondary p-3 border shadow-sm rounded-circle"
-        >
-          <font-awesome-icon
-            :icon="['fas', 'bell']"
-            style="width: 3vh; height: 3vh"
+      <div class="">
+        <NuxtLink to="/auth/setting">
+          <img
+            class="img-fluid object-fit-cover"
+            style="border-radius: 0 0 2rem 2rem"
+            :src="$auth.user.avatar"
           />
         </NuxtLink>
       </div>
+      <hr class="text-secondary" />
+      <NuxtLink
+        to="/channels"
+        class="text-secondary text-center p-3 border-bottom d-block"
+      >
+        <font-awesome-icon :icon="['fas', 'home']" />
+      </NuxtLink>
+      <NuxtLink
+        to="/notification/unread"
+        class="text-secondary text-center p-3 border-bottom d-block"
+      >
+        <font-awesome-icon :icon="['fas', 'bell']" />
+      </NuxtLink>
       <div
         class="position-absolute bottom-0 bg-light w-100 text-center"
         style="height: 10vh"

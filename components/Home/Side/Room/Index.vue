@@ -85,7 +85,7 @@ export default {
           })
           .goAway(5000)
         const index = this.users.findIndex(
-          (currentUser) => currentUser.id == user.id
+          (currentUser) => currentUser.id === user.id
         )
         if (index > -1) {
           this.users.splice(index, 1)
@@ -94,7 +94,7 @@ export default {
       .listen('.voice', (response) => {
         const user = response.user
         const index = this.users.findIndex(
-          (currentUser) => currentUser.id == user.id
+          (currentUser) => currentUser.id === user.id
         )
 
         if (index > -1) {
@@ -117,7 +117,7 @@ export default {
   methods: {
     changeUserVolume({ volume, userId }) {
       const index = this.users.findIndex(
-        (currentUser) => currentUser.id == userId
+        (currentUser) => currentUser.id === userId
       )
       if (index > -1) {
         this.users[index].volume = volume
@@ -127,7 +127,7 @@ export default {
       this.voice.record = new MediaRecorder(stream)
       this.voice.record.ondataavailable = (e) => {
         this.voice.audioChunks.push(e.data)
-        if (this.voice.record.state == 'inactive') {
+        if (this.voice.record.state === 'inactive') {
           this.voice.blob = new Blob(this.voice.audioChunks, {
             type: 'audio/webm'
           })
@@ -147,9 +147,9 @@ export default {
       })
     },
     async record(e) {
-      if (e.which == KEYCODE_4 && this.users.length > 0) {
+      if (e.which === KEYCODE_4 && this.users.length > 0) {
         // setup voice stream only when user want to use mic
-        if (this.voice.firstRecord == false) {
+        if (this.voice.firstRecord === false) {
           try {
             const stream = await navigator.mediaDevices.getUserMedia({
               audio: true
@@ -158,7 +158,7 @@ export default {
           } catch (e) {}
           this.voice.firstRecord = true
         }
-        if (this.voice.handleRecord != e.which) {
+        if (this.voice.handleRecord !== e.which) {
           this.voice.record.start()
           this.voice.handleRecord = e.which
           this.voice.toast = this.$toast.success(`Merekam ...`, {
@@ -169,14 +169,14 @@ export default {
       }
     },
     stopRecord() {
-      if (this.voice.handleRecord != KEYCODE_4) return
+      if (this.voice.handleRecord !== KEYCODE_4) return
       this.voice.record.stop()
       this.voice.handleRecord = null
       this.voice.toast.goAway()
     },
     getUserAudio(userId) {
       let audio = document.getElementById(`audio-${userId}`)
-      if (audio == undefined) {
+      if (audio === undefined) {
         audio = document.createElement('audio')
         audio.id = `audio-${userId}`
       }
