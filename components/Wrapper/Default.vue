@@ -4,11 +4,11 @@
       <SharedTheChatBox />
       <div class="row" style="min-height: 100vh">
         <div
-          class="col-md-1 server show-desktop tw-bg-blue-900 bg-light shadow-sm p-0"
+          class="col-sm-1 server show-desktop tw-bg-blue-900 bg-light shadow-sm p-0"
         >
           <HomeSideServer />
         </div>
-        <div class="col-md-11">
+        <div class="col-12 col-lg-11">
           <slot />
         </div>
       </div>

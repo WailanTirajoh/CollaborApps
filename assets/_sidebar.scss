@@ -1,4 +1,7 @@
 .server {
+  .nuxt-link-active {
+    background-color: #e4e6e9 !important;
+  }
   transition: all 0.35s ease-in-out;
   &.hide {
     transform: translateX(-5rem);
