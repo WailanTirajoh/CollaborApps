@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  layout: 'default'
+  layout: 'notification'
 }
 </script>

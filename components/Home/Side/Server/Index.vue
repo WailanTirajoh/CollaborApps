@@ -18,7 +18,7 @@
         <font-awesome-icon :icon="['fas', 'home']" />
       </NuxtLink>
       <NuxtLink
-        to="/notification/unread"
+        to="/notifications"
         class="text-secondary text-center p-3 border-bottom d-block"
       >
         <font-awesome-icon :icon="['fas', 'bell']" />
@@ -28,7 +28,7 @@
         style="height: 10vh"
       >
         <button
-          class="bg-gray text-black text-secondary p-1 px-4 border shadow-sm w-100 h-100"
+          class="bg-gray text-secondary text-secondary p-1 px-4 border shadow-sm w-100 h-100"
           @click.prevent="logout()"
         >
           <font-awesome-icon
