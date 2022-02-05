@@ -1,6 +1,6 @@
 <template>
-  <div class="chat">
-    <div ref="chatContent" class="chat-history">
+  <div class="chat h-100">
+    <div ref="chatContent" class="chat-history" style="height: 100%">
       <ul class="mb-0">
         <li v-for="(chat, index) in chats" :key="index" class="clearfix my-4">
           <template v-if="isUser(chat)">
@@ -68,7 +68,7 @@ export default {
       return chat.user.id === this.$auth.user.id
     },
     async scrollToBottomOfChat() {
-      await new Promise((resolve) => setTimeout(resolve, 0.2))
+      await new Promise((resolve) => setTimeout(resolve, 0.3))
       const element = this.$refs.chatContent
       if (element) {
         element.scrollTop = this.$refs.chatContent.scrollHeight
@@ -86,7 +86,7 @@ export default {
   }
 
   .chat-history {
-    height: 500px;
+    // height: 500px;
     padding: 12px;
     border-bottom: 2px solid #fff;
     overflow-x: auto;

@@ -9,7 +9,7 @@
           class="img-fluid rounded-circle object-fit-cover w-2r h-2r"
           alt=""
         />
-        <h6 class="my-auto">Pesan</h6>
+        <h6 class="my-auto">Live Chat</h6>
       </div>
       <div class="me-2">
         <font-awesome-icon

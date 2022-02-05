@@ -11,22 +11,28 @@
       </div>
       <div>
         <div class="input w-100 position-fixed bottom-0">
-          <div class="input-group input-append">
+          <div class="input-group input-append border-top border-bottom">
             <input
               ref="iSendMessage"
               v-model="message"
               :disabled="isLoadingSendMessage"
               placeholder="Masukkan pesan..."
               type="text"
-              class="form-control"
+              class="form-control border-0 border-end"
               @keyup.enter="addNewChat"
             />
             <button
               :disabled="isLoadingSendMessage"
-              class="btn btn-primary"
+              class="btn btn-light border-start"
               @click="addNewChat"
             >
-              <font-awesome-icon :icon="['fas', 'paper-plane']" />
+              <font-awesome-icon
+                :class="{ 'fa-pulse': isLoadingSendMessage }"
+                :icon="[
+                  'fas',
+                  isLoadingSendMessage ? 'spinner' : 'paper-plane'
+                ]"
+              />
             </button>
           </div>
           <div class="d-flex justify-content-between py-2">
@@ -69,10 +75,10 @@ export default {
     this.$echo
       .private(`chats`)
       .listen('.created', (response) => {
-        console.log(response)
-        if (response && response.data) {
+        if (response) {
           const { chat } = response
           this.chats.push(chat)
+          this.$refs.chatContent.scrollToBottomOfChat()
         }
       })
       .listen('.deleted', (res) => console.log(res))
