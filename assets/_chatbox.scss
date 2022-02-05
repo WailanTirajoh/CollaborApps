@@ -9,7 +9,7 @@
   background-color: white;
   &.isPinned {
     transform: translateY(0vh);
-    height: 90%;
+    height: 680px;
   }
 
   .header {
@@ -22,5 +22,26 @@
     &:hover {
       background-color: ghostwhite;
     }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .chat-app .chat {
+    margin: 0;
+  }
+  .chat-app .chat-history {
+    height: 300px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .chat-app .chat-history {
+    height: 600px;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+  .chat-app .chat-history {
+    height: calc(100vh - 350px);
   }
 }
