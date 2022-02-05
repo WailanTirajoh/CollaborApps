@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     togglePin() {
-      this.$store.dispatch('chat/updatePin')
+      this.$store.dispatch('chat/togglePin')
     }
   }
 }
