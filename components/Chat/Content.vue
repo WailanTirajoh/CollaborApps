@@ -67,7 +67,7 @@ export default {
     isUser(chat) {
       return chat.user.id === this.$auth.user.id
     },
-    async setBottomOfChat() {
+    async scrollToBottomOfChat() {
       await new Promise((resolve) => setTimeout(resolve, 0.2))
       const element = this.$refs.chatContent
       if (element) {

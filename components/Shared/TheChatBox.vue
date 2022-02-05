@@ -60,15 +60,21 @@ export default {
   },
 
   beforeDestroy() {
-    console.log('beforedestroy')
     // this.$store.dispatch('posts/resetPosts')
-    // this.$echo.leave(`channels.${this.channelId}.posts`)
+    // this.$echo.leave(`channels.${this.channelId}.posts`)\
+    this.$echo.leave(`chats`)
   },
   mounted() {
-    this.$refs.chatContent.setBottomOfChat()
+    this.$refs.chatContent.scrollToBottomOfChat()
     this.$echo
-      .channel(`chats.index`)
-      .listen('.created', (res) => console.log(res))
+      .private(`chats`)
+      .listen('.created', (response) => {
+        console.log(response)
+        if (response && response.data) {
+          const { chat } = response
+          this.chats.push(chat)
+        }
+      })
       .listen('.deleted', (res) => console.log(res))
   },
 
@@ -87,8 +93,8 @@ export default {
         this.message = ''
         this.isLoadingSendMessage = false
         this.$nextTick(() => this.$refs.iSendMessage.focus())
-        await this.$fetch()
-        this.$refs.chatContent.setBottomOfChat()
+
+        this.$refs.chatContent.scrollToBottomOfChat()
       } catch (e) {
         alert('gagal kirim pesan silahkan coba lagi...')
       }
