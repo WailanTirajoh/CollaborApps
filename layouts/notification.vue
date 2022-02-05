@@ -1,16 +1,20 @@
 <template>
   <WrapperDefault>
-    <div class="row">
+    <div class="row notification">
       <div
-        class="notification col-lg-2 show-desktop px-0 custom-border-right"
+        class="col-lg-2 show-desktop custom-border-right"
         style="min-height: 100vh"
       >
-        <ul>
+        <ul class="sidebar">
           <li>
-            <NuxtLink to="/notifications/unread"> Unread </NuxtLink>
+            <NuxtLink to="/notifications/unread">
+              <div class="">Unread</div>
+            </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/notifications/read"> Read </NuxtLink>
+            <NuxtLink to="/notifications/read">
+              <div class="">Read</div>
+            </NuxtLink>
           </li>
         </ul>
       </div>
