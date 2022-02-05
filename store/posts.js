@@ -8,7 +8,7 @@
  *    'created_at':string,
  *    'user':Object,
  *  }
- * ]
+ * ]A
  * ;
  *
  * user [data structure]
@@ -21,7 +21,8 @@
 export const state = () => ({
   posts: [],
   page: 1,
-  noData: false
+  noData: false,
+  filter: null
 })
 
 export const mutations = {
@@ -29,7 +30,7 @@ export const mutations = {
    * increment page
    * @param {Number} page
    */
-  incrementPage(state) {
+  INCREMENT_PAGE(state) {
     state.page++
   },
 
@@ -38,10 +39,10 @@ export const mutations = {
    * @param {Array} posts
    * @param {Boolean} infiniteScroll
    */
-  addPost(state, { posts, infiniteScroll }) {
+  ADD_POST(state, { posts, infiniteScroll }) {
     if (infiniteScroll) {
       posts.forEach((post) => {
-        const isInStatePost = state.posts.find(({ id }) => id == post.id)
+        const isInStatePost = state.posts.find(({ id }) => id === post.id)
         if (!isInStatePost) {
           state.posts.push(post)
         }
@@ -56,8 +57,8 @@ export const mutations = {
    * @param {Array} posts
    * @param {Object} post
    */
-  deletePost(state, post) {
-    const index = state.posts.findIndex(({ id }) => id == post.id)
+  DELETE_POST(state, post) {
+    const index = state.posts.findIndex(({ id }) => id === post.id)
     if (index > -1) {
       state.posts.splice(index, 1)
     }
@@ -68,15 +69,15 @@ export const mutations = {
    * @param {Array} state
    * @param {Object} post
    */
-  editPost(state, post) {
-    state.posts[state.posts.findIndex(({ id }) => id == post.id)] = post
+  UPDATE_POST(state, post) {
+    state.posts[state.posts.findIndex(({ id }) => id === post.id)] = post
   },
 
   /**
    * reset state
    * @param {Mixed} state
    */
-  resetPosts(state) {
+  RESET_POST(state) {
     state.posts = []
     state.page = 1
     state.noData = false
@@ -87,8 +88,8 @@ export const mutations = {
    * @param {Array} posts
    * @param {Object} post, comment
    */
-  addComment(state, { post, comment }) {
-    state.posts.find(({ id }) => id == post.id).comments.push(comment)
+  ADD_COMMENT(state, { post, comment }) {
+    state.posts.find(({ id }) => id === post.id).comments.push(comment)
   },
 
   /**
@@ -96,9 +97,9 @@ export const mutations = {
    * @param {Array} state post
    * @param {Object} post, comment
    */
-  deleteComment(state, { post, comment }) {
-    const postComments = state.posts.find(({ id }) => id == post.id).comments
-    const commentIndex = postComments.findIndex(({ id }) => id == comment.id)
+  DELETE_COMMENT(state, { post, comment }) {
+    const postComments = state.posts.find(({ id }) => id === post.id).comments
+    const commentIndex = postComments.findIndex(({ id }) => id === comment.id)
     postComments.splice(commentIndex, 1)
   },
 
@@ -107,8 +108,8 @@ export const mutations = {
    * @param {Array} stateposts
    * @param {Object} post, react
    */
-  addReact(state, { post, react }) {
-    state.posts.find(({ id }) => id == post.id).reacts.push(react)
+  ADD_REACT(state, { post, react }) {
+    state.posts.find(({ id }) => id === post.id).reacts.push(react)
   },
 
   /**
@@ -116,9 +117,9 @@ export const mutations = {
    * @param {Array} state post
    * @param {Object} post, react
    */
-  deleteReact(state, { post, react }) {
-    const postReacts = state.posts.find(({ id }) => id == post.id).reacts
-    const reactIndex = postReacts.findIndex(({ id }) => id == react.id)
+  DELETE_REACT(state, { post, react }) {
+    const postReacts = state.posts.find(({ id }) => id === post.id).reacts
+    const reactIndex = postReacts.findIndex(({ id }) => id === react.id)
     postReacts.splice(reactIndex, 1)
   },
 
@@ -126,13 +127,17 @@ export const mutations = {
    * set state noData to true
    * @param {Boolean} state nodata
    */
-  setNoData(state) {
+  SET_NO_DATA(state) {
     state.noData = true
   },
 
-  pinPost(state, { post }) {
-    state.posts[state.posts.findIndex(({ id }) => id == post.id)].is_pinned =
-      !state.posts[state.posts.findIndex(({ id }) => id == post.id)].is_pinned
+  PIN_POST(state, { post }) {
+    state.posts[state.posts.findIndex(({ id }) => id === post.id)].is_pinned =
+      !state.posts[state.posts.findIndex(({ id }) => id === post.id)].is_pinned
+  },
+
+  SET_FILTER_IS_PINNED(state) {
+    state.filter = 'is_pinned'
   }
 }
 
@@ -140,42 +145,45 @@ export const actions = {
   async fetchPost({ commit, getters }, { infiniteScroll, channelId }) {
     try {
       const { posts } = await this.$axios.$get(`/channels/${channelId}/posts`, {
-        params: { page: getters.page, is_pinned: true }
+        params: { page: getters.page, filter: getters.filter }
       })
       if (posts.length > 0) {
-        commit('incrementPage')
-        commit('addPost', { posts, infiniteScroll })
+        commit('INCREMENT_PAGE')
+        commit('ADD_POST', { posts, infiniteScroll })
       } else {
-        commit('setNoData')
+        commit('SET_NO_DATA')
       }
     } catch (e) {}
   },
   addPost({ commit }, post) {
-    commit('addPost', { posts: [post], infiniteScroll: false })
+    commit('ADD_POST', { posts: [post], infiniteScroll: false })
   },
   deletePost({ commit }, post) {
-    commit('deletePost', post)
+    commit('DELETE_POST', post)
   },
   editPost({ commit }, post) {
-    commit('editPost', post)
+    commit('UPDATE_POST', post)
   },
   resetPosts({ commit }) {
-    commit('resetPosts')
+    commit('RESET_POST')
   },
   addComment({ commit }, { post, comment }) {
-    commit('addComment', { post, comment })
+    commit('ADD_COMMENT', { post, comment })
   },
   deleteComment({ commit }, { post, comment }) {
-    commit('deleteComment', { post, comment })
+    commit('DELETE_COMMENT', { post, comment })
   },
   addReact({ commit }, { post, react }) {
-    commit('addReact', { post, react })
+    commit('ADD_REACT', { post, react })
   },
   deleteReact({ commit }, { post, react }) {
-    commit('deleteReact', { post, react })
+    commit('DELETE_REACT', { post, react })
   },
   pinPost({ commit }, { post }) {
-    commit('pinPost', { post })
+    commit('PIN_POST', { post })
+  },
+  setFilterIsPinned({ commit }) {
+    commit('SET_FILTER_IS_PINNED')
   }
 }
 
@@ -185,5 +193,8 @@ export const getters = {
   },
   page(state) {
     return state.page
+  },
+  filter(state) {
+    return state.filter
   }
 }
