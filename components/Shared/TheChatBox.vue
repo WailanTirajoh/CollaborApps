@@ -7,67 +7,36 @@
     <ChatHeader />
     <div class="h-100">
       <div class="textbox px-2 py-1" style="overflow-y: auto; height: 80%">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores ex
-        debitis velit libero obcaecati ab, necessitatibus tempora delectus?
-        Dolor, officia? Labore excepturi facere ipsam ut, dolores cumque
-        voluptate beatae neque velit nulla suscipit consectetur quos facilis sit
-        ipsum natus reprehenderit temporibus accusamus totam nam illo nesciunt!
-        A perferendis sit commodi architecto. Sint dolor vero voluptas, qui at
-        officiis illo, error tempora nesciunt tempore totam! Ipsam magnam libero
-        sunt vero animi deserunt sequi, esse dicta voluptate accusantium et
-        maxime debitis obcaecati possimus unde amet voluptates aut nisi fugiat!
-        Eum rem ipsa nam consequuntur praesentium voluptatum vitae veritatis
-        optio! Provident, consequatur. Alias eum aliquid accusamus sed enim
-        exercitationem voluptatibus consectetur aliquam, officiis perferendis
-        quos vitae officia voluptatum temporibus delectus. Impedit minus sequi
-        repellat quas eum accusantium dolores eaque ipsam rem quos inventore
-        consequatur laborum sunt, facilis eligendi voluptate porro voluptatibus
-        architecto cumque molestiae. Quod explicabo sed earum voluptate?
-        Voluptatem temporibus tempora perferendis minus consequatur quas alias,
-        velit molestiae sunt natus tempore aut suscipit minima, reiciendis
-        explicabo vel, laboriosam vero? Dolorum consequuntur quisquam non rerum
-        beatae deleniti repellendus? Veniam, ipsam? Exercitationem voluptatibus
-        sapiente iure reiciendis sit ratione vitae tenetur cumque error magni
-        saepe dolores fugiat accusamus non mollitia beatae facilis cupiditate
-        autem praesentium amet obcaecati, debitis culpa minima. Consectetur
-        veniam beatae maiores accusamus, earum ipsam quaerat veritatis hic
-        voluptatibus reiciendis. Nulla fugiat architecto voluptatibus
-        praesentium voluptatum ipsa earum libero harum, repellendus ipsum
-        tempora aperiam quibusdam molestiae laborum voluptate itaque sunt
-        corporis velit necessitatibus magni? Minus quam officia saepe error id
-        doloremque assumenda nisi, odio mollitia quibusdam ipsum doloribus
-        magnam ipsa ea qui deleniti commodi cumque repudiandae cum consequatur
-        itaque molestiae porro ullam recusandae. Molestias ducimus eligendi
-        repellat dolores laborum cum voluptate! Omnis praesentium dolores ipsa
-        itaque pariatur nobis, consequatur impedit vero voluptatem cum, corrupti
-        minus ipsam quo natus repellat quae possimus! Molestias suscipit aut
-        excepturi dignissimos ad earum autem possimus dolores provident, natus
-        eveniet. Porro, fuga minima! Quae et sed non explicabo corporis dolorem
-        dignissimos, sint ullam placeat harum amet id deleniti doloribus eos
-        porro expedita suscipit? Quam voluptates temporibus voluptatem sequi
-        quod tempore sit accusamus fugiat, culpa quibusdam repellendus
-        accusantium itaque deleniti dicta rem praesentium ipsum, expedita,
-        soluta quis nam. Quidem amet quia id! Accusantium doloremque aliquam
-        debitis, suscipit voluptatibus accusamus blanditiis temporibus nihil aut
-        obcaecati cum deleniti pariatur eaque tempora ducimus autem tempore
-        dolore labore, nisi corporis aliquid expedita, laborum in. Doloribus
-        quas porro mollitia, nisi dolor adipisci quibusdam, sint a rerum
-        distinctio laborum repellendus nulla qui at alias corporis, voluptatum
-        autem. Ut, a vitae?
+        <ChatContent ref="chatContent" :chats="chats" />
       </div>
       <div>
         <div class="input w-100 position-fixed bottom-0">
-          <input
-            id="disabledTextInput"
-            type="text"
-            :placeholder="`Hai, apa yang sedang anda kerjakan?`"
-            autocomplete="off"
-            class="form-control"
-            style="border-radius: 0px"
-          />
-          <div class="d-flex justify-content-between">
-            <button class="btn">test</button>
-            <button class="btn">Kirim</button>
+          <div class="input-group input-append border-top border-bottom">
+            <input
+              ref="iSendMessage"
+              v-model="message"
+              :disabled="isLoadingSendMessage"
+              placeholder="Masukkan pesan..."
+              type="text"
+              class="form-control border-0 border-end"
+              @keyup.enter="addNewChat"
+            />
+            <button
+              :disabled="isLoadingSendMessage"
+              class="btn btn-light border-start"
+              @click="addNewChat"
+            >
+              <font-awesome-icon
+                :class="{ 'fa-pulse': isLoadingSendMessage }"
+                :icon="[
+                  'fas',
+                  isLoadingSendMessage ? 'spinner' : 'paper-plane'
+                ]"
+              />
+            </button>
+          </div>
+          <div class="d-flex justify-content-between py-2">
+            TODO : list icons
           </div>
         </div>
       </div>
@@ -77,12 +46,79 @@
 
 <script>
 export default {
+  data() {
+    return {
+      message: '',
+      isLoadingSendMessage: false,
+      isLoadingChats: false,
+      chats: []
+    }
+  },
+
+  async fetch() {
+    await this.getChats()
+  },
+
   computed: {
     isPinned() {
       return this.$store.state.chat.isPinned
     }
+  },
+
+  beforeDestroy() {
+    // this.$store.dispatch('posts/resetPosts')
+    // this.$echo.leave(`channels.${this.channelId}.posts`)\
+    this.$echo.leave(`chats`)
+  },
+  mounted() {
+    this.$refs.chatContent.scrollToBottomOfChat()
+    this.$echo
+      .private(`chats`)
+      .listen('.created', (response) => {
+        if (response) {
+          const { chat } = response
+          this.chats.push(chat)
+          this.$refs.chatContent.scrollToBottomOfChat()
+        }
+      })
+      .listen('.deleted', (res) => console.log(res))
+  },
+
+  methods: {
+    async addNewChat() {
+      if (!this.message) return
+      try {
+        this.isLoadingSendMessage = true
+        await this.$axios({
+          url: 'chats',
+          method: 'POST',
+          data: {
+            message: this.message
+          }
+        })
+        this.message = ''
+        this.isLoadingSendMessage = false
+        this.$nextTick(() => this.$refs.iSendMessage.focus())
+
+        this.$refs.chatContent.scrollToBottomOfChat()
+      } catch (e) {
+        alert('gagal kirim pesan silahkan coba lagi...')
+      }
+    },
+    async getChats() {
+      try {
+        this.isLoadingChats = false
+        const {
+          data: { chats }
+        } = await this.$axios({
+          url: 'chats',
+          method: 'get'
+        })
+        this.chats = chats
+      } catch (e) {
+        alert('gagal mendapatkan list pesan, silahkan coba lagi...')
+      }
+    }
   }
 }
 </script>
-
-<style lang="scss" scoped></style>
