@@ -10,7 +10,7 @@
       </NuxtLink>
       <div class="bg-light text-center">
         <NuxtLink
-          to="/"
+          to="/notification/unread"
           class="bg-gray text-black text-secondary p-3 border shadow-sm rounded-circle"
         >
           <font-awesome-icon

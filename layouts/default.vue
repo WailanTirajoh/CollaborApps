@@ -1,21 +1,7 @@
 <template>
-  <div class="font-mono position-relative">
-    <section class="container-fluid">
-      <SharedTheChatBox />
-      <div class="row" style="min-height: 100vh">
-        <div
-          class="col-md-1 server show-desktop tw-bg-blue-900 bg-light shadow-sm p-0"
-        >
-          <HomeSideServer />
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <Nuxt />
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+  <WrapperDefault>
+    <Nuxt />
+  </WrapperDefault>
 </template>
 
 <script>
