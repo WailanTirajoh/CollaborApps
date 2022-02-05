@@ -193,5 +193,8 @@ export const getters = {
   },
   page(state) {
     return state.page
+  },
+  filter(state) {
+    return state.filter
   }
 }
