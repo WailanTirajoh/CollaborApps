@@ -137,7 +137,9 @@ export const mutations = {
   },
 
   SET_FILTER_IS_PINNED(state) {
-    state.filter = 'is_pinned'
+    state.filter === 'is_pinned'
+      ? (state.filter = null)
+      : (state.filter = 'is_pinned')
   }
 }
 
