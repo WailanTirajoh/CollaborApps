@@ -1,7 +1,6 @@
 <template>
   <div class="font-mono position-relative">
     <section class="container-fluid">
-      <SharedTheChatBox />
       <div class="row" style="min-height: 100vh">
         <div
           class="col-sm-1 server show-desktop tw-bg-blue-900 bg-light shadow-sm p-0"

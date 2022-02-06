@@ -13,7 +13,6 @@
 
 <script>
 export default {
-  layout: 'channel',
   middleware: 'auth',
   head() {
     return {
