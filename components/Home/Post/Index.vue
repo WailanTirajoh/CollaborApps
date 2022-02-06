@@ -10,9 +10,7 @@
       <HomePostShow :post="post" :channel-id="channelId" />
     </div>
     <div v-if="$store.state.posts.noData" class="col-lg-12">
-      <div class="text-center text-sm text-secondary mt-2">
-        Garis akhir, tidak ada post lagi!
-      </div>
+      <div class="text-center text-sm text-secondary mt-2">End of the line</div>
       <hr class="mt-1 pt-0" />
     </div>
     <div v-else-if="fetching" class="col-lg-12">

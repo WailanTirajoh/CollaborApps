@@ -14,7 +14,7 @@
           type="text"
           :disabled="form.isProcessing"
           :errors="error.text"
-          :placeholder="`Balas pesan ${nickname}`"
+          :placeholder="`Reply`"
           autocomplete="off"
         />
         <button class="btn text-sm" :disabled="form.text == ''">

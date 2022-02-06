@@ -1,7 +1,7 @@
 <template>
   <div class="room position-sticky voice top-0" style="height: 100vh">
     <div class="header p-2 d-flex justify-content-end">
-      <h5>Saluran Suara</h5>
+      <h5>Voice Channel</h5>
     </div>
     <div
       class="bg-white rounded-sm p-2 overflow-y-auto shadow-sm position-relative"
@@ -28,7 +28,7 @@
       <div
         class="text-sm text-secondary text-end pb-1 position-absolute bottom-0"
       >
-        Tahan "4" untuk mengirim suara
+        Hold '4' to send voice
       </div>
     </div>
     <div class="" style="height: 5vh"></div>

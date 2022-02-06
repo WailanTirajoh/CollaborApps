@@ -66,7 +66,7 @@ export default {
           maxAge: 3600 * 24 * 1
         },
         // provider: 'laravel/sanctum',
-        url: 'http://localhost:8000',
+        // url: 'http://localhost:8000',
         endpoints: {
           login: {
             url: '/login',

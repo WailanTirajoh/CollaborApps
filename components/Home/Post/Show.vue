@@ -56,7 +56,7 @@
                   :icon="['far', 'share-square']"
                   style="width: 15px"
                 />
-                Bagikan
+                Share
               </div>
             </li>
             <li>
@@ -68,7 +68,7 @@
                   :icon="['far', 'trash-alt']"
                   style="width: 15px"
                 />
-                Hapus
+                Delete
               </div>
             </li>
           </ul>
@@ -97,7 +97,7 @@
                 <font-awesome-icon
                   :icon="['fas', 'bullhorn']"
                   class="me-1 color-red"
-                />Laporkan
+                />Report
               </div>
             </li>
           </ul>

@@ -358,7 +358,7 @@
             <font-awesome-icon :icon="['fas', 'plus']" />
           </div>
 
-          Tambah Saluran Baru
+          Create new channel
         </button>
       </div>
     </div>

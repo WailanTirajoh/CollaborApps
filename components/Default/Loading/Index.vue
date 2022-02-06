@@ -9,7 +9,7 @@
     <div v-if="type == 'dot'">
       <DefaultLoadingDot />
     </div>
-    <div class="text-center text-secondary" style="margin-top: -20px">
+    <div class="text-center text-secondary" style="margin-top: -10px">
       {{ message }}
     </div>
   </div>
@@ -21,7 +21,7 @@ export default {
     message: {
       type: String,
       required: false,
-      default: 'Mohon menunggu'
+      default: 'Please wait'
     },
     type: {
       type: String,

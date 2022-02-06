@@ -11,7 +11,7 @@
     <div class="modal-dialog">
       <form class="modal-content" @submit.prevent="store">
         <div class="modal-header">
-          <h5 id="exampleModalLabel" class="modal-title">Buat saluran baru</h5>
+          <h5 id="exampleModalLabel" class="modal-title">Create new channel</h5>
           <button
             type="button"
             class="btn-close"
@@ -39,11 +39,11 @@
             class="btn btn-secondary"
             data-bs-dismiss="modal"
           >
-            Batal
+            Close
           </button>
 
           <FormSubmitButton type="submit" :loading="form.isProcessing">
-            Simpan
+            Save
           </FormSubmitButton>
         </div>
       </form>
