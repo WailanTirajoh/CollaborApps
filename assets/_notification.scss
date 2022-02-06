@@ -1,0 +1,19 @@
+.notification {
+  ul {
+    padding-top: 1rem;
+    &.sidebar {
+      list-style-type: none;
+      padding-left: 0;
+      li {
+        background-color: white !important;
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 0.5rem;
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+      }
+    }
+  }
+}

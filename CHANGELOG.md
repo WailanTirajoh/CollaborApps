@@ -19,3 +19,9 @@ Notes: * = Real Time
   - Logout
   - Profile
   - Setting
+
+## [0.2.0]
+### Added
+- Channel
+  - Post
+    - Filter [PIN]

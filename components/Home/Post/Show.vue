@@ -79,6 +79,18 @@
           >
             <li>
               <div
+                class="dropdown-item btn btn-sm text-sm"
+                @click="pinPost(post)"
+              >
+                <font-awesome-icon
+                  :icon="['far', 'bookmark']"
+                  style="width: 15px"
+                />
+                {{ post.is_pinned ? 'Unpin' : 'Pin' }}
+              </div>
+            </li>
+            <li>
+              <div
                 class="dropdown-item text-sm btn btn-sm"
                 @click="reportPost(post)"
               >
