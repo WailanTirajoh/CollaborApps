@@ -4,7 +4,7 @@
       <HomePostCreate :channel-id="channelId" />
     </div>
     <div class="col-lg-12">
-      <HomePostFilter :channel-id="channelId" />
+      <HomePostFilter :channel-id="channelId" @fetch-posts="fetch" />
     </div>
     <div v-for="post in posts" :key="post.id" class="col-lg-12 intro-y">
       <HomePostShow :post="post" :channel-id="channelId" />

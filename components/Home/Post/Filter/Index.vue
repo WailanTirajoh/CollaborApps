@@ -21,6 +21,8 @@ export default {
   methods: {
     filterOnlyPin() {
       this.$store.dispatch('posts/setFilterIsPinned')
+      this.$store.dispatch('posts/resetPosts')
+      this.$emit('fetch-posts')
     }
   }
 }
