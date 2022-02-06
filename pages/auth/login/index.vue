@@ -18,9 +18,9 @@
               aria-describedby="email-help"
               placeholder="johndoe@example.example"
             />
-            <div id="email-help" class="form-text">
+            <!-- <div id="email-help" class="form-text">
               Kami tidak akan menyebarkan email anda kepada siapapun.
-            </div>
+            </div> -->
           </div>
           <div class="mb-3">
             <FormInput

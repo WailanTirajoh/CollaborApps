@@ -14,7 +14,7 @@
       />
       <slot name="suffix"></slot>
     </div>
-    <div v-if="errors" :id="`${id}Feedback`" class="invalid-feedback">
+    <div v-if="errors" class="text-danger text-sm fst-italic">
       <div v-for="(error, index) in errors" :key="index">
         {{ error }}
       </div>

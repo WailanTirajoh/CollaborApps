@@ -14,7 +14,7 @@
             <FormInput
               id="name"
               v-model="form.name"
-              :error="errors.name"
+              :errors="errors.name"
               type="text"
               placeholder="john doe"
             />
@@ -24,7 +24,7 @@
             <FormInput
               id="email"
               v-model="form.email"
-              :error="errors.email"
+              :errors="errors.email"
               type="email"
               aria-describedby="email-help"
               placeholder="john.doe@example.example"
@@ -47,7 +47,7 @@
             <FormInput
               id="password_confirmation"
               v-model="form.password_confirmation"
-              :error="errors.password_confirmation"
+              :errors="errors.password_confirmation"
               type="password"
               placeholder="********"
             />
