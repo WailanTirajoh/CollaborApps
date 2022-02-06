@@ -43,7 +43,7 @@
                 <font-awesome-icon
                   class="me-1"
                   :icon="['far', 'trash-alt']"
-                />Hapus
+                />Delete
               </div>
             </li>
           </ul>
@@ -57,7 +57,7 @@
                 <font-awesome-icon
                   :icon="['fas', 'bullhorn']"
                   class="me-1 color-red"
-                />Laporkan
+                />Report
               </div>
             </li>
           </ul>

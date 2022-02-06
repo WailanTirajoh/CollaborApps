@@ -13,7 +13,7 @@
             type="text"
             :disabled="form.isProcessing"
             :errors="error.text"
-            :placeholder="`Hai ${nickname}, apa yang sedang anda kerjakan?`"
+            :placeholder="`Hai ${nickname}, what are you working on?`"
             autocomplete="off"
           />
         </div>
@@ -30,7 +30,7 @@
             v-if="form.file == null"
             for="files"
             class="input-file btn border text-secondary btn-sm h-100 d-flex align-items-center text-sm"
-            >Pilih berkas</label
+            >Choose File</label
           >
           <div
             v-else
@@ -38,7 +38,7 @@
             @click="deletePhoto"
           >
             <font-awesome-icon :icon="['fas', 'times-circle']" class="me-1" />
-            Hapus
+            Delete
           </div>
           <input
             id="files"
@@ -54,7 +54,7 @@
           :loading="form.isProcessing"
           :disabled="!form.text"
         >
-          Kirim
+          Send
         </FormSubmitButton>
       </div>
     </form>

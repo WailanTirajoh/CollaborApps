@@ -2,11 +2,11 @@
   <div>
     <div class="d-flex justify-content-between text-xs text-secondary mt-2">
       <div class="cursor-pointer" @click="postReactList">
-        {{ post.reacts.length }} Suka
+        {{ post.reacts.length }} Like
       </div>
       <div class="cursor-pointer no-select" @click="commentOpen">
         {{ post.comments.length }}
-        Komentar
+        Comment
       </div>
     </div>
     <hr class="my-1 text-secondary" />
@@ -22,21 +22,21 @@
             form.isProcessing ? 'spinner' : 'thumbs-up'
           ]"
         />
-        <div class="text-sm">Suka</div>
+        <div class="text-sm">Like</div>
       </div>
       <div
         class="btn btn-sm d-flex align-items-center gap-1 text-secondary"
         @click="commentOpen"
       >
         <font-awesome-icon :icon="[isOpen ? 'fas' : 'far', 'comments']" />
-        <div class="text-sm">Komentar</div>
+        <div class="text-sm">Comment</div>
       </div>
       <div
         class="btn btn-sm d-flex align-items-center gap-1 text-secondary"
         @click="postShare"
       >
         <font-awesome-icon :icon="['far', 'share-square']" />
-        <div class="text-sm">Bagikan</div>
+        <div class="text-sm">Share</div>
       </div>
     </div>
     <div v-show="isOpen">
@@ -50,7 +50,7 @@
         </div>
       </ul>
       <div v-else class="my-2 text-center intro-y">
-        <i class="text-sm"> "Tidak ada balasan, jadilah yang pertama" </i>
+        <i class="text-sm"> "No reply, be the first" </i>
       </div>
       <HomePostCommentCreate :post="post" :channel-id="channelId" />
     </div>
