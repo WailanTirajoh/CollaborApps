@@ -63,22 +63,22 @@ export default {
           property: 'token',
           required: true,
           type: 'Bearer',
-          maxAge: 60 * 2
+          maxAge: 3600 * 24 * 1
         },
-        provider: 'laravel/sanctum',
+        // provider: 'laravel/sanctum',
         url: 'http://localhost:8000',
         endpoints: {
           login: {
-            url: '/api/v1/login',
+            url: '/login',
             method: 'post',
             propertyName: 'token'
           },
           logout: {
-            url: '/api/v1/logout',
+            url: '/logout',
             method: 'post'
           },
           user: {
-            url: '/api/v1/user'
+            url: '/user'
           }
         },
         user: {
