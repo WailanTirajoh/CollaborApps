@@ -17,3 +17,32 @@
     }
   }
 }
+
+.notification-detail {
+  ul {
+    list-style-type: none;
+    li {
+      display: flex;
+      gap: 0.5rem;
+      .user{
+        &-pic {
+          img {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 100%;
+            object-fit: cover;
+          }
+        }
+        &-name{
+          margin-bottom: 0.25rem;
+        }
+      }
+      .message {
+        background-color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        display: block;
+      }
+    }
+  }
+}
