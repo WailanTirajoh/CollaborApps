@@ -25,7 +25,7 @@
           <div class="mb-3">
             <FormInput
               v-model="form.password"
-              :type="form.showPassword ? 'password' : 'text'"
+              :type="form.showPassword ? 'text' : 'password'"
               label="Password"
               :errors="errors.password"
               placeholder="*********"

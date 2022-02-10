@@ -65,20 +65,20 @@ export default {
           type: 'Bearer',
           maxAge: 3600 * 24 * 1
         },
-        // provider: 'laravel/sanctum',
-        // url: 'http://localhost:8000',
+        provider: 'laravel/sanctum',
+        url: 'http://localhost:8000',
         endpoints: {
           login: {
-            url: '/login',
+            url: '/api/v1/login',
             method: 'post',
             propertyName: 'token'
           },
           logout: {
-            url: '/logout',
+            url: '/api/v1/logout',
             method: 'post'
           },
           user: {
-            url: '/user'
+            url: '/api/v1/user'
           }
         },
         user: {

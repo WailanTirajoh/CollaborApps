@@ -45,6 +45,12 @@
 .channel {
   transition: all 0.35s ease-in-out;
   // max-width: 18rem;
+
+  ul {
+    list-style: none;
+    list-style-type: none;
+    position: relative;
+  }
   .side-list {
     overflow: auto;
     // overflow: hidden;
@@ -58,6 +64,7 @@
         &,
         ul {
           list-style: none;
+          list-style-type: none;
           position: relative;
         }
       }
