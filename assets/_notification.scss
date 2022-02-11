@@ -24,7 +24,8 @@
     li {
       display: flex;
       gap: 0.5rem;
-      .user{
+      margin-bottom: 2rem;
+      .user {
         &-pic {
           img {
             width: 3rem;
@@ -33,8 +34,9 @@
             object-fit: cover;
           }
         }
-        &-name{
-          margin-bottom: 0.25rem;
+        &-name {
+          margin-bottom: 0.5rem;
+          padding-left: 1rem;
         }
       }
       .message {
@@ -42,6 +44,37 @@
         padding: 1rem;
         border-radius: 0.5rem;
         display: block;
+        &::before {
+          content: '';
+          left: -2rem;
+          width: 2rem;
+          height: 1.25rem;
+          position: absolute;
+          top: 3rem;
+          border-bottom-left-radius: 0.5rem;
+          border-bottom: 0.15rem solid #fff;
+          border-left: 0.15rem solid #fff;
+          box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+        }
+        &::after {
+          content: '';
+          left: -0.35rem;
+          width: 2rem;
+          height: 6.25rem;
+          position: absolute;
+          top: 4.25rem;
+          border-bottom-left-radius: 5.5rem;
+          border-bottom: 0.15rem solid #fff;
+          border-left: 0.15rem solid #fff;
+          box-shadow: 0 0.125rem 0rem rgb(0 0 0 / 5%) !important;
+        }
+      }
+      &:last-child {
+        .message {
+          &::after {
+            content: unset;
+          }
+        }
       }
     }
   }
