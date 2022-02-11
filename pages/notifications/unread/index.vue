@@ -1,6 +1,12 @@
 <template>
   <div class="notification-detail row">
-    <div class="col-lg-12">Unread</div>
+    <div class="col-lg-12">
+      Unread Notification
+      <span v-if="notifications"> ({{ notifications.length }}) </span>
+    </div>
+    <div class="col-lg-12 p-0">
+      <hr class="text-secondary">
+    </div>
     <div class="col-lg-12">
       <ul v-if="notifications">
         <li
@@ -13,7 +19,14 @@
           </div>
           <div class="position-relative">
             <div class="user-name">
-              {{ notification.comment.user.name }}
+              <div class="d-flex justify-content-between">
+                <div class="">
+                  {{ notification.comment.user.name }}
+                </div>
+                <div class="text-sm text-secondary">
+                  {{ notification.created_at }}
+                </div>
+              </div>
             </div>
             <div class="message shadow-sm">
               {{ notification.comment.message }}
