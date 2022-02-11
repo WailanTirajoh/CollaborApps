@@ -176,7 +176,7 @@ export default {
     },
     getUserAudio(userId) {
       let audio = document.getElementById(`audio-${userId}`)
-      if (audio === undefined) {
+      if (!audio) {
         audio = document.createElement('audio')
         audio.id = `audio-${userId}`
       }
