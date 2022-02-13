@@ -1,6 +1,8 @@
 # Collabor Apps
 
-Realtime collaboration web based application built with Laravel 8 & Nuxt. Communicate with message & voice realtime.
+CollaborApps is now support Laravel 9.
+
+Realtime collaboration web based application built with Laravel 9 & Nuxt. Communicate with message & voice realtime.
 
 ### Image Preview
 
